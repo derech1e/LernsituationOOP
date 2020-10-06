@@ -10,6 +10,15 @@ namespace LernsituationOOP
 {
     class Person
     {
+        public Person(string name, DateTime geburtsdatum, string adresse, string email, int telefonnummer)
+        {
+            Name = name;
+            Geburtsdatum = geburtsdatum;
+            Adresse = adresse;
+            _Email = email;
+            Telefonnummer = telefonnummer;
+        }
+
         public string Name { get; set; }
 
         public DateTime Geburtsdatum { get; set; }
@@ -17,6 +26,7 @@ namespace LernsituationOOP
         public string Adresse { get; set; }
 
         private string _Email;
+
         public string Email
         {
             get

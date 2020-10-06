@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +9,26 @@ namespace LernsituationOOP.de.tnuerk.klassen.utils
 {
     class JsonUtils
     {
-        public void reservierungSpeichern(Reservierung reservierung)
+        private static List<Reservierung> reservierungen = new List<Reservierung>();
+
+        public static void reservierungenSpeichern()
+        {
+        }
+
+        public static void reserveringenLaden()
         {
 
         }
 
-        public void reserveringenLaden()
+        public static List<Reservierung> getReservierungen()
         {
+            return reservierungen;
+        }
 
+        public static bool reservierungHinzufügen(Reservierung reservierung)
+        {
+            reservierungen.Add(reservierung);
+            return true;
         }
     }
 }

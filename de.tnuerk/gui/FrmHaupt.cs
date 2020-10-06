@@ -1,4 +1,5 @@
 ﻿using LernsituationOOP.de.tnuerk.klassen;
+using LernsituationOOP.de.tnuerk.klassen.utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,12 +15,11 @@ namespace LernsituationOOP
 {
     public partial class FrmHaupt : Form
     {
-        public List<Reservierung> reservierungen = new List<Reservierung>();
-
         public FrmHaupt()
         {
             InitializeComponent();
         }
+
 
         private void btnMieten_Click(object sender, EventArgs e)
         {

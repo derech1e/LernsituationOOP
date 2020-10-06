@@ -8,6 +8,11 @@ namespace LernsituationOOP.de.tnuerk.klassen
 {
     class Mitarbeiter : Person
     {
+        public Mitarbeiter(string name, DateTime geburtsdatum, string adresse, string email, int telefonnummer, int nummer) : base(name, geburtsdatum, adresse, email, telefonnummer)
+        {
+            Nummer = nummer;
+        }
+
         public int Nummer { get; set; }
     }
 }

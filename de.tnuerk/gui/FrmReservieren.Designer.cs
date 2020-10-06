@@ -40,10 +40,15 @@
             this.dTimeBis = new System.Windows.Forms.DateTimePicker();
             this.btnAbbrechen = new System.Windows.Forms.Button();
             this.cbFuehrerschein = new System.Windows.Forms.CheckBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.gBoxPersoenlich = new System.Windows.Forms.GroupBox();
+            this.lblTel = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblGeb = new System.Windows.Forms.Label();
+            this.lblAdresse = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.gBoxReservierung = new System.Windows.Forms.GroupBox();
             this.lblFahrzeug = new System.Windows.Forms.Label();
+            this.comboBoxFahrzeuge = new System.Windows.Forms.ComboBox();
             this.gBoxPersoenlich.SuspendLayout();
             this.gBoxReservierung.SuspendLayout();
             this.SuspendLayout();
@@ -57,40 +62,41 @@
             this.btnReservieren.TabIndex = 0;
             this.btnReservieren.Text = "Reservieren";
             this.btnReservieren.UseVisualStyleBackColor = true;
+            this.btnReservieren.Click += new System.EventHandler(this.btnReservieren_Click);
             // 
             // txtBoxName
             // 
-            this.txtBoxName.Location = new System.Drawing.Point(6, 25);
+            this.txtBoxName.Location = new System.Drawing.Point(106, 25);
             this.txtBoxName.Name = "txtBoxName";
-            this.txtBoxName.Size = new System.Drawing.Size(412, 26);
+            this.txtBoxName.Size = new System.Drawing.Size(312, 26);
             this.txtBoxName.TabIndex = 1;
             // 
             // txtBoxGeburtsdatum
             // 
-            this.txtBoxGeburtsdatum.Location = new System.Drawing.Point(6, 89);
+            this.txtBoxGeburtsdatum.Location = new System.Drawing.Point(106, 89);
             this.txtBoxGeburtsdatum.Name = "txtBoxGeburtsdatum";
-            this.txtBoxGeburtsdatum.Size = new System.Drawing.Size(412, 26);
+            this.txtBoxGeburtsdatum.Size = new System.Drawing.Size(312, 26);
             this.txtBoxGeburtsdatum.TabIndex = 2;
             // 
             // txtBoxAdresse
             // 
-            this.txtBoxAdresse.Location = new System.Drawing.Point(6, 57);
+            this.txtBoxAdresse.Location = new System.Drawing.Point(106, 57);
             this.txtBoxAdresse.Name = "txtBoxAdresse";
-            this.txtBoxAdresse.Size = new System.Drawing.Size(412, 26);
+            this.txtBoxAdresse.Size = new System.Drawing.Size(312, 26);
             this.txtBoxAdresse.TabIndex = 3;
             // 
             // txtBoxEmail
             // 
-            this.txtBoxEmail.Location = new System.Drawing.Point(6, 121);
+            this.txtBoxEmail.Location = new System.Drawing.Point(106, 121);
             this.txtBoxEmail.Name = "txtBoxEmail";
-            this.txtBoxEmail.Size = new System.Drawing.Size(412, 26);
+            this.txtBoxEmail.Size = new System.Drawing.Size(312, 26);
             this.txtBoxEmail.TabIndex = 4;
             // 
             // txtBoxTel
             // 
-            this.txtBoxTel.Location = new System.Drawing.Point(6, 153);
+            this.txtBoxTel.Location = new System.Drawing.Point(106, 153);
             this.txtBoxTel.Name = "txtBoxTel";
-            this.txtBoxTel.Size = new System.Drawing.Size(412, 26);
+            this.txtBoxTel.Size = new System.Drawing.Size(312, 26);
             this.txtBoxTel.TabIndex = 5;
             // 
             // lblReservierenVon
@@ -146,17 +152,13 @@
             this.cbFuehrerschein.Text = "Ich habe einen Führerschein";
             this.cbFuehrerschein.UseVisualStyleBackColor = true;
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(10, 45);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(216, 24);
-            this.listBox1.TabIndex = 12;
-            // 
             // gBoxPersoenlich
             // 
+            this.gBoxPersoenlich.Controls.Add(this.lblTel);
+            this.gBoxPersoenlich.Controls.Add(this.lblEmail);
+            this.gBoxPersoenlich.Controls.Add(this.lblGeb);
+            this.gBoxPersoenlich.Controls.Add(this.lblAdresse);
+            this.gBoxPersoenlich.Controls.Add(this.lblName);
             this.gBoxPersoenlich.Controls.Add(this.txtBoxName);
             this.gBoxPersoenlich.Controls.Add(this.txtBoxGeburtsdatum);
             this.gBoxPersoenlich.Controls.Add(this.cbFuehrerschein);
@@ -170,12 +172,57 @@
             this.gBoxPersoenlich.TabStop = false;
             this.gBoxPersoenlich.Text = "Persönliche Angaben";
             // 
+            // lblTel
+            // 
+            this.lblTel.AutoSize = true;
+            this.lblTel.Location = new System.Drawing.Point(34, 156);
+            this.lblTel.Name = "lblTel";
+            this.lblTel.Size = new System.Drawing.Size(66, 20);
+            this.lblTel.TabIndex = 16;
+            this.lblTel.Text = "Telefon:";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(43, 124);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(57, 20);
+            this.lblEmail.TabIndex = 15;
+            this.lblEmail.Text = "E-Mail:";
+            // 
+            // lblGeb
+            // 
+            this.lblGeb.AutoSize = true;
+            this.lblGeb.Location = new System.Drawing.Point(6, 92);
+            this.lblGeb.Name = "lblGeb";
+            this.lblGeb.Size = new System.Drawing.Size(94, 20);
+            this.lblGeb.TabIndex = 14;
+            this.lblGeb.Text = "Geburtstag:";
+            // 
+            // lblAdresse
+            // 
+            this.lblAdresse.AutoSize = true;
+            this.lblAdresse.Location = new System.Drawing.Point(28, 60);
+            this.lblAdresse.Name = "lblAdresse";
+            this.lblAdresse.Size = new System.Drawing.Size(72, 20);
+            this.lblAdresse.TabIndex = 13;
+            this.lblAdresse.Text = "Adresse:";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(45, 28);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(55, 20);
+            this.lblName.TabIndex = 12;
+            this.lblName.Text = "Name:";
+            // 
             // gBoxReservierung
             // 
+            this.gBoxReservierung.Controls.Add(this.comboBoxFahrzeuge);
             this.gBoxReservierung.Controls.Add(this.lblFahrzeug);
             this.gBoxReservierung.Controls.Add(this.lblReservierenVon);
             this.gBoxReservierung.Controls.Add(this.lblReservierenBis);
-            this.gBoxReservierung.Controls.Add(this.listBox1);
             this.gBoxReservierung.Controls.Add(this.dTimeVon);
             this.gBoxReservierung.Controls.Add(this.dTimeBis);
             this.gBoxReservierung.Location = new System.Drawing.Point(12, 249);
@@ -193,6 +240,14 @@
             this.lblFahrzeug.Size = new System.Drawing.Size(102, 20);
             this.lblFahrzeug.TabIndex = 13;
             this.lblFahrzeug.Text = "Fahrzeugtyp:";
+            // 
+            // comboBoxFahrzeuge
+            // 
+            this.comboBoxFahrzeuge.FormattingEnabled = true;
+            this.comboBoxFahrzeuge.Location = new System.Drawing.Point(10, 45);
+            this.comboBoxFahrzeuge.Name = "comboBoxFahrzeuge";
+            this.comboBoxFahrzeuge.Size = new System.Drawing.Size(223, 28);
+            this.comboBoxFahrzeuge.TabIndex = 14;
             // 
             // FrmReservieren
             // 
@@ -232,9 +287,14 @@
         private System.Windows.Forms.DateTimePicker dTimeBis;
         private System.Windows.Forms.Button btnAbbrechen;
         private System.Windows.Forms.CheckBox cbFuehrerschein;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox gBoxPersoenlich;
         private System.Windows.Forms.GroupBox gBoxReservierung;
         private System.Windows.Forms.Label lblFahrzeug;
+        private System.Windows.Forms.Label lblTel;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblGeb;
+        private System.Windows.Forms.Label lblAdresse;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.ComboBox comboBoxFahrzeuge;
     }
 }
