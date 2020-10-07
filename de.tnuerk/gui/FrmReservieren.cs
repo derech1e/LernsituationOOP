@@ -25,6 +25,7 @@ namespace LernsituationOOP
             if(JsonUtils.reservierungHinzufügen(reservierung))
             {
                 Close();
+                JsonUtils.reservierungenSpeichern();
             } else
             {
                 MessageBox.Show(new Exception("Fehler!").Message);
