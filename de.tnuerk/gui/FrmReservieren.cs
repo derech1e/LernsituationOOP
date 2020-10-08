@@ -18,6 +18,7 @@ namespace LernsituationOOP
                 comboBoxFahrzeuge.Items.Add(modell);
             }
             comboBoxFahrzeuge.SelectedIndex = 0;
+            dTimeBis.MinDate = dTimeVon.Value.Date.AddDays(1);
         }
 
         private void btnReservieren_Click(object sender, EventArgs e)
@@ -26,9 +27,9 @@ namespace LernsituationOOP
                 return;
             
             Fahrzeug fahrzeug = new Fahrzeug((FahrzeugModell)Enum.Parse(typeof(FahrzeugModell), comboBoxFahrzeuge.SelectedItem.ToString()), FahrzeugStatus.IN_ORDNUNG);
-            Kunde person = new Kunde(txtBoxName.Text, DateTime.Parse(txtBoxGeburtsdatum.Text), txtBoxAdresse.Text, txtBoxEmail.Text, int.Parse(txtBoxTel.Text), new Random().Next(20000,100000), cbFuehrerschein.Checked);
+            Kunde kunde = new Kunde(txtBoxVorName.Text, txtBoxNachName.Text, DateTime.Parse(txtBoxGeburtsdatum.Text), txtBoxAdresse.Text, txtBoxEmail.Text, int.Parse(txtBoxTel.Text), new Random().Next(20000,100000), cbFuehrerschein.Checked);
 
-            Reservierung reservierung = new Reservierung(fahrzeug, person, dTimeVon.Value, dTimeBis.Value);
+            Reservierung reservierung = new Reservierung(fahrzeug, kunde, dTimeVon.Value, dTimeBis.Value);
 
             if (JsonUtils.reservierungHinzufügen(reservierung))
             {
@@ -43,7 +44,7 @@ namespace LernsituationOOP
 
         private bool kannReservieren()
         {
-            if (string.IsNullOrEmpty(txtBoxName.Text))
+            if (string.IsNullOrEmpty(txtBoxVorName.Text))
             {
                 MessageBox.Show("Bitte geben Sie einen Namen an!");
                 return false;

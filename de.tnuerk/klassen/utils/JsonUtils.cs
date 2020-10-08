@@ -35,5 +35,11 @@ namespace LernsituationOOP.de.tnuerk.klassen.utils
             reservierungen.Add(reservierung);
             return true;
         }
+
+        public static bool reservierungLöschen(Reservierung reservierung)
+        {
+            reservierungen.Remove(reservierung);
+            return true;
+        }
     }
 }

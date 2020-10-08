@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LernsituationOOP.de.tnuerk.klassen
 {
-    class Mitarbeiter : Person
+    class Mitarbeiter
     {
-        public Mitarbeiter(string name, DateTime geburtsdatum, string adresse, string email, int telefonnummer, int nummer) : base(name, geburtsdatum, adresse, email, telefonnummer)
+        public Mitarbeiter(int nummer)
         {
             Nummer = nummer;
         }

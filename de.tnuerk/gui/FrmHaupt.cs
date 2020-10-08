@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace LernsituationOOP
 {
@@ -39,7 +40,7 @@ namespace LernsituationOOP
 
         private void btnMitarbeiter_Click(object sender, EventArgs e)
         {
-            new FrmPrüfen().ShowDialog();
+            new FrmLogin().ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -61,6 +61,12 @@
     <Compile Include="de.tnuerk\gui\FrmHaupt.Designer.cs">
       <DependentUpon>FrmHaupt.cs</DependentUpon>
     </Compile>
+    <Compile Include="de.tnuerk\gui\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="de.tnuerk\gui\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="de.tnuerk\gui\FrmPrüfen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="de.tnuerk\gui\FrmHaupt.resx">
       <DependentUpon>FrmHaupt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="de.tnuerk\gui\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="de.tnuerk\gui\FrmPrüfen.resx">
       <DependentUpon>FrmPrüfen.cs</DependentUpon>

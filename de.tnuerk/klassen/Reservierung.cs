@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LernsituationOOP.de.tnuerk.klassen
 {
     class Reservierung
     {
-        public Reservierung(Fahrzeug fahrzeug, Kunde kunde, DateTime reservierung_Start, DateTime reservierung_Ende, bool geprüft = false, DateTime? prüfungsdatum = null)
+        public Reservierung(Fahrzeug fahrzeug, Kunde kunde, DateTime reservierung_Start, DateTime reservierung_Ende, bool geprüft = false, DateTime? prüfungsdatum = null, Mitarbeiter mitarbeiter = null)
         {
             Fahrzeug = fahrzeug;
             Kunde = kunde;
@@ -16,6 +12,7 @@ namespace LernsituationOOP.de.tnuerk.klassen
             Reservierung_Ende = reservierung_Ende;
             Geprüft = geprüft;
             Prüfungsdatum = prüfungsdatum;
+            Mitarbeiter = mitarbeiter;
         }
 
         public Fahrzeug Fahrzeug { get; set; }
@@ -26,6 +23,8 @@ namespace LernsituationOOP.de.tnuerk.klassen
 
         public bool Geprüft { get; set; }
         public DateTime? Prüfungsdatum { get; set; }
+
+        public Mitarbeiter Mitarbeiter { get; set; }
 
     }
 }
