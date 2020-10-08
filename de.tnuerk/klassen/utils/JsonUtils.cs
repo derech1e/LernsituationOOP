@@ -18,8 +18,8 @@ namespace LernsituationOOP.de.tnuerk.klassen.utils
 
         public static void reserveringenLaden()
         {
-           // if (!Directory.Exists(FILE_PATH))
-           //     return;
+            if (!File.Exists(FILE_PATH))
+                return;
             var json = File.ReadAllText(FILE_PATH);
             var fileReservierungen = JsonConvert.DeserializeObject<List<Reservierung>>(json);
             reservierungen = fileReservierungen;

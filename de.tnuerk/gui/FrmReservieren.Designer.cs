@@ -55,10 +55,11 @@
             // 
             // btnReservieren
             // 
-            this.btnReservieren.Location = new System.Drawing.Point(13, 428);
+            this.btnReservieren.Enabled = false;
+            this.btnReservieren.Location = new System.Drawing.Point(12, 421);
             this.btnReservieren.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnReservieren.Name = "btnReservieren";
-            this.btnReservieren.Size = new System.Drawing.Size(112, 35);
+            this.btnReservieren.Size = new System.Drawing.Size(209, 35);
             this.btnReservieren.TabIndex = 0;
             this.btnReservieren.Text = "Reservieren";
             this.btnReservieren.UseVisualStyleBackColor = true;
@@ -134,10 +135,10 @@
             // btnAbbrechen
             // 
             this.btnAbbrechen.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAbbrechen.Location = new System.Drawing.Point(133, 428);
+            this.btnAbbrechen.Location = new System.Drawing.Point(229, 421);
             this.btnAbbrechen.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAbbrechen.Name = "btnAbbrechen";
-            this.btnAbbrechen.Size = new System.Drawing.Size(112, 35);
+            this.btnAbbrechen.Size = new System.Drawing.Size(230, 35);
             this.btnAbbrechen.TabIndex = 10;
             this.btnAbbrechen.Text = "Abbrechen";
             this.btnAbbrechen.UseVisualStyleBackColor = true;
@@ -151,6 +152,7 @@
             this.cbFuehrerschein.TabIndex = 11;
             this.cbFuehrerschein.Text = "Ich habe einen Führerschein";
             this.cbFuehrerschein.UseVisualStyleBackColor = true;
+            this.cbFuehrerschein.CheckedChanged += new System.EventHandler(this.cbFuehrerschein_CheckedChanged);
             // 
             // gBoxPersoenlich
             // 
@@ -255,7 +257,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnAbbrechen;
-            this.ClientSize = new System.Drawing.Size(472, 477);
+            this.ClientSize = new System.Drawing.Size(472, 465);
             this.Controls.Add(this.gBoxReservierung);
             this.Controls.Add(this.gBoxPersoenlich);
             this.Controls.Add(this.btnAbbrechen);
