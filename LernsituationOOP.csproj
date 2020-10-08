@@ -49,11 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="de.tnuerk\gui\FrmAlleRes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="de.tnuerk\gui\FrmAlleRes.Designer.cs">
+      <DependentUpon>FrmAlleRes.cs</DependentUpon>
+    </Compile>
     <Compile Include="de.tnuerk\gui\FrmHaupt.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="de.tnuerk\gui\FrmHaupt.Designer.cs">
       <DependentUpon>FrmHaupt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="de.tnuerk\gui\FrmPrüfen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="de.tnuerk\gui\FrmPrüfen.Designer.cs">
+      <DependentUpon>FrmPrüfen.cs</DependentUpon>
     </Compile>
     <Compile Include="de.tnuerk\gui\FrmReservieren.cs">
       <SubType>Form</SubType>
@@ -74,6 +86,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="de.tnuerk\gui\FrmHaupt.resx">
       <DependentUpon>FrmHaupt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="de.tnuerk\gui\FrmPrüfen.resx">
+      <DependentUpon>FrmPrüfen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="de.tnuerk\gui\FrmReservieren.resx">
       <DependentUpon>FrmReservieren.cs</DependentUpon>

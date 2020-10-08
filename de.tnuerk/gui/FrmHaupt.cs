@@ -1,4 +1,5 @@
-﻿using LernsituationOOP.de.tnuerk.klassen;
+﻿using LernsituationOOP.de.tnuerk.gui;
+using LernsituationOOP.de.tnuerk.klassen;
 using LernsituationOOP.de.tnuerk.klassen.utils;
 using System;
 using System.Collections;
@@ -24,6 +25,26 @@ namespace LernsituationOOP
         private void btnMieten_Click(object sender, EventArgs e)
         {
             new FrmReservieren().ShowDialog();
+        }
+
+        private void FrmHaupt_Load(object sender, EventArgs e)
+        {
+            JsonUtils.reserveringenLaden();
+        }
+
+        private void FrmHaupt_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            JsonUtils.reservierungenSpeichern();
+        }
+
+        private void btnMitarbeiter_Click(object sender, EventArgs e)
+        {
+            new FrmPrüfen().ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            new FrmAlleRes().ShowDialog();
         }
     }
 }

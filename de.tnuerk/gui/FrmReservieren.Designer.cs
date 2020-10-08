@@ -47,8 +47,8 @@
             this.lblAdresse = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.gBoxReservierung = new System.Windows.Forms.GroupBox();
-            this.lblFahrzeug = new System.Windows.Forms.Label();
             this.comboBoxFahrzeuge = new System.Windows.Forms.ComboBox();
+            this.lblFahrzeug = new System.Windows.Forms.Label();
             this.gBoxPersoenlich.SuspendLayout();
             this.gBoxReservierung.SuspendLayout();
             this.SuspendLayout();
@@ -76,14 +76,14 @@
             this.txtBoxGeburtsdatum.Location = new System.Drawing.Point(106, 89);
             this.txtBoxGeburtsdatum.Name = "txtBoxGeburtsdatum";
             this.txtBoxGeburtsdatum.Size = new System.Drawing.Size(312, 26);
-            this.txtBoxGeburtsdatum.TabIndex = 2;
+            this.txtBoxGeburtsdatum.TabIndex = 3;
             // 
             // txtBoxAdresse
             // 
             this.txtBoxAdresse.Location = new System.Drawing.Point(106, 57);
             this.txtBoxAdresse.Name = "txtBoxAdresse";
             this.txtBoxAdresse.Size = new System.Drawing.Size(312, 26);
-            this.txtBoxAdresse.TabIndex = 3;
+            this.txtBoxAdresse.TabIndex = 2;
             // 
             // txtBoxEmail
             // 
@@ -232,6 +232,15 @@
             this.gBoxReservierung.TabStop = false;
             this.gBoxReservierung.Text = "Reservierung";
             // 
+            // comboBoxFahrzeuge
+            // 
+            this.comboBoxFahrzeuge.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxFahrzeuge.FormattingEnabled = true;
+            this.comboBoxFahrzeuge.Location = new System.Drawing.Point(10, 45);
+            this.comboBoxFahrzeuge.Name = "comboBoxFahrzeuge";
+            this.comboBoxFahrzeuge.Size = new System.Drawing.Size(223, 28);
+            this.comboBoxFahrzeuge.TabIndex = 14;
+            // 
             // lblFahrzeug
             // 
             this.lblFahrzeug.AutoSize = true;
@@ -240,14 +249,6 @@
             this.lblFahrzeug.Size = new System.Drawing.Size(102, 20);
             this.lblFahrzeug.TabIndex = 13;
             this.lblFahrzeug.Text = "Fahrzeugtyp:";
-            // 
-            // comboBoxFahrzeuge
-            // 
-            this.comboBoxFahrzeuge.FormattingEnabled = true;
-            this.comboBoxFahrzeuge.Location = new System.Drawing.Point(10, 45);
-            this.comboBoxFahrzeuge.Name = "comboBoxFahrzeuge";
-            this.comboBoxFahrzeuge.Size = new System.Drawing.Size(223, 28);
-            this.comboBoxFahrzeuge.TabIndex = 14;
             // 
             // FrmReservieren
             // 

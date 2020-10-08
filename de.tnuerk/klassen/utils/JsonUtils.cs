@@ -1,10 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LernsituationOOP.de.tnuerk.klassen.utils
 {
@@ -21,6 +18,8 @@ namespace LernsituationOOP.de.tnuerk.klassen.utils
 
         public static void reserveringenLaden()
         {
+           // if (!Directory.Exists(FILE_PATH))
+           //     return;
             var json = File.ReadAllText(FILE_PATH);
             var fileReservierungen = JsonConvert.DeserializeObject<List<Reservierung>>(json);
             reservierungen = fileReservierungen;

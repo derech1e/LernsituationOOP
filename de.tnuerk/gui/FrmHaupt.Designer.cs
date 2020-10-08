@@ -53,6 +53,7 @@
             this.btnMitarbeiter.TabIndex = 1;
             this.btnMitarbeiter.Text = "Mitarbeiter/ Reservierungen Prüfen";
             this.btnMitarbeiter.UseVisualStyleBackColor = true;
+            this.btnMitarbeiter.Click += new System.EventHandler(this.btnMitarbeiter_Click);
             // 
             // button2
             // 
@@ -63,6 +64,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Geprüfte Reservierungen";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FrmHaupt
             // 
@@ -76,6 +78,8 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmHaupt";
             this.Text = "Übersicht Wählen";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmHaupt_FormClosing);
+            this.Load += new System.EventHandler(this.FrmHaupt_Load);
             this.ResumeLayout(false);
 
         }
