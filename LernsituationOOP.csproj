@@ -88,6 +88,7 @@
     <Compile Include="de.tnuerk\klassen\utils\FahrzeugModell.cs" />
     <Compile Include="de.tnuerk\klassen\utils\FahrzeugStatus.cs" />
     <Compile Include="de.tnuerk\klassen\utils\JsonUtils.cs" />
+    <Compile Include="de.tnuerk\klassen\utils\Prüfungsstatus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="de.tnuerk\gui\FrmHaupt.resx">

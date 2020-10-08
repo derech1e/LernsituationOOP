@@ -27,7 +27,7 @@ namespace LernsituationOOP.de.tnuerk.gui
             Reservierung reservierung = JsonUtils.getReservierungen()[listBoxEinträge.SelectedIndex];
             if (JsonUtils.reservierungLöschen(reservierung))
             {
-                reservierung.Geprüft = true;
+                reservierung.Prüfungsstatus = Prüfungsstatus.ANGENOMMEN;
                 reservierung.Mitarbeiter = new Mitarbeiter(ID);
                 reservierung.Prüfungsdatum = DateTime.Today;
                 if(JsonUtils.reservierungHinzufügen(reservierung))
@@ -57,6 +57,12 @@ namespace LernsituationOOP.de.tnuerk.gui
                 + "Fahrzeug: " + reservierung.Fahrzeug.Modell + "\n"
                 + "Zustand des Fahzeugs: " + reservierung.Fahrzeug.Zustand + "\n\n"
                 + "Reservierung: " + reservierung.Reservierung_Start.Date.ToString("dd. MMMM yyyy") + " bis " + reservierung.Reservierung_Ende.Date.ToString("dd. MMMM yyyy") + "\n";
+        }
+
+        private void btnUnCheck_Click(object sender, EventArgs e)
+        {
+            Reservierung reservierung = JsonUtils.getReservierungen()[listBoxEinträge.SelectedIndex];
+            reservierung.Prüfungsstatus = Prüfungsstatus.ABGELEHNT;
         }
     }
 }

@@ -71,6 +71,7 @@
             this.btnUnCheck.TabIndex = 2;
             this.btnUnCheck.Text = "✗";
             this.btnUnCheck.UseVisualStyleBackColor = true;
+            this.btnUnCheck.Click += new System.EventHandler(this.btnUnCheck_Click);
             // 
             // txtBoxResInfos
             // 

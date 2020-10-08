@@ -29,7 +29,7 @@ namespace LernsituationOOP
             Fahrzeug fahrzeug = new Fahrzeug((FahrzeugModell)Enum.Parse(typeof(FahrzeugModell), comboBoxFahrzeuge.SelectedItem.ToString()), FahrzeugStatus.IN_ORDNUNG);
             Kunde kunde = new Kunde(txtBoxVorName.Text, txtBoxNachName.Text, DateTime.Parse(txtBoxGeburtsdatum.Text), txtBoxAdresse.Text, txtBoxEmail.Text, int.Parse(txtBoxTel.Text), new Random().Next(20000,100000), cbFuehrerschein.Checked);
 
-            Reservierung reservierung = new Reservierung(fahrzeug, kunde, dTimeVon.Value, dTimeBis.Value);
+            Reservierung reservierung = new Reservierung(fahrzeug, kunde, dTimeVon.Value, dTimeBis.Value, Prüfungsstatus.IN_BEARBEITUNG);
 
             if (JsonUtils.reservierungHinzufügen(reservierung))
             {
