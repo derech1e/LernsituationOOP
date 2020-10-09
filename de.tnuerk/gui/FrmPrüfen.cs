@@ -18,29 +18,17 @@ namespace LernsituationOOP.de.tnuerk.gui
         {
             foreach(Reservierung reservierung in JsonUtils.getReservierungen())
             {
-                listBoxEinträge.Items.Add(reservierung.Kunde.Nachname);
+                if(reservierung.Prüfungsstatus == Prüfungsstatus.IN_BEARBEITUNG)
+                    listBoxEinträge.Items.Add(reservierung.Kunde.Nachname);
             }
         }
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
+            if (listBoxEinträge.SelectedItem == null) return;
             Reservierung reservierung = JsonUtils.getReservierungen()[listBoxEinträge.SelectedIndex];
-            if (JsonUtils.reservierungLöschen(reservierung))
-            {
-                reservierung.Prüfungsstatus = Prüfungsstatus.ANGENOMMEN;
-                reservierung.Mitarbeiter = new Mitarbeiter(ID);
-                reservierung.Prüfungsdatum = DateTime.Today;
-                if(JsonUtils.reservierungHinzufügen(reservierung))
-                {
-                    MessageBox.Show("Reservierung bestätigt!");
-                } else
-                {
-                    MessageBox.Show("Reservierungs bestätigung Fehlgeschlagen (Hinzufügen)!");
-                }
-            } else
-            {
-                MessageBox.Show("Reservierungs bestätigung Fehlgeschlagen (Löschen)!");
-            }
+            if (updateStatus(reservierung, true))
+                listBoxEinträge.Items.RemoveAt(listBoxEinträge.SelectedIndex);
         }
 
         private void listBoxEinträge_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,8 +49,35 @@ namespace LernsituationOOP.de.tnuerk.gui
 
         private void btnUnCheck_Click(object sender, EventArgs e)
         {
+            if (listBoxEinträge.SelectedItem == null) return;
             Reservierung reservierung = JsonUtils.getReservierungen()[listBoxEinträge.SelectedIndex];
-            reservierung.Prüfungsstatus = Prüfungsstatus.ABGELEHNT;
+            if (updateStatus(reservierung, false))
+                listBoxEinträge.Items.RemoveAt(listBoxEinträge.SelectedIndex);
+        }
+
+        private bool updateStatus(Reservierung reservierung, bool angenommen)
+        {
+            if (JsonUtils.reservierungLöschen(reservierung))
+            {
+                reservierung.Prüfungsstatus = angenommen ? Prüfungsstatus.ANGENOMMEN : Prüfungsstatus.ABGELEHNT;
+                reservierung.Mitarbeiter = new Mitarbeiter(ID);
+                reservierung.Prüfungsdatum = DateTime.Today;
+                if (JsonUtils.reservierungHinzufügen(reservierung))
+                {
+                    MessageBox.Show("Reservierung bearbeitet!");
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Reservierungs bestätigung Fehlgeschlagen (Hinzufügen)!");
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Reservierungs bestätigung Fehlgeschlagen (Löschen)!");
+                return false;
+            }
         }
     }
 }

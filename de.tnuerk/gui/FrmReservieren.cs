@@ -34,6 +34,7 @@ namespace LernsituationOOP
             if (JsonUtils.reservierungHinzufügen(reservierung))
             {
                 MessageBox.Show("Fahrzeug Reserviert!");
+                MessageBox.Show(reservierung.Prüfungsstatus + "");
                 Close();
             }
             else

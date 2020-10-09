@@ -5,13 +5,13 @@ namespace LernsituationOOP.de.tnuerk.klassen
 {
     class Reservierung
     {
-        public Reservierung(Fahrzeug fahrzeug, Kunde kunde, DateTime reservierung_Start, DateTime reservierung_Ende, Prüfungsstatus prüfungsstatus, DateTime? prüfungsdatum = null, Mitarbeiter mitarbeiter = null)
+        public Reservierung(Fahrzeug fahrzeug, Kunde kunde, DateTime reservierung_Start, DateTime reservierung_Ende, Prüfungsstatus prüfungsstatus = Prüfungsstatus.IN_BEARBEITUNG, DateTime? prüfungsdatum = null, Mitarbeiter mitarbeiter = null)
         {
             Fahrzeug = fahrzeug;
             Kunde = kunde;
             Reservierung_Start = reservierung_Start;
             Reservierung_Ende = reservierung_Ende;
-            Prüfungsstatus = Prüfungsstatus;
+            Prüfungsstatus = prüfungsstatus;
             Prüfungsdatum = prüfungsdatum;
             Mitarbeiter = mitarbeiter;
 

@@ -91,6 +91,9 @@
     <Compile Include="de.tnuerk\klassen\utils\Prüfungsstatus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="de.tnuerk\gui\FrmAlleRes.resx">
+      <DependentUpon>FrmAlleRes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="de.tnuerk\gui\FrmHaupt.resx">
       <DependentUpon>FrmHaupt.cs</DependentUpon>
     </EmbeddedResource>
