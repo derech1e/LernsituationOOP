@@ -39,7 +39,7 @@
             this.cbFuehrerschein = new System.Windows.Forms.CheckBox();
             this.gBoxPersoenlich = new System.Windows.Forms.GroupBox();
             this.txtBoxTel = new System.Windows.Forms.TextBox();
-            this.txtBoxGeburtsdatum = new System.Windows.Forms.MaskedTextBox();
+            this.dTimeGeburtstag = new System.Windows.Forms.DateTimePicker();
             this.lblTel = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblGeb = new System.Windows.Forms.Label();
@@ -138,7 +138,7 @@
             // 
             this.gBoxPersoenlich.Controls.Add(this.txtBoxNachName);
             this.gBoxPersoenlich.Controls.Add(this.txtBoxTel);
-            this.gBoxPersoenlich.Controls.Add(this.txtBoxGeburtsdatum);
+            this.gBoxPersoenlich.Controls.Add(this.dTimeGeburtstag);
             this.gBoxPersoenlich.Controls.Add(this.lblTel);
             this.gBoxPersoenlich.Controls.Add(this.lblEmail);
             this.gBoxPersoenlich.Controls.Add(this.lblGeb);
@@ -162,14 +162,13 @@
             this.txtBoxTel.Size = new System.Drawing.Size(312, 26);
             this.txtBoxTel.TabIndex = 18;
             // 
-            // txtBoxGeburtsdatum
+            // dTimeGeburtstag
             // 
-            this.txtBoxGeburtsdatum.Location = new System.Drawing.Point(106, 89);
-            this.txtBoxGeburtsdatum.Mask = "00/00/0000";
-            this.txtBoxGeburtsdatum.Name = "txtBoxGeburtsdatum";
-            this.txtBoxGeburtsdatum.Size = new System.Drawing.Size(312, 26);
-            this.txtBoxGeburtsdatum.TabIndex = 17;
-            this.txtBoxGeburtsdatum.ValidatingType = typeof(System.DateTime);
+            this.dTimeGeburtstag.Location = new System.Drawing.Point(106, 89);
+            this.dTimeGeburtstag.Name = "dTimeGeburtstag";
+            this.dTimeGeburtstag.Size = new System.Drawing.Size(312, 26);
+            this.dTimeGeburtstag.TabIndex = 4;
+            this.dTimeGeburtstag.ValueChanged += new System.EventHandler(this.dTimeGeburtstag_ValueChanged);
             // 
             // lblTel
             // 
@@ -307,9 +306,9 @@
         private System.Windows.Forms.Label lblAdresse;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.ComboBox comboBoxFahrzeuge;
-        private System.Windows.Forms.MaskedTextBox txtBoxGeburtsdatum;
         private System.Windows.Forms.TextBox txtBoxEmail;
         private System.Windows.Forms.TextBox txtBoxTel;
         private System.Windows.Forms.TextBox txtBoxNachName;
+        private System.Windows.Forms.DateTimePicker dTimeGeburtstag;
     }
 }

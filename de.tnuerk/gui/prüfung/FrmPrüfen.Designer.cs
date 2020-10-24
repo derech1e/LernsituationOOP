@@ -34,6 +34,7 @@
             this.txtBoxResInfos = new System.Windows.Forms.RichTextBox();
             this.gBoxReservierungen = new System.Windows.Forms.GroupBox();
             this.gBoxInformationen = new System.Windows.Forms.GroupBox();
+            this.btnExit = new System.Windows.Forms.Button();
             this.gBoxReservierungen.SuspendLayout();
             this.gBoxInformationen.SuspendLayout();
             this.SuspendLayout();
@@ -53,9 +54,9 @@
             // 
             this.btnCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheck.ForeColor = System.Drawing.Color.Lime;
-            this.btnCheck.Location = new System.Drawing.Point(788, 80);
+            this.btnCheck.Location = new System.Drawing.Point(12, 406);
             this.btnCheck.Name = "btnCheck";
-            this.btnCheck.Size = new System.Drawing.Size(143, 119);
+            this.btnCheck.Size = new System.Drawing.Size(87, 82);
             this.btnCheck.TabIndex = 1;
             this.btnCheck.Text = "✓";
             this.btnCheck.UseVisualStyleBackColor = true;
@@ -65,9 +66,9 @@
             // 
             this.btnUnCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold);
             this.btnUnCheck.ForeColor = System.Drawing.Color.Red;
-            this.btnUnCheck.Location = new System.Drawing.Point(788, 264);
+            this.btnUnCheck.Location = new System.Drawing.Point(105, 406);
             this.btnUnCheck.Name = "btnUnCheck";
-            this.btnUnCheck.Size = new System.Drawing.Size(143, 119);
+            this.btnUnCheck.Size = new System.Drawing.Size(87, 82);
             this.btnUnCheck.TabIndex = 2;
             this.btnUnCheck.Text = "✗";
             this.btnUnCheck.UseVisualStyleBackColor = true;
@@ -78,7 +79,7 @@
             this.txtBoxResInfos.Location = new System.Drawing.Point(6, 27);
             this.txtBoxResInfos.Name = "txtBoxResInfos";
             this.txtBoxResInfos.ReadOnly = true;
-            this.txtBoxResInfos.Size = new System.Drawing.Size(461, 355);
+            this.txtBoxResInfos.Size = new System.Drawing.Size(461, 344);
             this.txtBoxResInfos.TabIndex = 3;
             this.txtBoxResInfos.Text = "";
             // 
@@ -102,11 +103,21 @@
             this.gBoxInformationen.TabStop = false;
             this.gBoxInformationen.Text = "Reservierungsinformationen";
             // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(198, 406);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(138, 82);
+            this.btnExit.TabIndex = 6;
+            this.btnExit.Text = "Abbrechen";
+            this.btnExit.UseVisualStyleBackColor = true;
+            // 
             // FrmPrüfen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(955, 415);
+            this.ClientSize = new System.Drawing.Size(761, 499);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.gBoxInformationen);
             this.Controls.Add(this.gBoxReservierungen);
             this.Controls.Add(this.btnUnCheck);
@@ -130,5 +141,6 @@
         private System.Windows.Forms.RichTextBox txtBoxResInfos;
         private System.Windows.Forms.GroupBox gBoxReservierungen;
         private System.Windows.Forms.GroupBox gBoxInformationen;
+        private System.Windows.Forms.Button btnExit;
     }
 }

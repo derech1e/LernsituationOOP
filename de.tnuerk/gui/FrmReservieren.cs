@@ -1,106 +1,62 @@
 ﻿using LernsituationOOP.de.tnuerk.klassen;
 using LernsituationOOP.de.tnuerk.klassen.utils;
+using LernsituationOOP.de.tnuerk.utils;
 using System;
-using System.Linq;
-using System.Net.Mail;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace LernsituationOOP
 {
     public partial class FrmReservieren : Form
     {
-        public FrmReservieren()
+        public FrmReservieren() => InitializeComponent();
+
+        /// <summary>
+        /// Es werden die Konstruktoren der Verschieden Klassen mit den jeweiligen Daten gefüllt und anschließend in die Liste der Reservierungen hinzugefügt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnReservieren_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
+            if (!KannReservieren())
+                return;
+            Utils.Reservierungen.Add(new Reservierung(new Fahrzeug((FahrzeugModell)Enum.Parse(typeof(FahrzeugModell), comboBoxFahrzeuge.SelectedItem.ToString()), FahrzeugStatus.IN_ORDNUNG), new Kunde(txtBoxVorName.Text, txtBoxNachName.Text, dTimeGeburtstag.Value, txtBoxAdresse.Text, txtBoxEmail.Text, long.Parse(txtBoxTel.Text), new Random().Next(20000, 100000)), dTimeVon.Value, dTimeBis.Value));
+            MessageBox.Show("Fahrzeug Reserviert!", "Abgeschlossen", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            Close();
+        }
+
+        /// <summary>
+        /// Dient zur vermeidung von fehlern durch fehlerhafte Eingaben.
+        /// </summary>
+        /// <returns>Gibt Zurück ob die Reservierierung abgeschlossen werden kann.</returns>
+        private bool KannReservieren() => ValidationUtils.IsStringNotNull(txtBoxVorName.Text) && !ValidationUtils.IsStringANumber(txtBoxVorName.Text) && (ValidationUtils.IsStringNotNull(txtBoxNachName.Text) && !ValidationUtils.IsStringANumber(txtBoxNachName.Text)) && (ValidationUtils.IsStringNotNull(txtBoxAdresse.Text) && ValidationUtils.IsOlderThan18(dTimeGeburtstag.Value) && (ValidationUtils.IsEmailValid(txtBoxEmail.Text) && ValidationUtils.IsStringANumber(txtBoxTel.Text))) && cbFuehrerschein.Checked;
+
+        private void cbFuehrerschein_CheckedChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+
+        private void txtBoxVorName_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+
+        private void txtBoxNachName_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+
+        private void txtBoxAdresse_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+
+        private void txtBoxEmail_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+
+        private void txtBoxTel_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+
+        private void dTimeGeburtstag_ValueChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+
+        /// <summary>
+        /// Das Formular wird mit den entsprechenden Daten der Fahrzeuge gefüllt.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmReservieren_Load(object sender, EventArgs e)
+        {
             foreach (FahrzeugModell modell in Enum.GetValues(typeof(FahrzeugModell)))
             {
                 comboBoxFahrzeuge.Items.Add(modell);
             }
             comboBoxFahrzeuge.SelectedIndex = 0;
             dTimeBis.MinDate = dTimeVon.Value.Date.AddDays(1);
-        }
-
-        private void btnReservieren_Click(object sender, EventArgs e)
-        {
-            if (!kannReservieren())
-                return;
-            
-            Fahrzeug fahrzeug = new Fahrzeug((FahrzeugModell)Enum.Parse(typeof(FahrzeugModell), comboBoxFahrzeuge.SelectedItem.ToString()), FahrzeugStatus.IN_ORDNUNG);
-            Kunde kunde = new Kunde(txtBoxVorName.Text, txtBoxNachName.Text, DateTime.Parse(txtBoxGeburtsdatum.Text), txtBoxAdresse.Text, txtBoxEmail.Text, int.Parse(txtBoxTel.Text), new Random().Next(20000,100000), cbFuehrerschein.Checked);
-
-            Reservierung reservierung = new Reservierung(fahrzeug, kunde, dTimeVon.Value, dTimeBis.Value, Prüfungsstatus.IN_BEARBEITUNG);
-
-            if (JsonUtils.reservierungHinzufügen(reservierung))
-            {
-                MessageBox.Show("Fahrzeug Reserviert!");
-                MessageBox.Show(reservierung.Prüfungsstatus + "");
-                Close();
-            }
-            else
-            {
-                MessageBox.Show(new Exception("Fehler!").Message);
-            }
-        }
-
-        private bool kannReservieren()
-        {
-            if (string.IsNullOrEmpty(txtBoxVorName.Text))
-            {
-                MessageBox.Show("Bitte geben Sie einen Namen an!");
-                return false;
-            }
-            if (string.IsNullOrEmpty(txtBoxAdresse.Text))
-            {
-                MessageBox.Show("Bitte geben Sie eine Adresse an!");
-                return false;
-            }
-            if (string.IsNullOrEmpty(txtBoxGeburtsdatum.Text))
-            {
-                MessageBox.Show("Bitte geben Sie ihr Geburtsdatum an!");
-                return false;
-            }
-            else
-            {
-                if (!DateTime.TryParse(txtBoxGeburtsdatum.Text, out _))
-                {
-                    MessageBox.Show("Bitte geben Sie ihr Geburtsdatum in einem Gültigen Format an!");
-                    return false;
-                }
-            }
-            if (string.IsNullOrEmpty(txtBoxEmail.Text))
-            {
-                MessageBox.Show("Bitte geben Sie eine E-Mail an!");
-                return false;
-            }
-            else
-            {
-                try
-                {
-                    new MailAddress(txtBoxEmail.Text);
-                }
-                catch (FormatException ex)
-                {
-                    MessageBox.Show("Bitte geben Sie eine gültige E-Mail an!");
-                    return false;
-                }
-            }
-            if (!Regex.IsMatch(txtBoxTel.Text, @"^\d+$"))
-            {
-                MessageBox.Show("Bitte geben Sie eine Telefonnummer an!");
-                return false;
-            }
-            if(dTimeVon.Value.Date == dTimeBis.Value.Date)
-            {
-                MessageBox.Show("Ein Auto muss mindestens 1 Tag gemietet werden!");
-                return false;
-            }
-            return true;
-        }
-
-        private void cbFuehrerschein_CheckedChanged(object sender, EventArgs e)
-        {
-            btnReservieren.Enabled = cbFuehrerschein.Checked;
         }
     }
 }

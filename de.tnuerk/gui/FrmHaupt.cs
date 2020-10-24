@@ -2,16 +2,8 @@
 using LernsituationOOP.de.tnuerk.klassen;
 using LernsituationOOP.de.tnuerk.klassen.utils;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.VisualBasic;
+using LernsituationOOP.de.tnuerk.utils;
 
 namespace LernsituationOOP
 {
@@ -20,32 +12,28 @@ namespace LernsituationOOP
         public FrmHaupt()
         {
             InitializeComponent();
-        }
-
-
-        private void btnMieten_Click(object sender, EventArgs e)
-        {
-            new FrmReservieren().ShowDialog();
+            Autovermieter autovermieter = Utils.GetAutovermieter();
+            Text = autovermieter.Name + " in " + autovermieter.Standort + " | Tel.: " + autovermieter.Rufnummer.ToString();
         }
 
         private void FrmHaupt_Load(object sender, EventArgs e)
         {
-            JsonUtils.reserveringenLaden();
+            if (!JsonUtils.LoadReservierungen()) Console.Error.WriteLine("Failed to load Reservierungen!");
+            if (!JsonUtils.LoadMitarbeiter()) Console.Error.WriteLine("Failed to load Mitarbeiter!");
         }
 
         private void FrmHaupt_FormClosing(object sender, FormClosingEventArgs e)
         {
-            JsonUtils.reservierungenSpeichern();
+            if (!JsonUtils.SaveReservierungen()) Console.Error.WriteLine("Failed to save Reservierungen!");
+            if (!JsonUtils.SaveMitarbeiter()) Console.Error.WriteLine("Failed to save Mitarbeiter!");
         }
 
-        private void btnMitarbeiter_Click(object sender, EventArgs e)
-        {
-            new FrmLogin().ShowDialog();
-        }
+        private void btnMieten_Click(object sender, EventArgs e) => new FrmReservieren().ShowDialog();
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            new FrmAlleRes().ShowDialog();
-        }
+        private void btnMitarbeiter_Click(object sender, EventArgs e) => new FrmLogin().ShowDialog();
+
+        private void btnGeprüfteRes_Click(object sender, EventArgs e) => new FrmAlleRes().ShowDialog();
+
+        public static void OpenPrüfen(Mitarbeiter mitarbeiter) => new FrmPrüfen(mitarbeiter).ShowDialog();
     }
 }

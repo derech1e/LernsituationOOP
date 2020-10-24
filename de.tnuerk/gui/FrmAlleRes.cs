@@ -1,5 +1,6 @@
 ﻿using LernsituationOOP.de.tnuerk.klassen;
 using LernsituationOOP.de.tnuerk.klassen.utils;
+using LernsituationOOP.de.tnuerk.utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,56 +20,51 @@ namespace LernsituationOOP.de.tnuerk.gui
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Es werden die Reservierungen in die entsprechenden Listboxen geladen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmAlleRes_Load(object sender, EventArgs e)
         {
-            foreach (Reservierung reservierung in JsonUtils.getReservierungen())
-            {
-                if(reservierung.Prüfungsstatus == Prüfungsstatus.ANGENOMMEN)
+            if (Utils.Reservierungen != null)
+                foreach (Reservierung reservierung in Utils.Reservierungen)
                 {
-                    listBoxAngenommen.Items.Add(reservierung.Kunde.Nachname);
-                } else if(reservierung.Prüfungsstatus == Prüfungsstatus.ABGELEHNT)
-                {
-                    listBoxAbgelehnt.Items.Add(reservierung.Kunde.Nachname);
+                    if (reservierung.Prüfungsstatus == Prüfungsstatus.ANGENOMMEN)
+                        listBoxAngenommen.Items.Add(reservierung.Kunde.Nachname);
+                    else if (reservierung.Prüfungsstatus == Prüfungsstatus.ABGELEHNT)
+                        listBoxAbgelehnt.Items.Add(reservierung.Kunde.Nachname);
                 }
-            }
         }
 
+        /// <summary>
+        /// Die Reservierungsinformationen werden dem entsprechendem Index angezeigt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBoxAngenommen_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Reservierung reservierung = JsonUtils.getReservierungen()[listBoxAngenommen.SelectedIndex];
+            if (listBoxAngenommen.SelectedIndex < 0)
+                return;
+            Reservierung reservierung = Utils.Reservierungen[listBoxAngenommen.SelectedIndex];
             txtBoxInfos.Clear();
-            txtBoxInfos.Text += "Vorname: " + reservierung.Kunde.Vorname + "\n"
-                + "Nachname: " + reservierung.Kunde.Nachname + "\n"
-                + "Adresse: " + reservierung.Kunde.Adresse + "\n"
-                + "Geburtstag: " + reservierung.Kunde.Geburtsdatum.ToString("dd. MMMM yyyy") + "\n\n"
-                + "E-Mail: " + reservierung.Kunde.Email + "\n"
-                + "Telefonnummer: " + reservierung.Kunde.Telefonnummer + "\n"
-                + "Führerschein: " + (reservierung.Kunde.Führerschein ? "Ja" : "Nein") + "\n\n"
-                + "Fahrzeug: " + reservierung.Fahrzeug.Modell + "\n"
-                + "Zustand des Fahzeugs: " + reservierung.Fahrzeug.Zustand + "\n\n"
-                + "Reservierung: " + reservierung.Reservierung_Start.Date.ToString("dd. MMMM yyyy") + " bis " + reservierung.Reservierung_Ende.Date.ToString("dd. MMMM yyyy") + "\n\n"
-                + "Prüfungsstatus: " + reservierung.Prüfungsstatus + "\n"
-                +"Geprüft am: " + reservierung.Prüfungsdatum.Value.Date.ToString("dd. MMMM yyyy") + "\n"
-                + "Geprüft von Mitarbeiter: " + reservierung.Mitarbeiter.Nummer;
+            txtBoxInfos.Text = Utils.GetReservierungsInfos(reservierung);
+            listBoxAbgelehnt.ClearSelected();
         }
 
+        /// <summary>
+        /// Die Reservierungsinformationen werden dem entsprechendem Index angezeigt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBoxAbgelehnt_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Reservierung reservierung = JsonUtils.getReservierungen()[listBoxAbgelehnt.SelectedIndex];
+            if (listBoxAbgelehnt.SelectedIndex < 0)
+                return;
+            Reservierung reservierung = Utils.Reservierungen[listBoxAbgelehnt.SelectedIndex];
             txtBoxInfos.Clear();
-            txtBoxInfos.Text += "Vorname: " + reservierung.Kunde.Vorname + "\n"
-                + "Nachname: " + reservierung.Kunde.Nachname + "\n"
-                + "Adresse: " + reservierung.Kunde.Adresse + "\n"
-                + "Geburtstag: " + reservierung.Kunde.Geburtsdatum.ToString("dd. MMMM yyyy") + "\n\n"
-                + "E-Mail: " + reservierung.Kunde.Email + "\n"
-                + "Telefonnummer: " + reservierung.Kunde.Telefonnummer + "\n"
-                + "Führerschein: " + (reservierung.Kunde.Führerschein ? "Ja" : "Nein") + "\n\n"
-                + "Fahrzeug: " + reservierung.Fahrzeug.Modell + "\n"
-                + "Zustand des Fahzeugs: " + reservierung.Fahrzeug.Zustand + "\n\n"
-                + "Reservierung: " + reservierung.Reservierung_Start.Date.ToString("dd. MMMM yyyy") + " bis " + reservierung.Reservierung_Ende.Date.ToString("dd. MMMM yyyy") + "\n\n"
-                + "Prüfungsstatus: " + reservierung.Prüfungsstatus + "\n"
-                + "Geprüft am: " + reservierung.Prüfungsdatum.Value.Date.ToString("dd. MMMM yyyy") + "\n"
-                + "Geprüft von Mitarbeiter: " + reservierung.Mitarbeiter.Nummer;
+            txtBoxInfos.Text = Utils.GetReservierungsInfos(reservierung);
+            listBoxAngenommen.ClearSelected();
         }
     }
 }

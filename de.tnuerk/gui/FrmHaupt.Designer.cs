@@ -30,7 +30,7 @@
         {
             this.btnMieten = new System.Windows.Forms.Button();
             this.btnMitarbeiter = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnGeprüfteRes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnMieten
@@ -38,7 +38,7 @@
             this.btnMieten.Location = new System.Drawing.Point(13, 14);
             this.btnMieten.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMieten.Name = "btnMieten";
-            this.btnMieten.Size = new System.Drawing.Size(254, 258);
+            this.btnMieten.Size = new System.Drawing.Size(179, 132);
             this.btnMieten.TabIndex = 0;
             this.btnMieten.Text = "Auto Reservieren";
             this.btnMieten.UseVisualStyleBackColor = true;
@@ -46,37 +46,38 @@
             // 
             // btnMitarbeiter
             // 
-            this.btnMitarbeiter.Location = new System.Drawing.Point(281, 14);
+            this.btnMitarbeiter.Location = new System.Drawing.Point(200, 14);
             this.btnMitarbeiter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMitarbeiter.Name = "btnMitarbeiter";
-            this.btnMitarbeiter.Size = new System.Drawing.Size(254, 258);
+            this.btnMitarbeiter.Size = new System.Drawing.Size(179, 132);
             this.btnMitarbeiter.TabIndex = 1;
             this.btnMitarbeiter.Text = "Mitarbeiter/ Reservierungen Prüfen";
             this.btnMitarbeiter.UseVisualStyleBackColor = true;
             this.btnMitarbeiter.Click += new System.EventHandler(this.btnMitarbeiter_Click);
             // 
-            // button2
+            // btnGeprüfteRes
             // 
-            this.button2.Location = new System.Drawing.Point(543, 14);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(254, 258);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Geprüfte Reservierungen";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnGeprüfteRes.Location = new System.Drawing.Point(387, 14);
+            this.btnGeprüfteRes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnGeprüfteRes.Name = "btnGeprüfteRes";
+            this.btnGeprüfteRes.Size = new System.Drawing.Size(179, 132);
+            this.btnGeprüfteRes.TabIndex = 2;
+            this.btnGeprüfteRes.Text = "Geprüfte Reservierungen";
+            this.btnGeprüfteRes.UseVisualStyleBackColor = true;
+            this.btnGeprüfteRes.Click += new System.EventHandler(this.btnGeprüfteRes_Click);
             // 
             // FrmHaupt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(811, 280);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(574, 160);
+            this.Controls.Add(this.btnGeprüfteRes);
             this.Controls.Add(this.btnMitarbeiter);
             this.Controls.Add(this.btnMieten);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmHaupt";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Übersicht Wählen";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmHaupt_FormClosing);
             this.Load += new System.EventHandler(this.FrmHaupt_Load);
@@ -88,7 +89,7 @@
 
         private System.Windows.Forms.Button btnMieten;
         private System.Windows.Forms.Button btnMitarbeiter;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnGeprüfteRes;
     }
 }
 

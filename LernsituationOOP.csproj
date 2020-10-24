@@ -61,16 +61,22 @@
     <Compile Include="de.tnuerk\gui\FrmHaupt.Designer.cs">
       <DependentUpon>FrmHaupt.cs</DependentUpon>
     </Compile>
-    <Compile Include="de.tnuerk\gui\FrmLogin.cs">
+    <Compile Include="de.tnuerk\gui\prüfung\FrmAddMitarbeiter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="de.tnuerk\gui\FrmLogin.Designer.cs">
+    <Compile Include="de.tnuerk\gui\prüfung\FrmAddMitarbeiter.Designer.cs">
+      <DependentUpon>FrmAddMitarbeiter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="de.tnuerk\gui\prüfung\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="de.tnuerk\gui\prüfung\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="de.tnuerk\gui\FrmPrüfen.cs">
+    <Compile Include="de.tnuerk\gui\prüfung\FrmPrüfen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="de.tnuerk\gui\FrmPrüfen.Designer.cs">
+    <Compile Include="de.tnuerk\gui\prüfung\FrmPrüfen.Designer.cs">
       <DependentUpon>FrmPrüfen.cs</DependentUpon>
     </Compile>
     <Compile Include="de.tnuerk\gui\FrmReservieren.cs">
@@ -79,16 +85,18 @@
     <Compile Include="de.tnuerk\gui\FrmReservieren.Designer.cs">
       <DependentUpon>FrmReservieren.cs</DependentUpon>
     </Compile>
-    <Compile Include="de.tnuerk\klassen\Fahrzeug.cs" />
-    <Compile Include="de.tnuerk\klassen\Kunde.cs" />
-    <Compile Include="de.tnuerk\klassen\Mitarbeiter.cs" />
-    <Compile Include="de.tnuerk\klassen\Person.cs" />
-    <Compile Include="de.tnuerk\klassen\Reservierung.cs" />
-    <Compile Include="de.tnuerk\klassen\utils\Autovermieter.cs" />
-    <Compile Include="de.tnuerk\klassen\utils\FahrzeugModell.cs" />
-    <Compile Include="de.tnuerk\klassen\utils\FahrzeugStatus.cs" />
-    <Compile Include="de.tnuerk\klassen\utils\JsonUtils.cs" />
-    <Compile Include="de.tnuerk\klassen\utils\Prüfungsstatus.cs" />
+    <Compile Include="de.tnuerk\vermietung\Fahrzeug.cs" />
+    <Compile Include="de.tnuerk\personen\Kunde.cs" />
+    <Compile Include="de.tnuerk\personen\Mitarbeiter.cs" />
+    <Compile Include="de.tnuerk\personen\Person.cs" />
+    <Compile Include="de.tnuerk\vermietung\Reservierung.cs" />
+    <Compile Include="de.tnuerk\vermietung\Autovermieter.cs" />
+    <Compile Include="de.tnuerk\utils\FahrzeugModell.cs" />
+    <Compile Include="de.tnuerk\utils\FahrzeugStatus.cs" />
+    <Compile Include="de.tnuerk\utils\JsonUtils.cs" />
+    <Compile Include="de.tnuerk\utils\Prüfungsstatus.cs" />
+    <Compile Include="de.tnuerk\utils\Utils.cs" />
+    <Compile Include="de.tnuerk\utils\ValidationUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="de.tnuerk\gui\FrmAlleRes.resx">
@@ -97,10 +105,13 @@
     <EmbeddedResource Include="de.tnuerk\gui\FrmHaupt.resx">
       <DependentUpon>FrmHaupt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="de.tnuerk\gui\FrmLogin.resx">
+    <EmbeddedResource Include="de.tnuerk\gui\prüfung\FrmAddMitarbeiter.resx">
+      <DependentUpon>FrmAddMitarbeiter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="de.tnuerk\gui\prüfung\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="de.tnuerk\gui\FrmPrüfen.resx">
+    <EmbeddedResource Include="de.tnuerk\gui\prüfung\FrmPrüfen.resx">
       <DependentUpon>FrmPrüfen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="de.tnuerk\gui\FrmReservieren.resx">
@@ -129,5 +140,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
