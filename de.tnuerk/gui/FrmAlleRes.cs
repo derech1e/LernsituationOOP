@@ -2,13 +2,6 @@
 using LernsituationOOP.de.tnuerk.klassen.utils;
 using LernsituationOOP.de.tnuerk.utils;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LernsituationOOP.de.tnuerk.gui
@@ -27,14 +20,20 @@ namespace LernsituationOOP.de.tnuerk.gui
         /// <param name="e"></param>
         private void FrmAlleRes_Load(object sender, EventArgs e)
         {
-            if (Utils.Reservierungen != null)
-                foreach (Reservierung reservierung in Utils.Reservierungen)
-                {
-                    if (reservierung.Prüfungsstatus == Prüfungsstatus.ANGENOMMEN)
-                        listBoxAngenommen.Items.Add(reservierung.Kunde.Nachname);
-                    else if (reservierung.Prüfungsstatus == Prüfungsstatus.ABGELEHNT)
-                        listBoxAbgelehnt.Items.Add(reservierung.Kunde.Nachname);
-                }
+            if (Utils.ReservierungMitStatusX(Prüfungsstatus.ABGELEHNT, Prüfungsstatus.ANGENOMMEN).Count == 0)
+            {
+                MessageBox.Show("Es sind keine geprüften Reservierungen vorhanden!", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Dispose();
+                return;
+            }
+
+            foreach (Reservierung reservierung in Utils.Reservierungen)
+            {
+                if (reservierung.Prüfungsstatus == Prüfungsstatus.ANGENOMMEN)
+                    listBoxAngenommen.Items.Add(reservierung.Kunde.Nachname + " - " + reservierung.Kunde.KundenNummer);
+                else if (reservierung.Prüfungsstatus == Prüfungsstatus.ABGELEHNT)
+                    listBoxAbgelehnt.Items.Add(reservierung.Kunde.Nachname + " - " + reservierung.Kunde.KundenNummer);
+            }
         }
 
         /// <summary>
@@ -46,7 +45,7 @@ namespace LernsituationOOP.de.tnuerk.gui
         {
             if (listBoxAngenommen.SelectedIndex < 0)
                 return;
-            Reservierung reservierung = Utils.Reservierungen[listBoxAngenommen.SelectedIndex];
+            Reservierung reservierung = Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxAngenommen.GetItemText(listBoxAngenommen.SelectedItem).Split('-')[1].ToString()));
             txtBoxInfos.Clear();
             txtBoxInfos.Text = Utils.GetReservierungsInfos(reservierung);
             listBoxAbgelehnt.ClearSelected();
@@ -61,7 +60,7 @@ namespace LernsituationOOP.de.tnuerk.gui
         {
             if (listBoxAbgelehnt.SelectedIndex < 0)
                 return;
-            Reservierung reservierung = Utils.Reservierungen[listBoxAbgelehnt.SelectedIndex];
+            Reservierung reservierung = Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxAbgelehnt.GetItemText(listBoxAbgelehnt.SelectedItem).Split('-')[1].ToString()));
             txtBoxInfos.Clear();
             txtBoxInfos.Text = Utils.GetReservierungsInfos(reservierung);
             listBoxAngenommen.ClearSelected();

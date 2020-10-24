@@ -22,10 +22,17 @@ namespace LernsituationOOP.de.tnuerk.gui
         /// <param name="e"></param>
         private void FrmPrüfen_Load(object sender, EventArgs e)
         {
+            if(Utils.Reservierungen.Count == 0)
+            {
+                MessageBox.Show("Es sind keine Reservierungen vorhanden!", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Dispose();
+                return;
+            }
+
             foreach (Reservierung reservierung in Utils.Reservierungen)
             {
                 if (reservierung.Prüfungsstatus == Prüfungsstatus.IN_BEARBEITUNG)
-                    this.listBoxEinträge.Items.Add((object)reservierung.Kunde.Nachname);
+                    listBoxEinträge.Items.Add(reservierung.Kunde.Nachname + " - " + reservierung.Kunde.KundenNummer);
             }
         }
 
@@ -36,9 +43,9 @@ namespace LernsituationOOP.de.tnuerk.gui
         /// <param name="e"></param>
         private void btnCheck_Click(object sender, EventArgs e)
         {
-            if (this.listBoxEinträge.SelectedIndex < 0 || !this.UpdateStatus(Utils.Reservierungen[this.listBoxEinträge.SelectedIndex], true))
+            if (listBoxEinträge.SelectedIndex < 0 || !UpdateStatus(Utils.Reservierungen[listBoxEinträge.SelectedIndex], true))
                 return;
-            this.listBoxEinträge.Items.RemoveAt(this.listBoxEinträge.SelectedIndex);
+            listBoxEinträge.Items.RemoveAt(listBoxEinträge.SelectedIndex);
         }
 
         /// <summary>
@@ -48,9 +55,9 @@ namespace LernsituationOOP.de.tnuerk.gui
         /// <param name="e"></param>
         private void btnUnCheck_Click(object sender, EventArgs e)
         {
-            if (this.listBoxEinträge.SelectedIndex < 0 || !this.UpdateStatus(Utils.Reservierungen[this.listBoxEinträge.SelectedIndex], false))
+            if (listBoxEinträge.SelectedIndex < 0 || !UpdateStatus(Utils.Reservierungen[listBoxEinträge.SelectedIndex], false))
                 return;
-            this.listBoxEinträge.Items.RemoveAt(this.listBoxEinträge.SelectedIndex);
+            listBoxEinträge.Items.RemoveAt(listBoxEinträge.SelectedIndex);
         }
 
         /// <summary>
@@ -60,11 +67,11 @@ namespace LernsituationOOP.de.tnuerk.gui
         /// <param name="e"></param>
         private void listBoxEinträge_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.listBoxEinträge.SelectedIndex < 0)
+            if (listBoxEinträge.SelectedIndex < 0)
                 return;
-            Reservierung reservierung = Utils.Reservierungen[this.listBoxEinträge.SelectedIndex];
-            this.txtBoxResInfos.Clear();
-            this.txtBoxResInfos.Text = Utils.GetReservierungsInfos(reservierung);
+            Reservierung reservierung = Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxEinträge.GetItemText(listBoxEinträge.SelectedItem).Split('-')[1].ToString()));
+            txtBoxResInfos.Clear();
+            txtBoxResInfos.Text = Utils.GetReservierungsInfos(reservierung);
         }
 
         /// <summary>
@@ -78,9 +85,14 @@ namespace LernsituationOOP.de.tnuerk.gui
             Utils.Reservierungen.Remove(reservierung);
             reservierung.Prüfungsstatus = angenommen ? Prüfungsstatus.ANGENOMMEN : Prüfungsstatus.ABGELEHNT;
             reservierung.Prüfungsdatum = new DateTime?(DateTime.Today);
-            reservierung.Mitarbeiter = this._Mitarbeiter;
+            reservierung.Mitarbeiter = _Mitarbeiter;
             Utils.Reservierungen.Add(reservierung);
-            int num = (int)MessageBox.Show("Reservierung bearbeitet!", "Abgeschlossen", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            MessageBox.Show("Reservierung bearbeitet!", "Abgeschlossen", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            if(Utils.ReservierungMitStatusX(Prüfungsstatus.IN_BEARBEITUNG).Count == 0)
+            {
+                MessageBox.Show("Es sind keine weiteren Reservierungen vorhanden!", "Info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Dispose();
+            }
             return true;
         }
     }

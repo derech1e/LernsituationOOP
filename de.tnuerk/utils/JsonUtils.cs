@@ -4,6 +4,8 @@ using System.IO;
 
 using LernsituationOOP.de.tnuerk.utils;
 using System.Linq;
+using System.Collections;
+using System.Windows.Forms;
 
 namespace LernsituationOOP.de.tnuerk.klassen.utils
 {
@@ -27,15 +29,7 @@ namespace LernsituationOOP.de.tnuerk.klassen.utils
         /// <returns>Gibt den Erfolg der Speicherung zurück</returns>
         public static bool SaveReservierungen()
         {
-            JsonUtils.SaveJsonToFile(Utils.FILE_PATH_RESERVIERUNGEN, (object)Utils.Reservierungen);
-            return true;
-        }
-
-        /// <summary>Liest alle Reservierungen aus der Datei aus</summary>
-        /// <returns>Gibt den Erfolg der Auslesen zurück</returns>
-        public static bool LoadReservierungen()
-        {
-            Utils.Reservierungen = JsonConvert.DeserializeObject<List<Reservierung>>(JsonUtils.LoadJsonFromFile(Utils.FILE_PATH_RESERVIERUNGEN));
+            JsonUtils.SaveJsonToFile(Utils.FILE_PATH_RESERVIERUNGEN, Utils.Reservierungen);
             return true;
         }
 
@@ -43,7 +37,16 @@ namespace LernsituationOOP.de.tnuerk.klassen.utils
         /// <returns>Gibt den Erfolg der Speicherung zurück</returns>
         public static bool SaveMitarbeiter()
         {
-            JsonUtils.SaveJsonToFile(Utils.FILE_PATH_MITARBEITER, (object)Utils.Mitarbeiter);
+            JsonUtils.SaveJsonToFile(Utils.FILE_PATH_MITARBEITER, Utils.Mitarbeiter);
+            return true;
+        }
+
+        /// <summary>Liest alle Reservierungen aus der Datei aus</summary>
+        /// <returns>Gibt den Erfolg der Auslesen zurück</returns>
+        public static bool LoadReservierungen()
+        {
+            List<Reservierung> reservierungen = JsonConvert.DeserializeObject<List<Reservierung>>(JsonUtils.LoadJsonFromFile(Utils.FILE_PATH_RESERVIERUNGEN));
+            Utils.Reservierungen = reservierungen ?? new List<Reservierung>();
             return true;
         }
 
@@ -51,7 +54,8 @@ namespace LernsituationOOP.de.tnuerk.klassen.utils
         /// <returns>Gibt den Erfolg der Auslesen zurück</returns>
         public static bool LoadMitarbeiter()
         {
-            Utils.Mitarbeiter = JsonConvert.DeserializeObject<List<Mitarbeiter>>(JsonUtils.LoadJsonFromFile(Utils.FILE_PATH_RESERVIERUNGEN));
+            List<Mitarbeiter> mitarbeiter = JsonConvert.DeserializeObject<List<Mitarbeiter>>(JsonUtils.LoadJsonFromFile(Utils.FILE_PATH_MITARBEITER));
+            Utils.Mitarbeiter = mitarbeiter ?? new List<Mitarbeiter>();
             return true;
         }
     }

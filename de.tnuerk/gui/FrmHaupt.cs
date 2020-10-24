@@ -4,6 +4,7 @@ using LernsituationOOP.de.tnuerk.klassen.utils;
 using System;
 using System.Windows.Forms;
 using LernsituationOOP.de.tnuerk.utils;
+using System.Linq;
 
 namespace LernsituationOOP
 {
@@ -33,7 +34,5 @@ namespace LernsituationOOP
         private void btnMitarbeiter_Click(object sender, EventArgs e) => new FrmLogin().ShowDialog();
 
         private void btnGeprüfteRes_Click(object sender, EventArgs e) => new FrmAlleRes().ShowDialog();
-
-        public static void OpenPrüfen(Mitarbeiter mitarbeiter) => new FrmPrüfen(mitarbeiter).ShowDialog();
     }
 }

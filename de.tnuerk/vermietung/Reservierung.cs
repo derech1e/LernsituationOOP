@@ -1,10 +1,12 @@
 ﻿using LernsituationOOP.de.tnuerk.klassen.utils;
+using Newtonsoft.Json;
 using System;
 
 namespace LernsituationOOP.de.tnuerk.klassen
 {
     class Reservierung
     {
+        [JsonConstructor]
         public Reservierung(Fahrzeug fahrzeug, Kunde kunde, DateTime reservierung_Start, DateTime reservierung_Ende, Prüfungsstatus prüfungsstatus = Prüfungsstatus.IN_BEARBEITUNG)
         {
             Fahrzeug = fahrzeug;

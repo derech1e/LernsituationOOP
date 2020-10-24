@@ -19,7 +19,12 @@ namespace LernsituationOOP
         {
             if (!KannReservieren())
                 return;
-            Utils.Reservierungen.Add(new Reservierung(new Fahrzeug((FahrzeugModell)Enum.Parse(typeof(FahrzeugModell), comboBoxFahrzeuge.SelectedItem.ToString()), FahrzeugStatus.IN_ORDNUNG), new Kunde(txtBoxVorName.Text, txtBoxNachName.Text, dTimeGeburtstag.Value, txtBoxAdresse.Text, txtBoxEmail.Text, long.Parse(txtBoxTel.Text), new Random().Next(20000, 100000)), dTimeVon.Value, dTimeBis.Value));
+
+            Utils.Reservierungen.Add(new Reservierung(
+                new Fahrzeug((FahrzeugModell)Enum.Parse(typeof(FahrzeugModell), comboBoxFahrzeuge.SelectedItem.ToString()), FahrzeugStatus.IN_ORDNUNG),
+                new Kunde(txtBoxVorName.Text, txtBoxNachName.Text, dTimeGeburtstag.Value, txtBoxAdresse.Text, txtBoxEmail.Text, long.Parse(txtBoxTel.Text), new Random().Next(20000, 100000)),
+                dTimeVon.Value, dTimeBis.Value, Prüfungsstatus.IN_BEARBEITUNG, new DateTime(), null));
+
             MessageBox.Show("Fahrzeug Reserviert!", "Abgeschlossen", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             Close();
         }
@@ -28,7 +33,10 @@ namespace LernsituationOOP
         /// Dient zur vermeidung von fehlern durch fehlerhafte Eingaben.
         /// </summary>
         /// <returns>Gibt Zurück ob die Reservierierung abgeschlossen werden kann.</returns>
-        private bool KannReservieren() => ValidationUtils.IsStringNotNull(txtBoxVorName.Text) && !ValidationUtils.IsStringANumber(txtBoxVorName.Text) && (ValidationUtils.IsStringNotNull(txtBoxNachName.Text) && !ValidationUtils.IsStringANumber(txtBoxNachName.Text)) && (ValidationUtils.IsStringNotNull(txtBoxAdresse.Text) && ValidationUtils.IsOlderThan18(dTimeGeburtstag.Value) && (ValidationUtils.IsEmailValid(txtBoxEmail.Text) && ValidationUtils.IsStringANumber(txtBoxTel.Text))) && cbFuehrerschein.Checked;
+        private bool KannReservieren() => ValidationUtils.IsStringNotNull(txtBoxVorName.Text) && !ValidationUtils.IsStringANumber(txtBoxVorName.Text) &&
+            ValidationUtils.IsStringNotNull(txtBoxNachName.Text) && !ValidationUtils.IsStringANumber(txtBoxNachName.Text) &&
+            ValidationUtils.IsStringNotNull(txtBoxAdresse.Text) && ValidationUtils.IsOlderThan18(dTimeGeburtstag.Value) && 
+            ValidationUtils.IsEmailValid(txtBoxEmail.Text) && ValidationUtils.IsStringANumber(txtBoxTel.Text) && cbFuehrerschein.Checked;
 
         private void cbFuehrerschein_CheckedChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
 
@@ -57,6 +65,21 @@ namespace LernsituationOOP
             }
             comboBoxFahrzeuge.SelectedIndex = 0;
             dTimeBis.MinDate = dTimeVon.Value.Date.AddDays(1);
+            dTimeGeburtstag.MaxDate = new DateTime(DateTime.Today.Year - 18, DateTime.Today.Month, DateTime.Today.Day);
         }
+
+        //private void txtBoxVorName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        //{
+        //    if(!ValidationUtils.IsStringNotNull(txtBoxVorName.Text) || ValidationUtils.IsStringANumber(txtBoxVorName.Text))
+        //    {
+        //        e.Cancel = true;
+        //        txtBoxVorName.Focus();
+        //        errorProvider.SetError(txtBoxVorName, "Bitte gebe einen sinvollen Vornamen ein");
+        //    } else
+        //    {
+        //        e.Cancel = false;
+        //        errorProvider.SetError(txtBoxVorName, null);
+        //    }
+        //}
     }
 }

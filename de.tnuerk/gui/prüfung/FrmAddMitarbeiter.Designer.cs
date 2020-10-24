@@ -43,11 +43,11 @@
             this.txtBoxEmail = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.gBoxPersoenlich.SuspendLayout();
             this.SuspendLayout();
             // 
             // gBoxPersoenlich
             // 
-            this.gBoxPersoenlich.SuspendLayout();
             this.gBoxPersoenlich.Controls.Add(this.dTimeGeb);
             this.gBoxPersoenlich.Controls.Add(this.btnPWAnzeigen);
             this.gBoxPersoenlich.Controls.Add(this.txtBoxPW);
@@ -206,16 +206,17 @@
             // 
             // FrmAddMitarbeiter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9f, 20f);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(470, 370);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.gBoxPersoenlich);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)0);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmAddMitarbeiter";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAddMitarbeiter";
             this.gBoxPersoenlich.ResumeLayout(false);
             this.gBoxPersoenlich.PerformLayout();

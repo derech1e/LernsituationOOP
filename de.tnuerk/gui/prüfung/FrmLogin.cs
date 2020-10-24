@@ -21,12 +21,13 @@ namespace LernsituationOOP.de.tnuerk.gui
             Mitarbeiter mitarbeiter = IsMitarbeiterAvailable(txtBoxEmail.Text, txtBoxPW.Text);
             if (mitarbeiter != null)
             {
-                FrmHaupt.OpenPrüfen(mitarbeiter);
-                Close();
+                Dispose();
+                new FrmPrüfen(mitarbeiter).ShowDialog();
             }
             else
             {
-                MessageBox.Show("Der Login ist nicht vorhanden oder die Angeben sind inkorrekt! \n Bitte legen Sie einen neuen Mitarbeiter an!", "Mitarbeiter nicht gefunden!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MessageBox.Show("Der Login ist nicht vorhanden oder die Angeben sind inkorrekt! \n\nBitte legen Sie einen neuen Mitarbeiter an!", "Mitarbeiter nicht gefunden!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                txtBoxPW.Clear();
             }
         }
 
@@ -55,6 +56,18 @@ namespace LernsituationOOP.de.tnuerk.gui
                     return mitarbeiter;
             }
             return null;
+        }
+
+        private void txtBoxEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnLogin_Click(sender, e);
+        }
+
+        private void txtBoxPW_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnLogin_Click(sender, e);
         }
     }
 }

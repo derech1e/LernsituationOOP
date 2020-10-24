@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnReservieren = new System.Windows.Forms.Button();
             this.txtBoxVorName = new System.Windows.Forms.TextBox();
             this.txtBoxAdresse = new System.Windows.Forms.TextBox();
@@ -38,6 +39,7 @@
             this.btnAbbrechen = new System.Windows.Forms.Button();
             this.cbFuehrerschein = new System.Windows.Forms.CheckBox();
             this.gBoxPersoenlich = new System.Windows.Forms.GroupBox();
+            this.txtBoxNachName = new System.Windows.Forms.TextBox();
             this.txtBoxTel = new System.Windows.Forms.TextBox();
             this.dTimeGeburtstag = new System.Windows.Forms.DateTimePicker();
             this.lblTel = new System.Windows.Forms.Label();
@@ -49,9 +51,10 @@
             this.gBoxReservierung = new System.Windows.Forms.GroupBox();
             this.comboBoxFahrzeuge = new System.Windows.Forms.ComboBox();
             this.lblFahrzeug = new System.Windows.Forms.Label();
-            this.txtBoxNachName = new System.Windows.Forms.TextBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.gBoxPersoenlich.SuspendLayout();
             this.gBoxReservierung.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnReservieren
@@ -71,7 +74,9 @@
             this.txtBoxVorName.Location = new System.Drawing.Point(106, 25);
             this.txtBoxVorName.Name = "txtBoxVorName";
             this.txtBoxVorName.Size = new System.Drawing.Size(147, 26);
-            this.txtBoxVorName.TabIndex = 1;
+            this.txtBoxVorName.TabIndex = 0;
+            this.txtBoxVorName.TextChanged += new System.EventHandler(this.txtBoxVorName_TextChanged);
+            //this.txtBoxVorName.Validating += new System.ComponentModel.CancelEventHandler(this.txtBoxVorName_Validating);
             // 
             // txtBoxAdresse
             // 
@@ -79,6 +84,7 @@
             this.txtBoxAdresse.Name = "txtBoxAdresse";
             this.txtBoxAdresse.Size = new System.Drawing.Size(312, 26);
             this.txtBoxAdresse.TabIndex = 2;
+            this.txtBoxAdresse.TextChanged += new System.EventHandler(this.txtBoxAdresse_TextChanged);
             // 
             // lblReservierenVon
             // 
@@ -103,14 +109,14 @@
             this.dTimeVon.Location = new System.Drawing.Point(139, 95);
             this.dTimeVon.Name = "dTimeVon";
             this.dTimeVon.Size = new System.Drawing.Size(279, 26);
-            this.dTimeVon.TabIndex = 8;
+            this.dTimeVon.TabIndex = 2;
             // 
             // dTimeBis
             // 
             this.dTimeBis.Location = new System.Drawing.Point(139, 124);
             this.dTimeBis.Name = "dTimeBis";
             this.dTimeBis.Size = new System.Drawing.Size(279, 26);
-            this.dTimeBis.TabIndex = 9;
+            this.dTimeBis.TabIndex = 3;
             // 
             // btnAbbrechen
             // 
@@ -129,7 +135,7 @@
             this.cbFuehrerschein.Location = new System.Drawing.Point(6, 196);
             this.cbFuehrerschein.Name = "cbFuehrerschein";
             this.cbFuehrerschein.Size = new System.Drawing.Size(230, 24);
-            this.cbFuehrerschein.TabIndex = 11;
+            this.cbFuehrerschein.TabIndex = 6;
             this.cbFuehrerschein.Text = "Ich habe einen Führerschein";
             this.cbFuehrerschein.UseVisualStyleBackColor = true;
             this.cbFuehrerschein.CheckedChanged += new System.EventHandler(this.cbFuehrerschein_CheckedChanged);
@@ -151,23 +157,32 @@
             this.gBoxPersoenlich.Location = new System.Drawing.Point(12, 14);
             this.gBoxPersoenlich.Name = "gBoxPersoenlich";
             this.gBoxPersoenlich.Size = new System.Drawing.Size(442, 229);
-            this.gBoxPersoenlich.TabIndex = 13;
+            this.gBoxPersoenlich.TabIndex = 1;
             this.gBoxPersoenlich.TabStop = false;
             this.gBoxPersoenlich.Text = "Persönliche Angaben";
+            // 
+            // txtBoxNachName
+            // 
+            this.txtBoxNachName.Location = new System.Drawing.Point(259, 25);
+            this.txtBoxNachName.Name = "txtBoxNachName";
+            this.txtBoxNachName.Size = new System.Drawing.Size(159, 26);
+            this.txtBoxNachName.TabIndex = 1;
+            this.txtBoxNachName.TextChanged += new System.EventHandler(this.txtBoxNachName_TextChanged);
             // 
             // txtBoxTel
             // 
             this.txtBoxTel.Location = new System.Drawing.Point(106, 156);
             this.txtBoxTel.Name = "txtBoxTel";
             this.txtBoxTel.Size = new System.Drawing.Size(312, 26);
-            this.txtBoxTel.TabIndex = 18;
+            this.txtBoxTel.TabIndex = 5;
+            this.txtBoxTel.TextChanged += new System.EventHandler(this.txtBoxTel_TextChanged);
             // 
             // dTimeGeburtstag
             // 
             this.dTimeGeburtstag.Location = new System.Drawing.Point(106, 89);
             this.dTimeGeburtstag.Name = "dTimeGeburtstag";
             this.dTimeGeburtstag.Size = new System.Drawing.Size(312, 26);
-            this.dTimeGeburtstag.TabIndex = 4;
+            this.dTimeGeburtstag.TabIndex = 3;
             this.dTimeGeburtstag.ValueChanged += new System.EventHandler(this.dTimeGeburtstag_ValueChanged);
             // 
             // lblTel
@@ -221,6 +236,7 @@
             this.txtBoxEmail.Name = "txtBoxEmail";
             this.txtBoxEmail.Size = new System.Drawing.Size(312, 26);
             this.txtBoxEmail.TabIndex = 4;
+            this.txtBoxEmail.TextChanged += new System.EventHandler(this.txtBoxEmail_TextChanged);
             // 
             // gBoxReservierung
             // 
@@ -233,7 +249,7 @@
             this.gBoxReservierung.Location = new System.Drawing.Point(12, 249);
             this.gBoxReservierung.Name = "gBoxReservierung";
             this.gBoxReservierung.Size = new System.Drawing.Size(442, 164);
-            this.gBoxReservierung.TabIndex = 14;
+            this.gBoxReservierung.TabIndex = 2;
             this.gBoxReservierung.TabStop = false;
             this.gBoxReservierung.Text = "Reservierung";
             // 
@@ -244,7 +260,7 @@
             this.comboBoxFahrzeuge.Location = new System.Drawing.Point(10, 45);
             this.comboBoxFahrzeuge.Name = "comboBoxFahrzeuge";
             this.comboBoxFahrzeuge.Size = new System.Drawing.Size(223, 28);
-            this.comboBoxFahrzeuge.TabIndex = 14;
+            this.comboBoxFahrzeuge.TabIndex = 1;
             // 
             // lblFahrzeug
             // 
@@ -255,12 +271,9 @@
             this.lblFahrzeug.TabIndex = 13;
             this.lblFahrzeug.Text = "Fahrzeugtyp:";
             // 
-            // txtBoxNachName
+            // errorProvider
             // 
-            this.txtBoxNachName.Location = new System.Drawing.Point(259, 25);
-            this.txtBoxNachName.Name = "txtBoxNachName";
-            this.txtBoxNachName.Size = new System.Drawing.Size(159, 26);
-            this.txtBoxNachName.TabIndex = 19;
+            this.errorProvider.ContainerControl = this;
             // 
             // FrmReservieren
             // 
@@ -276,12 +289,15 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmReservieren";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmReservieren";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.FrmReservieren_Load);
             this.gBoxPersoenlich.ResumeLayout(false);
             this.gBoxPersoenlich.PerformLayout();
             this.gBoxReservierung.ResumeLayout(false);
             this.gBoxReservierung.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -310,5 +326,6 @@
         private System.Windows.Forms.TextBox txtBoxTel;
         private System.Windows.Forms.TextBox txtBoxNachName;
         private System.Windows.Forms.DateTimePicker dTimeGeburtstag;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

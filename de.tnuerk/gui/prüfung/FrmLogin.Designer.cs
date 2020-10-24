@@ -36,18 +36,18 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            //
+            // 
             // lblUserName
-            //
+            // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.Location = new System.Drawing.Point(13, 13);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(53, 20);
             this.lblUserName.TabIndex = 5;
             this.lblUserName.Text = "E-Mail";
-            //
+            // 
             // lblPW
-            //
+            // 
             this.lblPW.AutoSize = true;
             this.lblPW.Location = new System.Drawing.Point(13, 82);
             this.lblPW.Name = "lblPW";
@@ -60,15 +60,17 @@
             this.txtBoxEmail.Location = new System.Drawing.Point(17, 37);
             this.txtBoxEmail.Name = "txtBoxEmail";
             this.txtBoxEmail.Size = new System.Drawing.Size(435, 26);
-            this.txtBoxEmail.TabIndex = 7;
+            this.txtBoxEmail.TabIndex = 0;
+            this.txtBoxEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxEmail_KeyDown);
             // 
             // txtBoxPW
             // 
             this.txtBoxPW.Location = new System.Drawing.Point(17, 105);
             this.txtBoxPW.Name = "txtBoxPW";
             this.txtBoxPW.Size = new System.Drawing.Size(435, 26);
-            this.txtBoxPW.TabIndex = 8;
+            this.txtBoxPW.TabIndex = 1;
             this.txtBoxPW.UseSystemPasswordChar = true;
+            this.txtBoxPW.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxPW_KeyDown);
             // 
             // btnLogin
             // 
@@ -86,16 +88,16 @@
             this.btnExit.Location = new System.Drawing.Point(347, 146);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(105, 37);
-            this.btnExit.TabIndex = 3;
+            this.btnExit.TabIndex = 4;
             this.btnExit.Text = "Abbrechen";
             this.btnExit.UseVisualStyleBackColor = true;
-            //
+            // 
             // btnNew
-            //
+            // 
             this.btnNew.Location = new System.Drawing.Point(130, 146);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(211, 37);
-            this.btnNew.TabIndex = 4;
+            this.btnNew.TabIndex = 3;
             this.btnNew.Text = "Neuen Mitarbeiter erstellen";
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
