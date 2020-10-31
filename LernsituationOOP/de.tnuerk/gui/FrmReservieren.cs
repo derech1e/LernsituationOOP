@@ -33,9 +33,9 @@ namespace LernsituationOOP
         /// Dient zur vermeidung von fehlern durch fehlerhafte Eingaben.
         /// </summary>
         /// <returns>Gibt Zurück ob die Reservierierung abgeschlossen werden kann.</returns>
-        private bool KannReservieren() => ValidationUtils.IsStringNotNull(txtBoxVorName.Text) && !ValidationUtils.IsStringANumber(txtBoxVorName.Text) &&
-            ValidationUtils.IsStringNotNull(txtBoxNachName.Text) && !ValidationUtils.IsStringANumber(txtBoxNachName.Text) &&
-            ValidationUtils.IsStringNotNull(txtBoxAdresse.Text) && ValidationUtils.IsOlderThan18(dTimeGeburtstag.Value) && 
+        private bool KannReservieren() => ValidationUtils.IsStringNotNullOrEmpty(txtBoxVorName.Text) && !ValidationUtils.IsStringANumber(txtBoxVorName.Text) &&
+            ValidationUtils.IsStringNotNullOrEmpty(txtBoxNachName.Text) && !ValidationUtils.IsStringANumber(txtBoxNachName.Text) &&
+            ValidationUtils.IsStringNotNullOrEmpty(txtBoxAdresse.Text) && ValidationUtils.IsOlderThan18(dTimeGeburtstag.Value) && 
             ValidationUtils.IsEmailValid(txtBoxEmail.Text) && ValidationUtils.IsStringANumber(txtBoxTel.Text) && cbFuehrerschein.Checked;
 
         private void cbFuehrerschein_CheckedChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();

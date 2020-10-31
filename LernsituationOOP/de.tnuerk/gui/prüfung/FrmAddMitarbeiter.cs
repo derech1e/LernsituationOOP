@@ -19,10 +19,10 @@ namespace LernsituationOOP.de.tnuerk.gui.prüfung
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Mitarbeiter mitarbeiter = new Mitarbeiter(this.txtBoxVorName.Text, this.txtBoxNachName.Text, this.txtBoxAdresse.Text, this.dTimeGeb.Value, this.txtBoxEmail.Text, Utils.generateID(), Utils.EncryptDecryptPassword(this.txtBoxPW.Text));
+            Mitarbeiter mitarbeiter = new Mitarbeiter(txtBoxVorName.Text, txtBoxNachName.Text, txtBoxAdresse.Text, dTimeGeb.Value, txtBoxEmail.Text, Utils.generateID(), Utils.EncryptDecryptPassword(txtBoxPW.Text));
             Utils.Mitarbeiter.Add(mitarbeiter);
-            int num = (int)MessageBox.Show("Neuer Mitarbeiter " + mitarbeiter.Vorname + " " + mitarbeiter.Nachname + " wurde erfolgreich hinzugefügt", "Erfolgreich hinzugefügt", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            this.Close();
+            MessageBox.Show("Neuer Mitarbeiter " + mitarbeiter.Vorname + " " + mitarbeiter.Nachname + " wurde erfolgreich hinzugefügt", "Erfolgreich hinzugefügt", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            Close();
         }
 
         /// <summary>Passwort anzeigen</summary>
@@ -34,7 +34,7 @@ namespace LernsituationOOP.de.tnuerk.gui.prüfung
         /// Dient zur vermeidung von fehlern durch fehlerhafte Eingaben.
         /// </summary>
         /// <returns>Gibt Zurück ob die Reservierierung abgeschlossen werden kann.</returns>
-        private bool KannHinzufügen() => ValidationUtils.IsStringNotNull(this.txtBoxVorName.Text) && !ValidationUtils.IsStringANumber(this.txtBoxVorName.Text) && (ValidationUtils.IsStringNotNull(this.txtBoxNachName.Text) && !ValidationUtils.IsStringANumber(this.txtBoxNachName.Text)) && (ValidationUtils.IsStringNotNull(this.txtBoxAdresse.Text) && ValidationUtils.IsOlderThan18(this.dTimeGeb.Value)) && ValidationUtils.IsEmailValid(this.txtBoxEmail.Text);
+        private bool KannHinzufügen() => ValidationUtils.IsStringNotNullOrEmpty(this.txtBoxVorName.Text) && !ValidationUtils.IsStringANumber(this.txtBoxVorName.Text) && (ValidationUtils.IsStringNotNullOrEmpty(this.txtBoxNachName.Text) && !ValidationUtils.IsStringANumber(this.txtBoxNachName.Text)) && (ValidationUtils.IsStringNotNullOrEmpty(this.txtBoxAdresse.Text) && ValidationUtils.IsOlderThan18(this.dTimeGeb.Value)) && ValidationUtils.IsEmailValid(this.txtBoxEmail.Text);
 
         /// <summary>Passowrt verstechken</summary>
         /// <param name="sender"></param>

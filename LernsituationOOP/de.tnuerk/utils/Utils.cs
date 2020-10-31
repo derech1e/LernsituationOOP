@@ -7,7 +7,7 @@ using System.Text;
 
 namespace LernsituationOOP.de.tnuerk.utils
 {
-    class Utils
+    public class Utils
     {
         private static readonly Autovermieter autovermieter = new Autovermieter("Mustervermietung 24", "Dresden", 123456789);
         public static string FILE_PATH_RESERVIERUNGEN = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\reservierungen.json";

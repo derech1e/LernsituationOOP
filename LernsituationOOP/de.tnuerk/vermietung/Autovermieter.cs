@@ -1,6 +1,6 @@
 ﻿namespace LernsituationOOP.de.tnuerk.klassen.utils
 {
-    class Autovermieter
+    public class Autovermieter
     {
         public Autovermieter(string name, string standort, int rufnummer)
         {

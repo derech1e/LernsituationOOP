@@ -1,7 +1,7 @@
 ﻿namespace LernsituationOOP.de.tnuerk.klassen.utils
 {
-    enum FahrzeugStatus
+    public enum FahrzeugModell
     {
-       IN_ORDNUNG, MUSS_GEREINIGT_WERDEN
+        KOMPAKTWAGEN, MOTORRAD
     }
 }

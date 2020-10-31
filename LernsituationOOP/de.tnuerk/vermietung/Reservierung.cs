@@ -4,7 +4,7 @@ using System;
 
 namespace LernsituationOOP.de.tnuerk.klassen
 {
-    class Reservierung
+    public class Reservierung
     {
         [JsonConstructor]
         public Reservierung(Fahrzeug fahrzeug, Kunde kunde, DateTime reservierung_Start, DateTime reservierung_Ende, Prüfungsstatus prüfungsstatus = Prüfungsstatus.IN_BEARBEITUNG)

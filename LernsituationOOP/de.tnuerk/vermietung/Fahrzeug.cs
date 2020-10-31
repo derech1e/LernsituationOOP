@@ -2,7 +2,7 @@
 
 namespace LernsituationOOP.de.tnuerk.klassen
 {
-    class Fahrzeug
+    public class Fahrzeug
     {
         public Fahrzeug(FahrzeugModell modell, FahrzeugStatus zustand)
         {

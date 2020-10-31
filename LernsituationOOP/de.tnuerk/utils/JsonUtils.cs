@@ -1,17 +1,13 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
-
 using LernsituationOOP.de.tnuerk.utils;
-using System.Linq;
-using System.Collections;
-using System.Windows.Forms;
 
 namespace LernsituationOOP.de.tnuerk.klassen.utils
 {
-    internal class JsonUtils
+    public class JsonUtils
     {
-        /// <summary>Speichert das Gegebene Objekt am gegebenem Dateipfad</summary>
+        /// <summary>Speichert das gegebene Objekt am gegebenem Dateipfad</summary>
         /// <param name="filePath">Dateipfad</param>
         /// <param name="textToSave">Text der zu speichern ist</param>
         private static void SaveJsonToFile(string filePath, object textToSave)
