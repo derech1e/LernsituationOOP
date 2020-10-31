@@ -49,13 +49,13 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.2
       
     - name: Restore NuGet Packages
-      run: nuget restore LernsituationOOP.sln
+      run: nuget restore LernsituationOOP/LernsituationOOP.sln
       
     - name: Build 
-      run: msbuild LernsituationOOP.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+      run: msbuild LernsituationOOP/LernsituationOOP.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
       
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         name: LernsituationOOP
-        path: bin\Release\
+        path: LernsituationOOP\bin\Release\
