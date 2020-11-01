@@ -47,6 +47,15 @@ namespace LernsituationOOP.Utils
             return true;
         }
 
+        /// <summary>Liest alle Reservierungen aus der Datei aus</summary>
+        /// <returns>Gibt den Erfolg der Auslesen zurück</returns>
+        public static bool LoadReservierungen1()
+        {
+            List<Reservierung> reservierungen = JsonConvert.DeserializeObject<List<Reservierung>>(LoadJsonFromFile(Utils.FILE_PATH_RESERVIERUNGEN));
+            Utils.Reservierungen = reservierungen ?? new List<Reservierung>();
+            return true;
+        }
+
         /// <summary>Liest alle Mitarbeiter aus der Datei aus</summary>
         /// <returns>Gibt den Erfolg der Auslesen zurück</returns>
         public static bool LoadMitarbeiter()
