@@ -13,7 +13,7 @@ namespace LernsituationOOP.Utils.Validation
 
         public bool ValidateAND()
         {
-            return Statements.TrueForAll(item => item == true);
+            return Statements.TrueForAll(item => item ==true);
         }
 
         public bool ValidateOR()

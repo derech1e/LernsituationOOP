@@ -15,7 +15,7 @@ namespace LernsituationOOP.Utils.Validation
 
         public StringValidation IsNotNullEmptyAndWhiteSpace()
         {
-            Statements.Add(!string.IsNullOrWhiteSpace(Input) && !string.IsNullOrEmpty(Input));
+            Statements.Add((!string.IsNullOrWhiteSpace(Input) && !string.IsNullOrEmpty(Input)));
             return this;
         }
 
@@ -37,21 +37,24 @@ namespace LernsituationOOP.Utils.Validation
             return this;
         }
 
-        public StringValidation ContainsNumber()
+        public StringValidation ContainsNumber(bool NoNumbers = false)
         {
-            Statements.Add(Regex.IsMatch(Input, @"^[0-9]+$"));
+            bool result = Regex.IsMatch(Input, @"^[0-9]+$");
+            Statements.Add(NoNumbers ? !result : result);
             return this;
         }
 
-        public StringValidation ContainsLetters()
+        public StringValidation ContainsLetters(bool NoLetters = false)
         {
-            Statements.Add(Regex.IsMatch(Input, @"^[a-zA-Z]+$"));
+            bool result = Regex.IsMatch(Input, @"^[a-zA-Z]+$");
+            Statements.Add(NoLetters ? !result : result);
             return this;
         }
 
-        public StringValidation ContainsUnderscore()
+        public StringValidation ContainsUnderscore(bool NoUnderscore = false)
         {
-            Statements.Add(Regex.IsMatch(Input, @"^[_]+$"));
+            bool result = Regex.IsMatch(Input, @"^[_]+$");
+            Statements.Add(NoUnderscore ? !result : result);
             return this;
         }
     }
