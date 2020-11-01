@@ -49,72 +49,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="de.tnuerk\gui\FrmAlleRes.cs">
+    <Compile Include="Gui\FrmAlleRes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="de.tnuerk\gui\FrmAlleRes.Designer.cs">
+    <Compile Include="Gui\FrmAlleRes.Designer.cs">
       <DependentUpon>FrmAlleRes.cs</DependentUpon>
     </Compile>
-    <Compile Include="de.tnuerk\gui\FrmHaupt.cs">
+    <Compile Include="Gui\FrmHaupt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="de.tnuerk\gui\FrmHaupt.Designer.cs">
+    <Compile Include="Gui\FrmHaupt.Designer.cs">
       <DependentUpon>FrmHaupt.cs</DependentUpon>
     </Compile>
-    <Compile Include="de.tnuerk\gui\prüfung\FrmAddMitarbeiter.cs">
+    <Compile Include="Gui\Prüfung\FrmAddMitarbeiter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="de.tnuerk\gui\prüfung\FrmAddMitarbeiter.Designer.cs">
+    <Compile Include="Gui\Prüfung\FrmAddMitarbeiter.Designer.cs">
       <DependentUpon>FrmAddMitarbeiter.cs</DependentUpon>
     </Compile>
-    <Compile Include="de.tnuerk\gui\prüfung\FrmLogin.cs">
+    <Compile Include="Gui\Prüfung\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="de.tnuerk\gui\prüfung\FrmLogin.Designer.cs">
+    <Compile Include="Gui\Prüfung\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="de.tnuerk\gui\prüfung\FrmPrüfen.cs">
+    <Compile Include="Gui\Prüfung\FrmPrüfen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="de.tnuerk\gui\prüfung\FrmPrüfen.Designer.cs">
+    <Compile Include="Gui\Prüfung\FrmPrüfen.Designer.cs">
       <DependentUpon>FrmPrüfen.cs</DependentUpon>
     </Compile>
-    <Compile Include="de.tnuerk\gui\FrmReservieren.cs">
+    <Compile Include="Gui\FrmReservieren.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="de.tnuerk\gui\FrmReservieren.Designer.cs">
+    <Compile Include="Gui\FrmReservieren.Designer.cs">
       <DependentUpon>FrmReservieren.cs</DependentUpon>
     </Compile>
-    <Compile Include="de.tnuerk\vermietung\Fahrzeug.cs" />
-    <Compile Include="de.tnuerk\personen\Kunde.cs" />
-    <Compile Include="de.tnuerk\personen\Mitarbeiter.cs" />
-    <Compile Include="de.tnuerk\personen\Person.cs" />
-    <Compile Include="de.tnuerk\vermietung\Reservierung.cs" />
-    <Compile Include="de.tnuerk\vermietung\Autovermieter.cs" />
-    <Compile Include="de.tnuerk\utils\FahrzeugModell.cs" />
-    <Compile Include="de.tnuerk\utils\FahrzeugStatus.cs" />
-    <Compile Include="de.tnuerk\utils\JsonUtils.cs" />
-    <Compile Include="de.tnuerk\utils\Prüfungsstatus.cs" />
-    <Compile Include="de.tnuerk\utils\Utils.cs" />
-    <Compile Include="de.tnuerk\utils\ValidationUtils.cs" />
+    <Compile Include="Utils\Validation\DateValidation.cs" />
+    <Compile Include="Utils\Validation\IValidationBase.cs" />
+    <Compile Include="Utils\Validation\StringValidation.cs" />
+    <Compile Include="Vermietung\Fahrzeug.cs" />
+    <Compile Include="Personen\Kunde.cs" />
+    <Compile Include="Personen\Mitarbeiter.cs" />
+    <Compile Include="Personen\Person.cs" />
+    <Compile Include="Vermietung\Reservierung.cs" />
+    <Compile Include="Vermietung\Autovermieter.cs" />
+    <Compile Include="Utils\FahrzeugModell.cs" />
+    <Compile Include="Utils\FahrzeugStatus.cs" />
+    <Compile Include="Utils\JsonUtils.cs" />
+    <Compile Include="Utils\Prüfungsstatus.cs" />
+    <Compile Include="Utils\Utils.cs" />
+    <Compile Include="Utils\Validation\ValidationUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="de.tnuerk\gui\FrmAlleRes.resx">
+    <EmbeddedResource Include="Gui\FrmAlleRes.resx">
       <DependentUpon>FrmAlleRes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="de.tnuerk\gui\FrmHaupt.resx">
+    <EmbeddedResource Include="Gui\FrmHaupt.resx">
       <DependentUpon>FrmHaupt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="de.tnuerk\gui\prüfung\FrmAddMitarbeiter.resx">
+    <EmbeddedResource Include="Gui\Prüfung\FrmAddMitarbeiter.resx">
       <DependentUpon>FrmAddMitarbeiter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="de.tnuerk\gui\prüfung\FrmLogin.resx">
+    <EmbeddedResource Include="Gui\Prüfung\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="de.tnuerk\gui\prüfung\FrmPrüfen.resx">
+    <EmbeddedResource Include="Gui\Prüfung\FrmPrüfen.resx">
       <DependentUpon>FrmPrüfen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="de.tnuerk\gui\FrmReservieren.resx">
+    <EmbeddedResource Include="Gui\FrmReservieren.resx">
       <DependentUpon>FrmReservieren.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
