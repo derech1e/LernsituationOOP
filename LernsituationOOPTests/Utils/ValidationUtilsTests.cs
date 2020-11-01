@@ -1,7 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using LernsituationOOP.Utils.Validation;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace LernsituationOOP.de.tnuerk.utils.Tests
+namespace LernsituationOOP.Utils
 {
     [TestClass()]
     public class ValidationUtilsTests
@@ -105,39 +106,39 @@ namespace LernsituationOOP.de.tnuerk.utils.Tests
         [TestMethod()]
         public void ValidateIsEmailValid_Test_Null()
         {
-            Assert.IsFalse(ValidationUtils.IsEmailValid(null, false));
+            Assert.IsFalse(ValidationUtils.IsEmailValid(null));
         }
 
         [TestMethod()]
         public void ValidateIsEmailValid_Test_Empty()
         {
-            Assert.IsFalse(ValidationUtils.IsEmailValid("", false));
+            Assert.IsFalse(ValidationUtils.IsEmailValid(""));
         }
 
         [TestMethod()]
         public void ValidateIsEmailValid_Test_Can_Be_Empty()
         {
-            Assert.IsTrue(ValidationUtils.IsEmailValid("", true));
+            Assert.IsTrue(ValidationUtils.IsEmailValid(""));
         }
 
         [TestMethod()]
         public void ValidateIsEmailValid_Test_Whitespace()
         {
-            Assert.IsFalse(ValidationUtils.IsEmailValid(" ", false));
+            Assert.IsFalse(ValidationUtils.IsEmailValid(" "));
         }
 
         [TestMethod()]
         public void ValidateIsEmailValid_Test_Email()
         {
-            Assert.IsTrue(ValidationUtils.IsEmailValid("test@test.de", false));
-            Assert.IsTrue(ValidationUtils.IsEmailValid("test@test.com", false));
-            Assert.IsTrue(ValidationUtils.IsEmailValid("test@test.co", false));
+            Assert.IsTrue(ValidationUtils.IsEmailValid("test@test.de"));
+            Assert.IsTrue(ValidationUtils.IsEmailValid("test@test.com"));
+            Assert.IsTrue(ValidationUtils.IsEmailValid("test@test.co"));
         }
 
         [TestMethod()]
         public void ValidateIsEmailValid_Test_Half_Email()
         {
-            Assert.IsFalse(ValidationUtils.IsEmailValid("test@test", false));
+            Assert.IsFalse(ValidationUtils.IsEmailValid("test@test"));
 
         }
     }

@@ -1,10 +1,8 @@
-﻿using LernsituationOOP.de.tnuerk.gui;
-using LernsituationOOP.de.tnuerk.klassen;
-using LernsituationOOP.de.tnuerk.klassen.utils;
-using System;
+﻿using System;
 using System.Windows.Forms;
-using LernsituationOOP.de.tnuerk.utils;
-using System.Linq;
+using LernsituationOOP.Gui.Prüfung;
+using LernsituationOOP.Utils;
+using LernsituationOOP.Vermietung;
 
 namespace LernsituationOOP.Gui
 {
@@ -13,7 +11,7 @@ namespace LernsituationOOP.Gui
         public FrmHaupt()
         {
             InitializeComponent();
-            Autovermieter autovermieter = Utils.GetAutovermieter();
+            Autovermieter autovermieter = Utils.Utils.GetAutovermieter();
             Text = autovermieter.Name + " in " + autovermieter.Standort + " | Tel.: " + autovermieter.Rufnummer.ToString();
         }
 

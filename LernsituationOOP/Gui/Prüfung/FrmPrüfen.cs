@@ -1,4 +1,6 @@
 ﻿using LernsituationOOP.Personen;
+using LernsituationOOP.Utils;
+using LernsituationOOP.Vermietung;
 using System;
 using System.Windows.Forms;
 
@@ -20,14 +22,14 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e"></param>
         private void FrmPrüfen_Load(object sender, EventArgs e)
         {
-            if(Utils.Reservierungen.Count == 0)
+            if(Utils.Utils.Reservierungen.Count == 0)
             {
                 MessageBox.Show("Es sind keine Reservierungen vorhanden!", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Dispose();
                 return;
             }
 
-            foreach (Reservierung reservierung in Utils.Reservierungen)
+            foreach (Reservierung reservierung in Utils.Utils.Reservierungen)
             {
                 if (reservierung.Prüfungsstatus == Prüfungsstatus.IN_BEARBEITUNG)
                     listBoxEinträge.Items.Add(reservierung.Kunde.Nachname + " - " + reservierung.Kunde.KundenNummer);
@@ -41,7 +43,7 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e"></param>
         private void btnCheck_Click(object sender, EventArgs e)
         {
-            if (listBoxEinträge.SelectedIndex < 0 || !UpdateStatus(Utils.Reservierungen[listBoxEinträge.SelectedIndex], true))
+            if (listBoxEinträge.SelectedIndex < 0 || !UpdateStatus(Utils.Utils.Reservierungen[listBoxEinträge.SelectedIndex], true))
                 return;
             listBoxEinträge.Items.RemoveAt(listBoxEinträge.SelectedIndex);
         }
@@ -53,7 +55,7 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e"></param>
         private void btnUnCheck_Click(object sender, EventArgs e)
         {
-            if (listBoxEinträge.SelectedIndex < 0 || !UpdateStatus(Utils.Reservierungen[listBoxEinträge.SelectedIndex], false))
+            if (listBoxEinträge.SelectedIndex < 0 || !UpdateStatus(Utils.Utils.Reservierungen[listBoxEinträge.SelectedIndex], false))
                 return;
             listBoxEinträge.Items.RemoveAt(listBoxEinträge.SelectedIndex);
         }
@@ -67,9 +69,9 @@ namespace LernsituationOOP.Gui.Prüfung
         {
             if (listBoxEinträge.SelectedIndex < 0)
                 return;
-            Reservierung reservierung = Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxEinträge.GetItemText(listBoxEinträge.SelectedItem).Split('-')[1].ToString()));
+            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxEinträge.GetItemText(listBoxEinträge.SelectedItem).Split('-')[1].ToString()));
             txtBoxResInfos.Clear();
-            txtBoxResInfos.Text = Utils.GetReservierungsInfos(reservierung);
+            txtBoxResInfos.Text = Utils.Utils.GetReservierungsInfos(reservierung);
         }
 
         /// <summary>
@@ -80,13 +82,13 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <returns>Gibt den Erfolg der Ausführung zurück</returns>
         private bool UpdateStatus(Reservierung reservierung, bool angenommen)
         {
-            Utils.Reservierungen.Remove(reservierung);
+            Utils.Utils.Reservierungen.Remove(reservierung);
             reservierung.Prüfungsstatus = angenommen ? Prüfungsstatus.ANGENOMMEN : Prüfungsstatus.ABGELEHNT;
             reservierung.Prüfungsdatum = new DateTime?(DateTime.Today);
             reservierung.Mitarbeiter = _Mitarbeiter;
-            Utils.Reservierungen.Add(reservierung);
+            Utils.Utils.Reservierungen.Add(reservierung);
             MessageBox.Show("Reservierung bearbeitet!", "Abgeschlossen", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            if(Utils.ReservierungMitStatusX(Prüfungsstatus.IN_BEARBEITUNG).Count == 0)
+            if(Utils.Utils.ReservierungMitStatusX(Prüfungsstatus.IN_BEARBEITUNG).Count == 0)
             {
                 MessageBox.Show("Es sind keine weiteren Reservierungen vorhanden!", "Info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Dispose();

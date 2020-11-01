@@ -47,7 +47,7 @@ namespace LernsituationOOP.Utils
             return Reservierungen.FindAll(item => prüfungsstatus.Contains(item.Prüfungsstatus));
         }
 
-        public static Autovermieter GetAutovermieter() => Utils.autovermieter;
+        public static Autovermieter GetAutovermieter() => autovermieter;
 
         public static int generateID() => new Random().Next(100000, 999999);
 

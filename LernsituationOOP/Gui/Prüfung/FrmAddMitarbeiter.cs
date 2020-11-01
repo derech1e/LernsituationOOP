@@ -20,7 +20,7 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Mitarbeiter mitarbeiter = new Mitarbeiter(txtBoxVorName.Text, txtBoxNachName.Text, txtBoxAdresse.Text, dTimeGeb.Value, txtBoxEmail.Text, Utils.generateID(), Utils.EncryptDecryptPassword(txtBoxPW.Text));
+            Mitarbeiter mitarbeiter = new Mitarbeiter(txtBoxVorName.Text, txtBoxNachName.Text, txtBoxAdresse.Text, dTimeGeb.Value, txtBoxEmail.Text, Utils.Utils.generateID(), Utils.Utils.EncryptDecryptPassword(txtBoxPW.Text));
             Utils.Utils.Mitarbeiter.Add(mitarbeiter);
             MessageBox.Show("Neuer Mitarbeiter " + mitarbeiter.Vorname + " " + mitarbeiter.Nachname + " wurde erfolgreich hinzugefügt", "Erfolgreich hinzugefügt", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             Close();
@@ -41,7 +41,7 @@ namespace LernsituationOOP.Gui.Prüfung
             !ValidationUtils.IsStringANumber(txtBoxNachName.Text)) &&
             (ValidationUtils.IsStringNotNullOrEmpty(txtBoxAdresse.Text) &&
             ValidationUtils.IsOlderThan18(dTimeGeb.Value)) &&
-            ValidationUtils.IsEmailValid(txtBoxEmail.Text, false);
+            ValidationUtils.IsEmailValid(txtBoxEmail.Text);
 
         /// <summary>Passowrt verstechken</summary>
         /// <param name="sender"></param>

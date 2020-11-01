@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using LernsituationOOP.Personen;
+using LernsituationOOP.Vermietung;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
-using LernsituationOOP.de.tnuerk.utils;
 
 namespace LernsituationOOP.Utils
 {
@@ -41,7 +42,7 @@ namespace LernsituationOOP.Utils
         /// <returns>Gibt den Erfolg der Auslesen zurück</returns>
         public static bool LoadReservierungen()
         {
-            List<Reservierung> reservierungen = JsonConvert.DeserializeObject<List<Reservierung>>(JsonUtils.LoadJsonFromFile(Utils.FILE_PATH_RESERVIERUNGEN));
+            List<Reservierung> reservierungen = JsonConvert.DeserializeObject<List<Reservierung>>(LoadJsonFromFile(Utils.FILE_PATH_RESERVIERUNGEN));
             Utils.Reservierungen = reservierungen ?? new List<Reservierung>();
             return true;
         }
@@ -50,7 +51,7 @@ namespace LernsituationOOP.Utils
         /// <returns>Gibt den Erfolg der Auslesen zurück</returns>
         public static bool LoadMitarbeiter()
         {
-            List<Mitarbeiter> mitarbeiter = JsonConvert.DeserializeObject<List<Mitarbeiter>>(JsonUtils.LoadJsonFromFile(Utils.FILE_PATH_MITARBEITER));
+            List<Mitarbeiter> mitarbeiter = JsonConvert.DeserializeObject<List<Mitarbeiter>>(LoadJsonFromFile(Utils.FILE_PATH_MITARBEITER));
             Utils.Mitarbeiter = mitarbeiter ?? new List<Mitarbeiter>();
             return true;
         }

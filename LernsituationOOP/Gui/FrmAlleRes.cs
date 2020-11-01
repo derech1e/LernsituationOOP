@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LernsituationOOP.Utils;
+using LernsituationOOP.Vermietung;
+using System;
 using System.Windows.Forms;
 
 namespace LernsituationOOP.Gui
@@ -18,14 +20,14 @@ namespace LernsituationOOP.Gui
         private void FrmAlleRes_Load(object sender, EventArgs e)
         {
             
-            if (Utils.ReservierungMitStatusX(Prüfungsstatus.ABGELEHNT, Prüfungsstatus.ANGENOMMEN).Count == 0)
+            if (Utils.Utils.ReservierungMitStatusX(Prüfungsstatus.ABGELEHNT, Prüfungsstatus.ANGENOMMEN).Count == 0)
             {
                 MessageBox.Show("Es sind keine geprüften Reservierungen vorhanden!", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Dispose();
                 return;
             }
 
-            foreach (Reservierung reservierung in Utils.Reservierungen)
+            foreach (Reservierung reservierung in Utils.Utils.Reservierungen)
             {
                 if (reservierung.Prüfungsstatus == Prüfungsstatus.ANGENOMMEN)
                     listBoxAngenommen.Items.Add(reservierung.Kunde.Nachname + " - " + reservierung.Kunde.KundenNummer);
@@ -43,9 +45,9 @@ namespace LernsituationOOP.Gui
         {
             if (listBoxAngenommen.SelectedIndex < 0)
                 return;
-            Reservierung reservierung = Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxAngenommen.GetItemText(listBoxAngenommen.SelectedItem).Split('-')[1].ToString()));
+            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxAngenommen.GetItemText(listBoxAngenommen.SelectedItem).Split('-')[1].ToString()));
             txtBoxInfos.Clear();
-            txtBoxInfos.Text = Utils.GetReservierungsInfos(reservierung);
+            txtBoxInfos.Text = Utils.Utils.GetReservierungsInfos(reservierung);
             listBoxAbgelehnt.ClearSelected();
         }
 
@@ -58,9 +60,9 @@ namespace LernsituationOOP.Gui
         {
             if (listBoxAbgelehnt.SelectedIndex < 0)
                 return;
-            Reservierung reservierung = Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxAbgelehnt.GetItemText(listBoxAbgelehnt.SelectedItem).Split('-')[1].ToString()));
+            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxAbgelehnt.GetItemText(listBoxAbgelehnt.SelectedItem).Split('-')[1].ToString()));
             txtBoxInfos.Clear();
-            txtBoxInfos.Text = Utils.GetReservierungsInfos(reservierung);
+            txtBoxInfos.Text = Utils.Utils.GetReservierungsInfos(reservierung);
             listBoxAngenommen.ClearSelected();
         }
     }

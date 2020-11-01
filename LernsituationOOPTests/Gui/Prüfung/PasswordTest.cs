@@ -12,13 +12,13 @@ namespace LernsituationOOP.de.tnuerk.gui.Tests
         [TestMethod()]
         public void ValidatePasswortEncryption()
         {
-            Assert.AreEqual(Utils.EncryptDecryptPassword(Expected_Passwort_Decrypt), Expected_Passwort_Encrpty);
+            Assert.AreEqual(Utils.Utils.EncryptDecryptPassword(Expected_Passwort_Decrypt), Expected_Passwort_Encrpty);
         }
 
         [TestMethod()]
         public void ValidatePasswortDecryption()
         {
-            Assert.AreEqual(Utils.EncryptDecryptPassword(Expected_Passwort_Encrpty), Expected_Passwort_Decrypt);
+            Assert.AreEqual(Utils.Utils.EncryptDecryptPassword(Expected_Passwort_Encrpty), Expected_Passwort_Decrypt);
         }
     }
 }

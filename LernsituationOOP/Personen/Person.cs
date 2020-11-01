@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LernsituationOOP.Utils.Validation;
+using System;
 
 namespace LernsituationOOP.Personen
 {
@@ -37,7 +38,7 @@ namespace LernsituationOOP.Personen
         public string Email
         {
             get => _Email;
-            set => _Email = ValidationUtils.IsEmailValid(value, false) ? value : throw new FormatException("E-Mail hat ein Falsches Format!");
+            set => _Email = ValidationUtils.IsEmailValid(value) ? value : throw new FormatException("E-Mail hat ein Falsches Format!");
         }
 
         public long Telefonnummer { get; }

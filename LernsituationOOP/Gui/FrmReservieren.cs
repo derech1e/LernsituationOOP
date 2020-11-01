@@ -1,4 +1,8 @@
-﻿using System;
+﻿using LernsituationOOP.Personen;
+using LernsituationOOP.Utils;
+using LernsituationOOP.Utils.Validation;
+using LernsituationOOP.Vermietung;
+using System;
 using System.Windows.Forms;
 
 namespace LernsituationOOP.Gui
@@ -17,7 +21,7 @@ namespace LernsituationOOP.Gui
             if (!KannReservieren())
                 return;
 
-            Utils.Reservierungen.Add(new Reservierung(
+            Utils.Utils.Reservierungen.Add(new Reservierung(
                 new Fahrzeug((FahrzeugModell)Enum.Parse(typeof(FahrzeugModell), comboBoxFahrzeuge.SelectedItem.ToString()), FahrzeugStatus.IN_ORDNUNG),
                 new Kunde(txtBoxVorName.Text, txtBoxNachName.Text, dTimeGeburtstag.Value, txtBoxAdresse.Text, txtBoxEmail.Text, long.Parse(txtBoxTel.Text), new Random().Next(20000, 100000)),
                 dTimeVon.Value, dTimeBis.Value, Prüfungsstatus.IN_BEARBEITUNG, new DateTime(), null));
@@ -33,7 +37,7 @@ namespace LernsituationOOP.Gui
         private bool KannReservieren() => ValidationUtils.IsStringNotNullOrEmpty(txtBoxVorName.Text) && !ValidationUtils.IsStringANumber(txtBoxVorName.Text) &&
             ValidationUtils.IsStringNotNullOrEmpty(txtBoxNachName.Text) && !ValidationUtils.IsStringANumber(txtBoxNachName.Text) &&
             ValidationUtils.IsStringNotNullOrEmpty(txtBoxAdresse.Text) && ValidationUtils.IsOlderThan18(dTimeGeburtstag.Value) &&
-            ValidationUtils.IsEmailValid(txtBoxEmail.Text, false) && ValidationUtils.IsStringANumber(txtBoxTel.Text) && cbFuehrerschein.Checked;
+            ValidationUtils.IsEmailValid(txtBoxEmail.Text) && ValidationUtils.IsStringANumber(txtBoxTel.Text) && cbFuehrerschein.Checked;
 
         private void CbFuehrerschein_CheckedChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
 

@@ -1,4 +1,4 @@
-﻿using LernsituationOOP.de.tnuerk.klassen.utils;
+﻿using LernsituationOOP.Utils;
 
 namespace LernsituationOOP.Vermietung
 {

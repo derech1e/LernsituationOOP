@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LernsituationOOP.de.tnuerk.klassen.utils.Tests
+namespace LernsituationOOP.Utils
 {
     [TestClass()]
     public class JsonUtilsTests

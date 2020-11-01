@@ -1,6 +1,4 @@
-﻿using LernsituationOOP.de.tnuerk.gui.prüfung;
-using LernsituationOOP.de.tnuerk.klassen;
-using LernsituationOOP.de.tnuerk.utils;
+﻿using LernsituationOOP.Personen;
 using System;
 using System.Windows.Forms;
 
@@ -49,8 +47,8 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <returns>Gibt den entsprechenden Mitarbeiter zurück, insofern einer gefunden werden konnte.</returns>
         private Mitarbeiter IsMitarbeiterAvailable(string email, string password)
         {
-            string str = Utils.EncryptDecryptPassword(password);
-            foreach (Mitarbeiter mitarbeiter in Utils.Mitarbeiter)
+            string str = Utils.Utils.EncryptDecryptPassword(password);
+            foreach (Mitarbeiter mitarbeiter in Utils.Utils.Mitarbeiter)
             {
                 if (mitarbeiter.Email.Equals(email, StringComparison.OrdinalIgnoreCase) && mitarbeiter.Passwort.Equals(str))
                     return mitarbeiter;

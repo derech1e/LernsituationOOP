@@ -1,4 +1,4 @@
-﻿using LernsituationOOP.de.tnuerk.klassen;
+﻿using LernsituationOOP.Personen;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
