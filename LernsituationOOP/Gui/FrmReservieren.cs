@@ -1,4 +1,5 @@
 ﻿using LernsituationOOP.Personen;
+using LernsituationOOP.Properties;
 using LernsituationOOP.Utils;
 using LernsituationOOP.Utils.Validation;
 using LernsituationOOP.Vermietung;
@@ -26,7 +27,7 @@ namespace LernsituationOOP.Gui
                 new Kunde(txtBoxVorName.Text, txtBoxNachName.Text, dTimeGeburtstag.Value, txtBoxAdresse.Text, txtBoxEmail.Text, long.Parse(txtBoxTel.Text), new Random().Next(20000, 100000)),
                 dTimeVon.Value, dTimeBis.Value, Prüfungsstatus.IN_BEARBEITUNG, new DateTime(), null));
 
-            MessageBox.Show("Fahrzeug Reserviert!", "Abgeschlossen", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            MessageBox.Show(Resources.MsgBoxRes, Resources.MsgBoxTitle_ABGESCHLOSSEN, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             Close();
         }
 
@@ -75,7 +76,7 @@ namespace LernsituationOOP.Gui
             if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, "Bitte gebe einen sinvollen Vornamen an!");
+                errorProvider.SetError(textBox, Resources.validateFirstName);
             }
             else
             {
@@ -90,7 +91,7 @@ namespace LernsituationOOP.Gui
             if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, "Bitte gebe einen sinvollen Nachnamen an!");
+                errorProvider.SetError(textBox, Resources.validateLastName);
             }
             else
             {
@@ -105,7 +106,7 @@ namespace LernsituationOOP.Gui
             if (!new StringValidation(textBox.Text.Trim()).IsNullOrEmpty().ContainsNumber().ValidateOR())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, "Bitte gebe einen gültige Adresse an!");
+                errorProvider.SetError(textBox, Resources.validateAdress);
             }
             else
             {
@@ -120,7 +121,7 @@ namespace LernsituationOOP.Gui
             if (!new StringValidation(textBox.Text).IsNullOrEmpty().IsEmail().ValidateOR())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, "Bitte gebe eine gültige E-Mail an!");
+                errorProvider.SetError(textBox, Resources.validateEmail);
             }
             else
             {
@@ -135,7 +136,7 @@ namespace LernsituationOOP.Gui
             if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsNumber().ValidateOR())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, "Bitte gebe einen gültige Telefonnummer an!");
+                errorProvider.SetError(textBox, Resources.validatePhoneNumber);
             }
             else
             {

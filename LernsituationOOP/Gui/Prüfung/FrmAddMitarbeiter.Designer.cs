@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gBoxPersoenlich = new System.Windows.Forms.GroupBox();
             this.dTimeGeb = new System.Windows.Forms.DateTimePicker();
             this.btnPWAnzeigen = new System.Windows.Forms.Button();
@@ -43,7 +44,9 @@
             this.txtBoxEmail = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.gBoxPersoenlich.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // gBoxPersoenlich
@@ -76,6 +79,7 @@
             this.dTimeGeb.Size = new System.Drawing.Size(296, 26);
             this.dTimeGeb.TabIndex = 4;
             this.dTimeGeb.ValueChanged += new System.EventHandler(this.dTimeGeb_ValueChanged);
+            this.dTimeGeb.Validating += new System.ComponentModel.CancelEventHandler(this.dTimeGeb_Validating);
             // 
             // btnPWAnzeigen
             // 
@@ -96,6 +100,7 @@
             this.txtBoxPW.TabIndex = 19;
             this.txtBoxPW.UseSystemPasswordChar = true;
             this.txtBoxPW.TextChanged += new System.EventHandler(this.txtBoxPW_TextChanged);
+            this.txtBoxPW.Validating += new System.ComponentModel.CancelEventHandler(this.txtBoxPW_Validating);
             // 
             // lblPW
             // 
@@ -115,6 +120,7 @@
             this.txtBoxNachName.Size = new System.Drawing.Size(147, 26);
             this.txtBoxNachName.TabIndex = 2;
             this.txtBoxNachName.TextChanged += new System.EventHandler(this.txtBoxNachName_TextChanged);
+            this.txtBoxNachName.Validating += new System.ComponentModel.CancelEventHandler(this.txtBoxNachName_Validating);
             // 
             // lblEmail
             // 
@@ -164,6 +170,7 @@
             this.txtBoxVorName.Size = new System.Drawing.Size(142, 26);
             this.txtBoxVorName.TabIndex = 1;
             this.txtBoxVorName.TextChanged += new System.EventHandler(this.txtBoxVorName_TextChanged);
+            this.txtBoxVorName.Validating += new System.ComponentModel.CancelEventHandler(this.txtBoxVorName_Validating);
             // 
             // txtBoxAdresse
             // 
@@ -173,6 +180,7 @@
             this.txtBoxAdresse.Size = new System.Drawing.Size(297, 26);
             this.txtBoxAdresse.TabIndex = 3;
             this.txtBoxAdresse.TextChanged += new System.EventHandler(this.txtBoxAdresse_TextChanged);
+            this.txtBoxAdresse.Validating += new System.ComponentModel.CancelEventHandler(this.txtBoxAdresse_Validating);
             // 
             // txtBoxEmail
             // 
@@ -182,6 +190,7 @@
             this.txtBoxEmail.Size = new System.Drawing.Size(297, 26);
             this.txtBoxEmail.TabIndex = 5;
             this.txtBoxEmail.TextChanged += new System.EventHandler(this.txtBoxEmail_TextChanged);
+            this.txtBoxEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtBoxEmail_Validating);
             // 
             // btnAdd
             // 
@@ -204,6 +213,11 @@
             this.btnExit.Text = "Abbrechen";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+            this.errorProvider.ContainerControl = this;
+            // 
             // FrmAddMitarbeiter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -220,6 +234,7 @@
             this.Text = "Mitarbeiter Hinzufügen";
             this.gBoxPersoenlich.ResumeLayout(false);
             this.gBoxPersoenlich.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -241,5 +256,6 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.DateTimePicker dTimeGeb;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LernsituationOOP.Personen;
+using LernsituationOOP.Properties;
 using LernsituationOOP.Utils;
 using LernsituationOOP.Vermietung;
 using System;
@@ -24,7 +25,7 @@ namespace LernsituationOOP.Gui.Prüfung
         {
             if(Utils.Utils.Reservierungen.Count == 0)
             {
-                MessageBox.Show("Es sind keine Reservierungen vorhanden!", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.MsgBoxNoRes, Resources.MsgBoxTitle_ACHTUNG, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Dispose();
                 return;
             }
@@ -87,10 +88,10 @@ namespace LernsituationOOP.Gui.Prüfung
             reservierung.Prüfungsdatum = new DateTime?(DateTime.Today);
             reservierung.Mitarbeiter = _Mitarbeiter;
             Utils.Utils.Reservierungen.Add(reservierung);
-            MessageBox.Show("Reservierung bearbeitet!", "Abgeschlossen", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            MessageBox.Show(Resources.MsgBoxResPrüfen, Resources.MsgBoxResPrüfenTitle, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             if(Utils.Utils.ReservierungMitStatusX(Prüfungsstatus.IN_BEARBEITUNG).Count == 0)
             {
-                MessageBox.Show("Es sind keine weiteren Reservierungen vorhanden!", "Info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.MsgBoxNoRes, Resources.MsgBoxTitle_ACHTUNG, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Dispose();
             }
             return true;

@@ -47,5 +47,17 @@ namespace LernsituationOOP.Utils.Validation
             Statements.Add(Input.Any(char.IsLetter));
             return this;
         }
+
+        public StringValidation IsLongerThan(int length)
+        {
+            Statements.Add(Input.Length >= length);
+            return this;
+        }
+
+        public StringValidation IsShorterThan(int length)
+        {
+            Statements.Add(Input.Length <= length);
+            return this;
+        }
     }
 }

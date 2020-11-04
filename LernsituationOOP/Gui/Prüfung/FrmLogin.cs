@@ -1,4 +1,6 @@
 ﻿using LernsituationOOP.Personen;
+using LernsituationOOP.Properties;
+using LernsituationOOP.Utils.Validation;
 using System;
 using System.Windows.Forms;
 
@@ -24,7 +26,7 @@ namespace LernsituationOOP.Gui.Prüfung
             }
             else
             {
-                MessageBox.Show("Der Login ist nicht vorhanden oder die Angeben sind inkorrekt! \n\nBitte legen Sie einen neuen Mitarbeiter an!", "Mitarbeiter nicht gefunden!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MessageBox.Show(Resources.MsgBoxNoLogin, Resources.MsgBoxNoLoginTitle, MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 txtBoxPW.Clear();
             }
         }
@@ -66,6 +68,37 @@ namespace LernsituationOOP.Gui.Prüfung
         {
             if (e.KeyCode == Keys.Enter)
                 btnLogin_Click(sender, e);
+        }
+
+        private void txtBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (!new StringValidation(textBox.Text).IsNullOrEmpty().IsEmail().ValidateOR())
+            {
+                e.Cancel = true;
+                errorProvider.SetError(textBox, Resources.validateEmail);
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(textBox, null);
+            }
+        }
+
+        private void txtBoxPW_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (!new StringValidation(textBox.Text).IsLongerThan(8).ValidateOR())
+            {
+                e.Cancel = true;
+                errorProvider.SetError(textBox, Resources.validatePW);
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(textBox, null);
+            }
+
         }
     }
 }

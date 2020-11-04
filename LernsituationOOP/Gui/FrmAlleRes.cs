@@ -1,4 +1,5 @@
-﻿using LernsituationOOP.Utils;
+﻿using LernsituationOOP.Properties;
+using LernsituationOOP.Utils;
 using LernsituationOOP.Vermietung;
 using System;
 using System.Windows.Forms;
@@ -22,7 +23,7 @@ namespace LernsituationOOP.Gui
             
             if (Utils.Utils.ReservierungMitStatusX(Prüfungsstatus.ABGELEHNT, Prüfungsstatus.ANGENOMMEN).Count == 0)
             {
-                MessageBox.Show("Es sind keine geprüften Reservierungen vorhanden!", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.MsgBoxNoRes, Resources.MsgBoxTitle_ACHTUNG, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Dispose();
                 return;
             }

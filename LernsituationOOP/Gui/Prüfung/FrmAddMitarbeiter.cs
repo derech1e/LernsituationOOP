@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using LernsituationOOP.Personen;
-using LernsituationOOP.Utils;
+using LernsituationOOP.Properties;
 using LernsituationOOP.Utils.Validation;
 
 namespace LernsituationOOP.Gui.Prüfung
@@ -60,5 +60,95 @@ namespace LernsituationOOP.Gui.Prüfung
 
         private void txtBoxPW_TextChanged(object sender, EventArgs e) => btnAdd.Enabled = KannHinzufügen();
 
+        private void txtBoxVorName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR())
+            {
+                e.Cancel = true;
+                errorProvider.SetError(textBox, Resources.validateFirstName);
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(textBox, null);
+            }
+        }
+
+        private void txtBoxNachName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR())
+            {
+                e.Cancel = true;
+                errorProvider.SetError(textBox, Resources.validateLastName);
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(textBox, null);
+            }
+        }
+
+        private void txtBoxAdresse_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR())
+            {
+                e.Cancel = true;
+                errorProvider.SetError(textBox, Resources.validateAdress);
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(textBox, null);
+            }
+        }
+
+        private void txtBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR())
+            {
+                e.Cancel = true;
+                errorProvider.SetError(textBox, Resources.validateEmail);
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(textBox, null);
+            }
+        }
+
+        private void txtBoxPW_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MaskedTextBox textBox = (MaskedTextBox)sender;
+            if (!new StringValidation(textBox.Text).IsLongerThan(8).ValidateAND())
+            {
+                e.Cancel = true;
+                errorProvider.SetError(textBox, Resources.validatePW);
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(textBox, null);
+            }
+        }
+
+        private void dTimeGeb_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            DateTimePicker dateTimePicker = (DateTimePicker)sender;
+
+            if(!new DateValidation(dateTimePicker.Value).IsGreater18().ValidateAND())
+            {
+                e.Cancel = true;
+                errorProvider.SetError(dateTimePicker, Resources.validateAge);
+            } else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(dateTimePicker, null);
+            }
+
+        }
     }
 }

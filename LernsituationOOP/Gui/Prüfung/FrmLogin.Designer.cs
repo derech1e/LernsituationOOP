@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblUserName = new System.Windows.Forms.Label();
             this.lblPW = new System.Windows.Forms.Label();
             this.txtBoxEmail = new System.Windows.Forms.MaskedTextBox();
@@ -35,6 +36,8 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUserName
@@ -62,6 +65,7 @@
             this.txtBoxEmail.Size = new System.Drawing.Size(435, 26);
             this.txtBoxEmail.TabIndex = 0;
             this.txtBoxEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxEmail_KeyDown);
+            this.txtBoxEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtBoxEmail_Validating);
             // 
             // txtBoxPW
             // 
@@ -71,6 +75,7 @@
             this.txtBoxPW.TabIndex = 1;
             this.txtBoxPW.UseSystemPasswordChar = true;
             this.txtBoxPW.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBoxPW_KeyDown);
+            this.txtBoxPW.Validating += new System.ComponentModel.CancelEventHandler(this.txtBoxPW_Validating);
             // 
             // btnLogin
             // 
@@ -102,6 +107,10 @@
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -124,6 +133,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,5 +148,6 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
