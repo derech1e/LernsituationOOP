@@ -15,7 +15,7 @@ namespace LernsituationOOP.Vermietung
             Reservierung_Start = reservierung_Start;
             Reservierung_Ende = reservierung_Ende;
             Prüfungsstatus = prüfungsstatus;
-            Prüfungsdatum = new DateTime?();
+            Prüfungsdatum = new DateTime();
             Mitarbeiter = null;
         }
 
@@ -26,7 +26,7 @@ namespace LernsituationOOP.Vermietung
             Reservierung_Start = reservierung_Start;
             Reservierung_Ende = reservierung_Ende;
             Prüfungsstatus = prüfungsstatus;
-            Prüfungsdatum = new DateTime?(prüfungsdatum);
+            Prüfungsdatum = prüfungsdatum;
             Mitarbeiter = mitarbeiter;
         }
 
@@ -40,7 +40,7 @@ namespace LernsituationOOP.Vermietung
 
         public Prüfungsstatus Prüfungsstatus { get; set; }
 
-        public DateTime? Prüfungsdatum { get; set; }
+        public DateTime Prüfungsdatum { get; set; }
 
         public Mitarbeiter Mitarbeiter { get; set; }
     }

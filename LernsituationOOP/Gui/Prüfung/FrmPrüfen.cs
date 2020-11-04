@@ -85,7 +85,7 @@ namespace LernsituationOOP.Gui.Prüfung
         {
             Utils.Utils.Reservierungen.Remove(reservierung);
             reservierung.Prüfungsstatus = angenommen ? Prüfungsstatus.ANGENOMMEN : Prüfungsstatus.ABGELEHNT;
-            reservierung.Prüfungsdatum = new DateTime?(DateTime.Today);
+            reservierung.Prüfungsdatum = DateTime.Today;
             reservierung.Mitarbeiter = _Mitarbeiter;
             Utils.Utils.Reservierungen.Add(reservierung);
             MessageBox.Show(Resources.MsgBoxResPrüfen, Resources.MsgBoxTitle_ABGESCHLOSSEN, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);

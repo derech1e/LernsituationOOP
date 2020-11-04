@@ -35,7 +35,7 @@ namespace LernsituationOOP.Utils
                 builder.AppendLine("Die Reservierung wurde noch von keinem Mitarbeiter Überprüft!");
             else
             {
-                builder.AppendLine("Geprüft am: " + reservierung.Prüfungsdatum.Value.Date.ToString("dd. MMMM yyyy"));
+                builder.AppendLine("Geprüft am: " + reservierung.Prüfungsdatum.Date.ToString("dd. MMMM yyyy"));
                 builder.AppendLine("Geprüft von Mitarbeiter: " + reservierung.Mitarbeiter.Vorname + " " + reservierung.Mitarbeiter.Nachname);
                 builder.AppendLine("Mitarbeiter ID: " + reservierung.Mitarbeiter.ID);
             }
