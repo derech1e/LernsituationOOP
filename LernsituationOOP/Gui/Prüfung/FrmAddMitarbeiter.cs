@@ -11,6 +11,7 @@ namespace LernsituationOOP.Gui.Prüfung
         public FrmAddMitarbeiter()
         {
             InitializeComponent();
+            dTimeGeb.MaxDate = DateTime.Today.AddYears(-18).Date;
         }
 
         /// <summary>

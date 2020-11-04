@@ -2,7 +2,7 @@
 
 namespace LernsituationOOP.Utils.Validation
 {
-    class DateValidation : IValidationBase
+    public class DateValidation : IValidationBase
     {
         private readonly DateTime Input;
 
@@ -19,7 +19,7 @@ namespace LernsituationOOP.Utils.Validation
 
         public DateValidation IsGreater18()
         {
-            Statements.Add(Input.Year < DateTime.Today.Year - 18);
+            Statements.Add(Input.Year <= DateTime.Today.Year - 18);
             return this;
         }
     }

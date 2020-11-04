@@ -18,12 +18,6 @@ namespace LernsituationOOP.Utils.Validation
             return this;
         }
 
-        public StringValidation IsNotNullOrEmpty()
-        {
-            Statements.Add(!string.IsNullOrEmpty(Input));
-            return this;
-        }
-
         public StringValidation IsNullOrEmpty()
         {
             Statements.Add(string.IsNullOrEmpty(Input));

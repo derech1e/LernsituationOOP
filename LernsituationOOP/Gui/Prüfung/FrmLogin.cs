@@ -72,7 +72,7 @@ namespace LernsituationOOP.Gui.Prüfung
 
         private void txtBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
+            MaskedTextBox textBox = (MaskedTextBox)sender;
             if (!new StringValidation(textBox.Text).IsNullOrEmpty().IsEmail().ValidateOR())
             {
                 e.Cancel = true;

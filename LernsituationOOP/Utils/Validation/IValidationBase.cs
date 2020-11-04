@@ -11,15 +11,16 @@ namespace LernsituationOOP.Utils.Validation
             Statements = new List<bool>();
         }
 
-        public bool ValidateAND()
+        public bool ValidateAND(bool invert = false)
         {
-            return Statements.TrueForAll(item => item);
+            bool result = Statements.TrueForAll(item => item);
+            return invert ? !result : result;
         }
 
-        public bool ValidateOR()
+        public bool ValidateOR(bool invert = false)
         {
-            return Statements.Contains(true);
+            bool result = Statements.Contains(true);
+            return invert ? !result : result;
         }
-
     }
 }

@@ -116,12 +116,6 @@ namespace LernsituationOOP.Utils
         }
 
         [TestMethod()]
-        public void ValidateIsEmailValid_Test_Can_Be_Empty()
-        {
-            Assert.IsTrue(ValidationUtils.IsEmailValid(""));
-        }
-
-        [TestMethod()]
         public void ValidateIsEmailValid_Test_Whitespace()
         {
             Assert.IsFalse(ValidationUtils.IsEmailValid(" "));

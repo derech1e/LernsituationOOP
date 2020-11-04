@@ -12,14 +12,14 @@ namespace LernsituationOOP.de.tnuerk.utils.Tests
         public void StringValidationTest_1()
         {
             stringValidation = new StringValidation("test@test.de");
-            Assert.IsFalse(stringValidation.IsNotNullOrEmpty().IsEmail().ContainsNumber().ValidateAND());
+            Assert.IsFalse(stringValidation.IsEmail().ContainsNumber().ValidateAND());
         }
 
         [TestMethod()]
         public void StringValidationTest_2()
         {
             stringValidation = new StringValidation("test@test.de");
-            Assert.IsTrue(stringValidation.IsNotNullOrEmpty().IsEmail().ContainsNumber().ValidateOR());
+            Assert.IsTrue(stringValidation.IsEmail().ContainsNumber().ValidateOR());
         }
 
         [TestMethod()]
@@ -33,14 +33,14 @@ namespace LernsituationOOP.de.tnuerk.utils.Tests
         public void StringValidationTest_4()
         {
             stringValidation = new StringValidation(" 12");
-            Assert.IsTrue(stringValidation.IsNotNullOrEmpty().ContainsNumber().ValidateAND());
+            Assert.IsTrue(stringValidation.ContainsNumber().ValidateAND());
         }
 
         [TestMethod()]
         public void StringValidationTest_5()
         {
             stringValidation = new StringValidation(" 12as");
-            Assert.IsTrue(stringValidation.IsNotNullOrEmpty().ContainsNumber().ContainsLetters().ValidateAND());
+            Assert.IsTrue(stringValidation.ContainsNumber().ContainsLetters().ValidateAND());
         }
 
         [TestMethod()]
@@ -54,14 +54,14 @@ namespace LernsituationOOP.de.tnuerk.utils.Tests
         public void StringValidationTest_7()
         {
             stringValidation = new StringValidation(null);
-            Assert.IsFalse(stringValidation.IsNotNullOrEmpty().ValidateAND());
+            Assert.IsFalse(!stringValidation.IsNullOrEmpty().ValidateAND());
         }
 
         [TestMethod()]
         public void StringValidationTest_8()
         {
-            stringValidation = new StringValidation(null);
-            Assert.IsFalse(stringValidation.IsNotNullOrEmpty().ValidateOR());
+            stringValidation = new StringValidation("");
+            Assert.IsTrue(stringValidation.IsNullOrEmpty().ValidateOR());
         }
     }
 }

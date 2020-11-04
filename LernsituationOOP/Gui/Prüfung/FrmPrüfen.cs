@@ -88,7 +88,7 @@ namespace LernsituationOOP.Gui.Prüfung
             reservierung.Prüfungsdatum = new DateTime?(DateTime.Today);
             reservierung.Mitarbeiter = _Mitarbeiter;
             Utils.Utils.Reservierungen.Add(reservierung);
-            MessageBox.Show(Resources.MsgBoxResPrüfen, Resources.MsgBoxResPrüfenTitle, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            MessageBox.Show(Resources.MsgBoxResPrüfen, Resources.MsgBoxTitle_ABGESCHLOSSEN, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             if(Utils.Utils.ReservierungMitStatusX(Prüfungsstatus.IN_BEARBEITUNG).Count == 0)
             {
                 MessageBox.Show(Resources.MsgBoxNoRes, Resources.MsgBoxTitle_ACHTUNG, MessageBoxButtons.OK, MessageBoxIcon.Information);

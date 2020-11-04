@@ -126,6 +126,9 @@
   <data name="MsgBoxNoRes" xml:space="preserve">
     <value>Es sind keine Reservierungen vorhanden!</value>
   </data>
+  <data name="MsgBoxRes" xml:space="preserve">
+    <value>Fahrzeug Reserviert!</value>
+  </data>
   <data name="MsgBoxResPrüfen" xml:space="preserve">
     <value>Reservierung bearbeitet!</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="validateLastName" xml:space="preserve">
     <value>Bitte gebe einen sinvollen Nachnamen an!</value>
+  </data>
+  <data name="validatePhoneNumber" xml:space="preserve">
+    <value>Bitte gebe einen gültige Telefonnummer an!</value>
   </data>
   <data name="validatePW" xml:space="preserve">
     <value>Bitte gebe einen Passwort mit mindestens 8 Zeichen an!</value>
