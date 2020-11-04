@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace LernsituationOOP.Utils.Validation
 {
@@ -14,12 +13,12 @@ namespace LernsituationOOP.Utils.Validation
 
         public bool ValidateAND()
         {
-            return Statements.Count(item => item) == Statements.Count;
+            return Statements.TrueForAll(item => item);
         }
 
         public bool ValidateOR()
         {
-            return Statements.Count(item => item) >= 1;
+            return Statements.Contains(true);
         }
 
     }

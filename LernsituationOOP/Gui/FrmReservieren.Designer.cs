@@ -277,7 +277,6 @@
             // 
             // errorProvider
             // 
-            this.errorProvider.BlinkRate = 1000;
             this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.errorProvider.ContainerControl = this;
             // 

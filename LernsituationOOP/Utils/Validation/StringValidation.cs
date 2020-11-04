@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace LernsituationOOP.Utils.Validation
 {
@@ -11,15 +12,15 @@ namespace LernsituationOOP.Utils.Validation
             Input = input;
         }
 
-        public StringValidation IsNotNullEmptyAndWhiteSpace()
-        {
-            Statements.Add((!string.IsNullOrWhiteSpace(Input) && !string.IsNullOrEmpty(Input)));
-            return this;
-        }
-
         public StringValidation IsNullOrWhiteSpace()
         {
             Statements.Add(string.IsNullOrWhiteSpace(Input));
+            return this;
+        }
+
+        public StringValidation IsNotNullOrEmpty()
+        {
+            Statements.Add(!string.IsNullOrEmpty(Input));
             return this;
         }
 
@@ -35,24 +36,15 @@ namespace LernsituationOOP.Utils.Validation
             return this;
         }
 
-        public StringValidation ContainsNumber(bool NoNumbers = false)
+        public StringValidation ContainsNumber()
         {
-            bool result = Regex.IsMatch(Input, @"^[0-9]+$");
-            Statements.Add(NoNumbers ? !result : result);
+            Statements.Add(Input.Any(char.IsDigit));
             return this;
         }
 
-        public StringValidation ContainsLetters(bool NoLetters = false)
+        public StringValidation ContainsLetters()
         {
-            bool result = Regex.IsMatch(Input, @"^[a-zA-Z]+$");
-            Statements.Add(NoLetters ? !result : result);
-            return this;
-        }
-
-        public StringValidation ContainsUnderscore(bool NoUnderscore = false)
-        {
-            bool result = Regex.IsMatch(Input, @"^[_]+$");
-            Statements.Add(NoUnderscore ? !result : result);
+            Statements.Add(Input.Any(char.IsLetter));
             return this;
         }
     }

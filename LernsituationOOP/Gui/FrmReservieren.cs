@@ -72,7 +72,7 @@ namespace LernsituationOOP.Gui
         private void TxtBoxVorName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (new StringValidation(textBox.Text).IsNotNullEmptyAndWhiteSpace().ContainsLetters().ValidateAND())
+            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR())
             {
                 e.Cancel = true;
                 errorProvider.SetError(textBox, "Bitte gebe einen sinvollen Vornamen an!");
@@ -87,7 +87,7 @@ namespace LernsituationOOP.Gui
         private void txtBoxNachName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (new StringValidation(textBox.Text).ContainsLetters().ValidateOR())
+            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR())
             {
                 e.Cancel = true;
                 errorProvider.SetError(textBox, "Bitte gebe einen sinvollen Nachnamen an!");
@@ -102,11 +102,10 @@ namespace LernsituationOOP.Gui
         private void txtBoxAdresse_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (new StringValidation(textBox.Text).IsNotNullEmptyAndWhiteSpace().ContainsLetters().ContainsNumber().ValidateAND())
+            if (!new StringValidation(textBox.Text.Trim()).IsNullOrEmpty().ContainsNumber().ValidateOR())
             {
                 e.Cancel = true;
                 errorProvider.SetError(textBox, "Bitte gebe einen gültige Adresse an!");
-                errorProvider.BlinkStyle = ErrorBlinkStyle.AlwaysBlink;
             }
             else
             {
@@ -118,7 +117,7 @@ namespace LernsituationOOP.Gui
         private void txtBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (new StringValidation(textBox.Text).IsNotNullEmptyAndWhiteSpace().IsEmail().ValidateAND())
+            if (!new StringValidation(textBox.Text).IsNullOrEmpty().IsEmail().ValidateOR())
             {
                 e.Cancel = true;
                 errorProvider.SetError(textBox, "Bitte gebe eine gültige E-Mail an!");
@@ -133,7 +132,7 @@ namespace LernsituationOOP.Gui
         private void txtBoxTel_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (new StringValidation(textBox.Text).ContainsLetters(true).ContainsNumber().ValidateAND())
+            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsNumber().ValidateOR())
             {
                 e.Cancel = true;
                 errorProvider.SetError(textBox, "Bitte gebe einen gültige Telefonnummer an!");
