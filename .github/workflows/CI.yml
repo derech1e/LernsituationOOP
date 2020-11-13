@@ -11,10 +11,10 @@ jobs:
     - name: Remove old artifacts
       uses: c-hive/gha-remove-artifacts@v1
       with:
-        age: '1 month'
-        # Optional inputs
+        age: '5 day'
+        skip-recent: 2
+        # Optional input
         # skip-tags: true
-        # skip-recent: 5
 
   build:
     runs-on: windows-latest
