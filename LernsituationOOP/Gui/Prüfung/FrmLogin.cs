@@ -58,18 +58,33 @@ namespace LernsituationOOP.Gui.Prüfung
             return null;
         }
 
+        /// <summary>
+        /// Bei Enter Eingabe wird der Login Button aufgerufen
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxEmail_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
                 btnLogin_Click(sender, e);
         }
 
+        /// <summary>
+        /// Bei Enter Eingabe wird der Login Button aufgerufen
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxPW_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
                 btnLogin_Click(sender, e);
         }
 
+        /// <summary>
+        /// Dient zur UI Validierung
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MaskedTextBox textBox = (MaskedTextBox)sender;
@@ -85,6 +100,11 @@ namespace LernsituationOOP.Gui.Prüfung
             }
         }
 
+        /// <summary>
+        /// Dient zur UI Validierung
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxPW_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;

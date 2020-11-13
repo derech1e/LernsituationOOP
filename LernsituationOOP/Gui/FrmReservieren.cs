@@ -13,10 +13,24 @@ namespace LernsituationOOP.Gui
         public FrmReservieren() => InitializeComponent();
 
         /// <summary>
+        /// Das Formular wird mit den entsprechenden Daten der Fahrzeuge gefüllt.
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
+        private void FrmReservieren_Load(object sender, EventArgs e)
+        {
+
+            comboBoxFahrzeuge.Items.AddRange(Enum.GetNames(typeof(FahrzeugModell)));
+            comboBoxFahrzeuge.SelectedIndex = 0;
+            dTimeBis.MinDate = dTimeVon.Value.Date.AddDays(1);
+            dTimeGeburtstag.MaxDate = new DateTime(DateTime.Today.Year - 18, DateTime.Today.Month, DateTime.Today.Day);
+        }
+
+        /// <summary>
         /// Es werden die Konstruktoren der Verschieden Klassen mit den jeweiligen Daten gefüllt und anschließend in die Liste der Reservierungen hinzugefügt
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void BtnReservieren_Click(object sender, EventArgs e)
         {
             if (!KannReservieren())
@@ -35,41 +49,69 @@ namespace LernsituationOOP.Gui
         /// Dient zur vermeidung von fehlern durch fehlerhafte Eingaben.
         /// </summary>
         /// <returns>Gibt Zurück ob die Reservierierung abgeschlossen werden kann.</returns>
-        private bool KannReservieren() => ValidationUtils.IsStringNotNullOrEmpty(txtBoxVorName.Text) && !ValidationUtils.IsStringANumber(txtBoxVorName.Text) &&
-            ValidationUtils.IsStringNotNullOrEmpty(txtBoxNachName.Text) && !ValidationUtils.IsStringANumber(txtBoxNachName.Text) &&
-            ValidationUtils.IsStringNotNullOrEmpty(txtBoxAdresse.Text) && ValidationUtils.IsOlderThan18(dTimeGeburtstag.Value) &&
-            ValidationUtils.IsEmailValid(txtBoxEmail.Text) && ValidationUtils.IsStringANumber(txtBoxTel.Text) && cbFuehrerschein.Checked;
-
-        private void CbFuehrerschein_CheckedChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
-
-        private void TxtBoxVorName_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
-
-        private void TxtBoxNachName_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
-
-        private void TxtBoxAdresse_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
-
-        private void TxtBoxEmail_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
-
-        private void TxtBoxTel_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
-
-        private void DTimeGeburtstag_ValueChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+        private bool KannReservieren() => new StringValidation(txtBoxVorName.Text).IsNotNullOrEmpty().ContainsLetters().ValidateAND() &&
+                new StringValidation(txtBoxNachName.Text).IsNotNullOrEmpty().ContainsLetters().ValidateAND() &&
+                new StringValidation(txtBoxAdresse.Text).IsNotNullOrEmpty().ContainsLetters().ContainsNumber().ValidateAND() &&
+                new DateValidation(dTimeGeburtstag.Value).IsGreater18().ValidateAND() &&
+                new StringValidation(txtBoxEmail.Text).IsNotNullOrEmpty().IsEmail().ValidateAND() &&
+                new StringValidation(txtBoxTel.Text).IsNotNullOrEmpty().ContainsNumber().ValidateAND() &&
+                cbFuehrerschein.Checked;
 
         /// <summary>
-        /// Das Formular wird mit den entsprechenden Daten der Fahrzeuge gefüllt.
+        /// Überprüfung, ob Reservierung hinzugefügt werden kann
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void FrmReservieren_Load(object sender, EventArgs e)
-        {
-            foreach (FahrzeugModell modell in Enum.GetValues(typeof(FahrzeugModell)))
-            {
-                comboBoxFahrzeuge.Items.Add(modell);
-            }
-            comboBoxFahrzeuge.SelectedIndex = 0;
-            dTimeBis.MinDate = dTimeVon.Value.Date.AddDays(1);
-            dTimeGeburtstag.MaxDate = new DateTime(DateTime.Today.Year - 18, DateTime.Today.Month, DateTime.Today.Day);
-        }
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
+        private void CbFuehrerschein_CheckedChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
 
+        /// <summary>
+        /// Überprüfung, ob Reservierung hinzugefügt werden kann
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
+        private void TxtBoxVorName_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+
+        /// <summary>
+        /// Überprüfung, ob Reservierung hinzugefügt werden kann
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
+        private void TxtBoxNachName_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+
+        /// <summary>
+        /// Überprüfung, ob Reservierung hinzugefügt werden kann
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
+        private void TxtBoxAdresse_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+
+        /// <summary>
+        /// Überprüfung, ob Reservierung hinzugefügt werden kann
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
+        private void TxtBoxEmail_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+
+        /// <summary>
+        /// Überprüfung, ob Reservierung hinzugefügt werden kann
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
+        private void TxtBoxTel_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+
+        /// <summary>
+        /// Überprüfung, ob Reservierung hinzugefügt werden kann
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
+        private void DTimeGeburtstag_ValueChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+
+        //UI Validierungen
+        /// <summary>
+        /// Dient zur UI Validierung
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void TxtBoxVorName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -85,6 +127,11 @@ namespace LernsituationOOP.Gui
             }
         }
 
+        /// <summary>
+        /// Dient zur UI Validierung
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxNachName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -100,6 +147,11 @@ namespace LernsituationOOP.Gui
             }
         }
 
+        /// <summary>
+        /// Dient zur UI Validierung
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxAdresse_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -115,6 +167,11 @@ namespace LernsituationOOP.Gui
             }
         }
 
+        /// <summary>
+        /// Dient zur UI Validierung
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -130,6 +187,11 @@ namespace LernsituationOOP.Gui
             }
         }
 
+        /// <summary>
+        /// Dient zur UI Validierung
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxTel_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;

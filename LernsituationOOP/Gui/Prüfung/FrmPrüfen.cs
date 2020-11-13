@@ -19,8 +19,8 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <summary>
         /// Die Reservierungsinformationen(Nachname des Kunden) werden nach dem entsprechendem Index angezeigt.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void FrmPrüfen_Load(object sender, EventArgs e)
         {
             if(Utils.Utils.Reservierungen.Count == 0)
@@ -40,8 +40,8 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <summary>
         /// Der Reservierungsstatus wird auf Angenommen gesetzt über die Methode UpdateStatus(...)
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void btnCheck_Click(object sender, EventArgs e)
         {
             if (listBoxEinträge.SelectedIndex < 0 || !UpdateStatus(Utils.Utils.Reservierungen[listBoxEinträge.SelectedIndex], true))
@@ -52,8 +52,8 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <summary>
         /// Der Reservierungsstatus wird auf Abgelehnt gesetzt über die Methode UpdateStatus(...)
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void btnUnCheck_Click(object sender, EventArgs e)
         {
             if (listBoxEinträge.SelectedIndex < 0 || !UpdateStatus(Utils.Utils.Reservierungen[listBoxEinträge.SelectedIndex], false))
@@ -64,8 +64,8 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <summary>
         /// Es werden entsprechende Informationen zu dem ausgewähltem Index angezeigt
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void listBoxEinträge_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxEinträge.SelectedIndex < 0)

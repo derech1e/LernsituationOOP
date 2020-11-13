@@ -2,6 +2,9 @@
 
 namespace LernsituationOOP.Utils
 {
+    /// <summary>
+    /// Dient zum Testen der JsonUtils Klasse
+    /// </summary>
     [TestClass()]
     public class JsonUtilsTests
     {

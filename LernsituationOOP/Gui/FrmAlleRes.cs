@@ -16,8 +16,8 @@ namespace LernsituationOOP.Gui
         /// <summary>
         /// Es werden die Reservierungen in die entsprechenden Listboxen geladen
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void FrmAlleRes_Load(object sender, EventArgs e)
         {
             
@@ -40,8 +40,8 @@ namespace LernsituationOOP.Gui
         /// <summary>
         /// Die Reservierungsinformationen werden dem entsprechendem Index angezeigt
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void listBoxAngenommen_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxAngenommen.SelectedIndex < 0)
@@ -55,8 +55,8 @@ namespace LernsituationOOP.Gui
         /// <summary>
         /// Die Reservierungsinformationen werden dem entsprechendem Index angezeigt
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void listBoxAbgelehnt_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxAbgelehnt.SelectedIndex < 0)

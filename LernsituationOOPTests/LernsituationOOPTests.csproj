@@ -59,7 +59,6 @@
     <Compile Include="Gui\Prüfung\AddMitarbeiterTests.cs" />
     <Compile Include="Gui\Prüfung\PasswordTest.cs" />
     <Compile Include="Utils\JsonUtilsTests.cs" />
-    <Compile Include="Utils\ValidationUtilsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Validation\DateValidationTests.cs" />
     <Compile Include="Utils\Validation\StringValidationTests.cs" />

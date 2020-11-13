@@ -7,6 +7,14 @@ namespace LernsituationOOP.Vermietung
 {
     public class Reservierung
     {
+        /// <summary>
+        /// Konstruktor mit allen angaben, die für eine Reservierung notwendig sind. "[JsonConstructor]" legt den Konstruktor fest, der für das Speichern verwendet werden soll.
+        /// </summary>
+        /// <param name="fahrzeug">Fahrzeug dass Reserviert werden soll</param>
+        /// <param name="kunde">Kunde der die Reservierung vornimmt</param>
+        /// <param name="reservierung_Start">Reservierungs von</param>
+        /// <param name="reservierung_Ende">Reservierung bis</param>
+        /// <param name="prüfungsstatus">Status der Reservierung</param>
         [JsonConstructor]
         public Reservierung(Fahrzeug fahrzeug, Kunde kunde, DateTime reservierung_Start, DateTime reservierung_Ende, Prüfungsstatus prüfungsstatus = Prüfungsstatus.IN_BEARBEITUNG)
         {
@@ -19,6 +27,16 @@ namespace LernsituationOOP.Vermietung
             Mitarbeiter = null;
         }
 
+        /// <summary>
+        /// Konstruktor mit allen angaben, die für eine Reservierung notwendig sind.
+        /// </summary>
+        /// <param name="fahrzeug">Fahrzeug dass Reserviert werden soll</param>
+        /// <param name="kunde">Kunde der die Reservierung vornimmt</param>
+        /// <param name="reservierung_Start">Reservierungs von</param>
+        /// <param name="reservierung_Ende">Reservierung bis</param>
+        /// <param name="prüfungsstatus">Status der Reservierung</param>
+        /// <param name="prüfungsdatum">Datum der Prüfung der Reservierung</param>
+        /// <param name="mitarbeiter">Mitarbeiter der die Reservierung geprüft hat</param>
         public Reservierung(Fahrzeug fahrzeug, Kunde kunde, DateTime reservierung_Start, DateTime reservierung_Ende, Prüfungsstatus prüfungsstatus, DateTime prüfungsdatum, Mitarbeiter mitarbeiter)
         {
             Fahrzeug = fahrzeug;

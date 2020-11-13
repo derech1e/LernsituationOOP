@@ -99,7 +99,6 @@
     <Compile Include="Utils\JsonUtils.cs" />
     <Compile Include="Utils\Prüfungsstatus.cs" />
     <Compile Include="Utils\Utils.cs" />
-    <Compile Include="Utils\Validation\ValidationUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Gui\FrmAlleRes.resx">

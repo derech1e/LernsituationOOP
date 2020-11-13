@@ -21,7 +21,7 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Mitarbeiter mitarbeiter = new Mitarbeiter(txtBoxVorName.Text, txtBoxNachName.Text, txtBoxAdresse.Text, dTimeGeb.Value, txtBoxEmail.Text, Utils.Utils.generateID(), Utils.Utils.EncryptDecryptPassword(txtBoxPW.Text));
+            Mitarbeiter mitarbeiter = new Mitarbeiter(txtBoxVorName.Text, txtBoxNachName.Text, txtBoxAdresse.Text, dTimeGeb.Value, txtBoxEmail.Text, Utils.Utils.GenerateID(), Utils.Utils.EncryptDecryptPassword(txtBoxPW.Text));
             Utils.Utils.Mitarbeiter.Add(mitarbeiter);
             MessageBox.Show("Neuer Mitarbeiter " + mitarbeiter.Vorname + " " + mitarbeiter.Nachname + " wurde erfolgreich hinzugefügt", "Erfolgreich hinzugefügt", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             Close();
@@ -36,46 +36,87 @@ namespace LernsituationOOP.Gui.Prüfung
         /// Dient zur vermeidung von fehlern durch fehlerhafte Eingaben.
         /// </summary>
         /// <returns>Gibt Zurück ob die Reservierierung abgeschlossen werden kann.</returns>
-        private bool KannHinzufügen() => ValidationUtils.IsStringNotNullOrEmpty(txtBoxVorName.Text) &&
-            !ValidationUtils.IsStringANumber(txtBoxVorName.Text) &&
-            (ValidationUtils.IsStringNotNullOrEmpty(txtBoxNachName.Text) &&
-            !ValidationUtils.IsStringANumber(txtBoxNachName.Text)) &&
-            (ValidationUtils.IsStringNotNullOrEmpty(txtBoxAdresse.Text) &&
-            ValidationUtils.IsOlderThan18(dTimeGeb.Value)) &&
-            ValidationUtils.IsEmailValid(txtBoxEmail.Text);
+        private bool KannHinzufügen() => new StringValidation(txtBoxVorName.Text).IsNotNullOrEmpty().ContainsLetters().ValidateAND() &&
+                new StringValidation(txtBoxNachName.Text).IsNotNullOrEmpty().ContainsLetters().ValidateAND() &&
+                new StringValidation(txtBoxAdresse.Text).IsNotNullOrEmpty().ContainsLetters().ContainsNumber().ValidateAND() &&
+                new DateValidation(dTimeGeb.Value).IsGreater18().ValidateAND() &&
+                new StringValidation(txtBoxEmail.Text).IsNotNullOrEmpty().IsEmail().ValidateAND();
 
-        /// <summary>Passowrt verstechken</summary>
+
+        /// <summary>Passowrt verstecken</summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnPWAnzeigen_MouseUp(object sender, MouseEventArgs e) => txtBoxPW.UseSystemPasswordChar = true;
 
+        /// <summary>
+        /// Überprüfung, ob Mitarbeiter hinzugefügt werden kann
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtBoxVorName_TextChanged(object sender, EventArgs e) => btnAdd.Enabled = KannHinzufügen();
 
+        /// <summary>
+        /// Überprüfung, ob Mitarbeiter hinzugefügt werden kann
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtBoxNachName_TextChanged(object sender, EventArgs e) => btnAdd.Enabled = KannHinzufügen();
 
+        /// <summary>
+        /// Überprüfung, ob Mitarbeiter hinzugefügt werden kann
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtBoxAdresse_TextChanged(object sender, EventArgs e) => btnAdd.Enabled = KannHinzufügen();
 
+        /// <summary>
+        /// Überprüfung, ob Mitarbeiter hinzugefügt werden kann
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dTimeGeb_ValueChanged(object sender, EventArgs e) => btnAdd.Enabled = KannHinzufügen();
 
+        /// <summary>
+        /// Überprüfung, ob Mitarbeiter hinzugefügt werden kann
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtBoxEmail_TextChanged(object sender, EventArgs e) => btnAdd.Enabled = KannHinzufügen();
 
+        /// <summary>
+        /// Überprüfung, ob Mitarbeiter hinzugefügt werden kann
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtBoxPW_TextChanged(object sender, EventArgs e) => btnAdd.Enabled = KannHinzufügen();
 
+        //UI Validierungen
+
+        /// <summary>
+        /// Dient zur UI Validierung
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxVorName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
-            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR())
+            TextBox textBox = (TextBox)sender; //Sender wird zur Textbox umgeformt
+            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR()) //Überprüfung ob die Eingabe Validiert werden kann
             {
-                e.Cancel = true;
+                e.Cancel = true; //Wenn nein, das Event Canceln und UI Ausgabe mit Text
                 errorProvider.SetError(textBox, Resources.validateFirstName);
             }
             else
             {
-                e.Cancel = false;
+                e.Cancel = false; //Wenn Ja, dann UI Ausgabe entfernen
                 errorProvider.SetError(textBox, null);
             }
         }
 
+        /// <summary>
+        /// Dient zur UI Validierung
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxNachName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -91,6 +132,11 @@ namespace LernsituationOOP.Gui.Prüfung
             }
         }
 
+        /// <summary>
+        /// Dient zur UI Validierung
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxAdresse_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -106,6 +152,11 @@ namespace LernsituationOOP.Gui.Prüfung
             }
         }
 
+        /// <summary>
+        /// Dient zur UI Validierung
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -121,6 +172,11 @@ namespace LernsituationOOP.Gui.Prüfung
             }
         }
 
+        /// <summary>
+        /// Dient zur UI Validierung
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxPW_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MaskedTextBox textBox = (MaskedTextBox)sender;
@@ -136,15 +192,21 @@ namespace LernsituationOOP.Gui.Prüfung
             }
         }
 
+        /// <summary>
+        /// Dient zur UI Validierung
+        /// </summary>
+        /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
+        /// <param name="e">Gibt die Event Argumente an</param>
         private void dTimeGeb_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             DateTimePicker dateTimePicker = (DateTimePicker)sender;
 
-            if(!new DateValidation(dateTimePicker.Value).IsGreater18().ValidateAND())
+            if (!new DateValidation(dateTimePicker.Value).IsGreater18().ValidateAND())
             {
                 e.Cancel = true;
                 errorProvider.SetError(dateTimePicker, Resources.validateAge);
-            } else
+            }
+            else
             {
                 e.Cancel = false;
                 errorProvider.SetError(dateTimePicker, null);

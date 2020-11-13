@@ -3,6 +3,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LernsituationOOP.de.tnuerk.utils.Tests
 {
+    /// <summary>
+    /// Dient zum Testen der StringValidation Klasse
+    /// </summary>
     [TestClass()]
     public class StringValidationTests
     {
@@ -62,6 +65,13 @@ namespace LernsituationOOP.de.tnuerk.utils.Tests
         {
             stringValidation = new StringValidation("");
             Assert.IsTrue(stringValidation.IsNullOrEmpty().ValidateOR());
+        }
+
+        [TestMethod()]
+        public void StringValidationTest_9()
+        {
+            stringValidation = new StringValidation("test@test");
+            Assert.IsFalse(stringValidation.IsEmail().ValidateOR());
         }
     }
 }
