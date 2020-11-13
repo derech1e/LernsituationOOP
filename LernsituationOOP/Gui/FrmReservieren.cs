@@ -19,7 +19,6 @@ namespace LernsituationOOP.Gui
         /// <param name="e">Gibt die Event Argumente an</param>
         private void FrmReservieren_Load(object sender, EventArgs e)
         {
-
             comboBoxFahrzeuge.Items.AddRange(Enum.GetNames(typeof(FahrzeugModell)));
             comboBoxFahrzeuge.SelectedIndex = 0;
             dTimeBis.MinDate = dTimeVon.Value.Date.AddDays(1);

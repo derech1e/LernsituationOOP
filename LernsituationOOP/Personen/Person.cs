@@ -55,7 +55,7 @@ namespace LernsituationOOP.Personen
         public string Email
         {
             get => _Email;
-            set => _Email = new StringValidation(value).IsEmail().ValidateAND() ? value : throw new FormatException("E-Mail hat ein Falsches Format!"); //Überprüft ob eine gültige E-Mail vorliegt.
+            set => _Email = new StringValidation(value).IsEmail().ValidateAND() ? value : throw new FormatException("Der String enthält kein gültiges E-Mail Format!"); //Überprüft ob eine gültige E-Mail vorliegt.
         }
 
         public long Telefonnummer { get; }
