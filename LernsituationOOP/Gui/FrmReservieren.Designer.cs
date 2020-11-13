@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReservieren));
             this.btnReservieren = new System.Windows.Forms.Button();
             this.txtBoxVorName = new System.Windows.Forms.TextBox();
             this.txtBoxAdresse = new System.Windows.Forms.TextBox();
@@ -291,6 +292,7 @@
             this.Controls.Add(this.btnAbbrechen);
             this.Controls.Add(this.btnReservieren);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmReservieren";
             this.ShowInTaskbar = false;
