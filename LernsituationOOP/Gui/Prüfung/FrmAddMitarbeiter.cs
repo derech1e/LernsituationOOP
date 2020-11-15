@@ -36,11 +36,12 @@ namespace LernsituationOOP.Gui.Prüfung
         /// Dient zur vermeidung von fehlern durch fehlerhafte Eingaben.
         /// </summary>
         /// <returns>Gibt Zurück ob die Reservierierung abgeschlossen werden kann.</returns>
-        private bool KannHinzufügen() => new StringValidation(txtBoxVorName.Text).IsNotNullOrEmpty().ContainsLetters().ValidateAND() &&
-                new StringValidation(txtBoxNachName.Text).IsNotNullOrEmpty().ContainsLetters().ValidateAND() &&
-                new StringValidation(txtBoxAdresse.Text).IsNotNullOrEmpty().ContainsLetters().ContainsNumber().ValidateAND() &&
+        private bool KannHinzufügen() => new StringValidation(txtBoxVorName.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNoNumber().ValidateAND() &&
+                new StringValidation(txtBoxNachName.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNoNumber().ValidateAND() &&
+                new StringValidation(txtBoxAdresse.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNumber().ValidateAND() &&
                 new DateValidation(dTimeGeb.Value).IsGreater18().ValidateAND() &&
-                new StringValidation(txtBoxEmail.Text).IsNotNullOrEmpty().IsEmail().ValidateAND();
+                new StringValidation(txtBoxEmail.Text).IsNotNullOrEmpty().IsEmail().ValidateAND() &&
+                new StringValidation(txtBoxPW.Text).IsNotNullOrEmpty().IsLongerThan(8).ValidateAND();
 
 
         /// <summary>Passowrt verstecken</summary>
@@ -100,7 +101,7 @@ namespace LernsituationOOP.Gui.Prüfung
         private void txtBoxVorName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender; //Sender wird zur Textbox umgeformt
-            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR()) //Überprüfung ob die Eingabe Validiert werden kann
+            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNoNumber().ValidateAND()) //Überprüfung ob die Eingabe Validiert werden kann
             {
                 e.Cancel = true; //Wenn nein, das Event Canceln und UI Ausgabe mit Text
                 errorProvider.SetError(textBox, Resources.validateFirstName);
@@ -120,7 +121,7 @@ namespace LernsituationOOP.Gui.Prüfung
         private void txtBoxNachName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR())
+            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNoNumber().ValidateAND())
             {
                 e.Cancel = true;
                 errorProvider.SetError(textBox, Resources.validateLastName);
@@ -140,7 +141,7 @@ namespace LernsituationOOP.Gui.Prüfung
         private void txtBoxAdresse_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR())
+            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNumber().ValidateAND())
             {
                 e.Cancel = true;
                 errorProvider.SetError(textBox, Resources.validateAdress);
@@ -160,7 +161,7 @@ namespace LernsituationOOP.Gui.Prüfung
         private void txtBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR())
+            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().IsEmail().ValidateAND())
             {
                 e.Cancel = true;
                 errorProvider.SetError(textBox, Resources.validateEmail);

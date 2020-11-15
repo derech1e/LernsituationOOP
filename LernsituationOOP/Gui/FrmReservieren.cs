@@ -48,12 +48,12 @@ namespace LernsituationOOP.Gui
         /// Dient zur vermeidung von fehlern durch fehlerhafte Eingaben.
         /// </summary>
         /// <returns>Gibt Zurück ob die Reservierierung abgeschlossen werden kann.</returns>
-        private bool KannReservieren() => new StringValidation(txtBoxVorName.Text).IsNotNullOrEmpty().ContainsLetters().ValidateAND() &&
-                new StringValidation(txtBoxNachName.Text).IsNotNullOrEmpty().ContainsLetters().ValidateAND() &&
-                new StringValidation(txtBoxAdresse.Text).IsNotNullOrEmpty().ContainsLetters().ContainsNumber().ValidateAND() &&
+        private bool KannReservieren() => new StringValidation(txtBoxVorName.Text).IsNotNullOrEmpty().ContainsLetter().ValidateAND() &&
+                new StringValidation(txtBoxNachName.Text).IsNotNullOrEmpty().ContainsLetter().ValidateAND() &&
+                new StringValidation(txtBoxAdresse.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNumber().ValidateAND() &&
                 new DateValidation(dTimeGeburtstag.Value).IsGreater18().ValidateAND() &&
                 new StringValidation(txtBoxEmail.Text).IsNotNullOrEmpty().IsEmail().ValidateAND() &&
-                new StringValidation(txtBoxTel.Text).IsNotNullOrEmpty().ContainsNumber().ValidateAND() &&
+                new StringValidation(txtBoxTel.Text).IsNotNullOrEmpty().ContainsNumber().ContainsNoLetters().ValidateAND() &&
                 cbFuehrerschein.Checked;
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace LernsituationOOP.Gui
         private void TxtBoxVorName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR())
+            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNoNumber().ContainsLetter().ValidateAND())
             {
                 e.Cancel = true;
                 errorProvider.SetError(textBox, Resources.validateFirstName);
@@ -134,7 +134,7 @@ namespace LernsituationOOP.Gui
         private void txtBoxNachName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsLetters().ValidateOR())
+            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNoNumber().ContainsLetter().ValidateAND())
             {
                 e.Cancel = true;
                 errorProvider.SetError(textBox, Resources.validateLastName);
@@ -154,7 +154,7 @@ namespace LernsituationOOP.Gui
         private void txtBoxAdresse_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (!new StringValidation(textBox.Text.Trim()).IsNullOrEmpty().ContainsNumber().ValidateOR())
+            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNumber().ContainsLetter().ValidateAND())
             {
                 e.Cancel = true;
                 errorProvider.SetError(textBox, Resources.validateAdress);
@@ -174,7 +174,7 @@ namespace LernsituationOOP.Gui
         private void txtBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (!new StringValidation(textBox.Text).IsNullOrEmpty().IsEmail().ValidateOR())
+            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().IsEmail().ValidateAND())
             {
                 e.Cancel = true;
                 errorProvider.SetError(textBox, Resources.validateEmail);
@@ -194,7 +194,7 @@ namespace LernsituationOOP.Gui
         private void txtBoxTel_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
-            if (!new StringValidation(textBox.Text).IsNullOrEmpty().ContainsNumber().ValidateOR())
+            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNumber().ContainsNoLetters().IsLongerThan(8).ValidateAND())
             {
                 e.Cancel = true;
                 errorProvider.SetError(textBox, Resources.validatePhoneNumber);

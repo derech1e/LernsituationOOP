@@ -107,8 +107,8 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxPW_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
-            if (!new StringValidation(textBox.Text).IsLongerThan(8).ValidateOR())
+            MaskedTextBox textBox = (MaskedTextBox)sender;
+            if (!new StringValidation(textBox.Text).IsNullOrEmpty().IsLongerThan(8).ValidateOR())
             {
                 e.Cancel = true;
                 errorProvider.SetError(textBox, Resources.validatePW);

@@ -43,14 +43,14 @@ namespace LernsituationOOP.de.tnuerk.utils.Tests
         public void StringValidationTest_5()
         {
             stringValidation = new StringValidation(" 12as");
-            Assert.IsTrue(stringValidation.ContainsNumber().ContainsLetters().ValidateAND());
+            Assert.IsTrue(stringValidation.ContainsNumber().ContainsLetter().ValidateAND());
         }
 
         [TestMethod()]
         public void StringValidationTest_6()
         {
             stringValidation = new StringValidation("as d 2");
-            Assert.IsTrue(stringValidation.IsNullOrEmpty().ContainsNumber().ContainsLetters().ValidateOR());
+            Assert.IsTrue(stringValidation.IsNullOrEmpty().ContainsNumber().ContainsLetter().ValidateOR());
         }
 
         [TestMethod()]

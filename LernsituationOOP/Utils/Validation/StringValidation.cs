@@ -67,12 +67,32 @@ namespace LernsituationOOP.Utils.Validation
         }
 
         /// <summary>
+        /// Überprüft ob der String keine eine Zahl enthält
+        /// </summary>
+        /// <returns>Gibt diese Klasse für weitere Validierungsmöglichkeiten zurück</returns>
+        public StringValidation ContainsNoNumber()
+        {
+            Statements.Add(!Input.Any(char.IsDigit));
+            return this;
+        }
+
+        /// <summary>
         /// Überprüft ob der String mindestens einen Buchstaben enthält
         /// </summary>
         /// <returns>Gibt diese Klasse für weitere Validierungsmöglichkeiten zurück</returns>
-        public StringValidation ContainsLetters()
+        public StringValidation ContainsLetter()
         {
             Statements.Add(Input.Any(char.IsLetter));
+            return this;
+        }
+
+        /// <summary>
+        /// Überprüft ob der String mindestens einen Buchstaben enthält
+        /// </summary>
+        /// <returns>Gibt diese Klasse für weitere Validierungsmöglichkeiten zurück</returns>
+        public StringValidation ContainsNoLetters()
+        {
+            Statements.Add(!Input.Any(char.IsLetter));
             return this;
         }
 
@@ -91,7 +111,7 @@ namespace LernsituationOOP.Utils.Validation
         /// Überprüft ob der String eine maximallänge X nicht überschreitet
         /// </summary>
         /// <param name="length">Maximallänge X</param>
-        /// <returnsGibt diese Klasse für weitere Validierungsmöglichkeiten zurüc></returns>
+        /// <returns>Gibt diese Klasse für weitere Validierungsmöglichkeiten zurüc></returns>
         public StringValidation IsShorterThan(int length)
         {
             Statements.Add(Input.Length <= length);
