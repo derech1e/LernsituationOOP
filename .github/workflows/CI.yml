@@ -27,9 +27,6 @@ jobs:
       uses: warrenbuckley/Setup-MSBuild@v1
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-
-    - name: Setup git-bash
-      uses: pkg-src/github-action-git-bash@v1.1
       
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
