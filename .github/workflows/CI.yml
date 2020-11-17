@@ -35,6 +35,19 @@ jobs:
     - name: Build 
       run: msbuild LernsituationOOP/LernsituationOOP.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
       
+    - name: Setup VSTest.exe
+      uses: Malcolmnixon/Setup-VSTest@v4
+
+    - name: VSTest
+      run: vstest.console LernsituationOOPTests\bin\Debug\LernsituationOOPTests.dll
+      
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        flags: unittests
+        file: LernistuationOOP\codecov.xml
+        fail_ci_if_error: true
+        
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
       with:
