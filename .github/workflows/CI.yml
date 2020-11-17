@@ -47,13 +47,14 @@ jobs:
     - name: VSTest
       run: vstest.console LernsituationOOPTests\bin\Release\LernsituationOOPTests.dll
       
-    - name: Upload coverage to Codecov
-      env: 
-        CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
-      run: |-
-        curl -s https://codecov.io/bash | bash -s -- \
-        -F "unittests" \
-        -Z || echo 'Codecov upload failed'
+    - name: Code Coverage
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        flags: unittests
+        file: LernistuationOOP\codecov.xml
+        fail_ci_if_error: true
+        shell: bash
         
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
