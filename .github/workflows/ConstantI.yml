@@ -29,12 +29,12 @@ jobs:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       
     - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
+      uses: NuGet/setup-nuget@v1.0.5
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       
     - name: Restore NuGet Packages
-      run: nuget restore LernsituationOOP.sln --PackagesDirectory LernsituationOOP/
+      run: nuget restore LernsituationOOP.sln -PackagesDirectory "LernsituationOOP/"
       
     - name: Build 
       run: msbuild LernsituationOOP.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
