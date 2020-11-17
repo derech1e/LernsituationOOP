@@ -1,1 +1,62 @@
+name: CI
 
+on: [push, pull_request]
+
+jobs:
+  remove-old-artifacts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+    - name: Remove old artifacts
+      uses: c-hive/gha-remove-artifacts@v1
+      with:
+        age: '4 day'
+        skip-recent: 1
+        # Optional input
+        # skip-tags: true
+
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Setup MSBuild Path
+      uses: warrenbuckley/Setup-MSBuild@v1
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      
+    - name: Restore NuGet Packages
+      run: nuget restore LernsituationOOP.sln -PackagesDirectory "LernsituationOOP/packages"
+      
+    - name: Build 
+      run: msbuild LernsituationOOP.sln /p:Configuration=Release /p:DeployOnBuild=true
+      
+    - name: Setup VSTest.exe
+      uses: Malcolmnixon/Setup-VSTest@v4
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
+    - name: VSTest
+      run: vstest.console LernsituationOOPTests\bin\Release\LernsituationOOPTests.dll
+      
+    - name: Code Coverage
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        flags: unittests
+        file: LernistuationOOP\codecov.xml
+        fail_ci_if_error: true
+        
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: LernsituationOOP
+        path: LernsituationOOP\bin\Release\
