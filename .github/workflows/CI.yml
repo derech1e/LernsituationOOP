@@ -54,7 +54,7 @@ jobs:
         flags: unittests
         file: LernistuationOOP\codecov.xml
         fail_ci_if_error: true
-        shell: bash
+        shell: cmd
         
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
