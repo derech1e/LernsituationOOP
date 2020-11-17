@@ -45,7 +45,7 @@ jobs:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
     - name: VSTest
-      run: vstest.console LernsituationOOP\LernsituationOOPTests\bin\Debug\LernsituationOOPTests.dll
+      run: vstest.console ..\LernsituationOOPTests\bin\Debug\LernsituationOOPTests.dll
       
     - name: Code Coverage
       uses: codecov/codecov-action@v1
