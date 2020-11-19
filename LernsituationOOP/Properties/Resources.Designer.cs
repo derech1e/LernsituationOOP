@@ -61,7 +61,9 @@ namespace LernsituationOOP.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Der Login ist nicht vorhanden oder die Angeben sind inkorrekt! \n\nBitte legen Sie einen neuen Mitarbeiter an! ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Der Login ist nicht vorhanden oder die Angeben sind inkorrekt! 
+        ///
+        ///Bitte legen Sie einen neuen Mitarbeiter an! ähnelt.
         /// </summary>
         internal static string MsgBoxNoLogin {
             get {

@@ -205,5 +205,10 @@ namespace LernsituationOOP.Gui
                 errorProvider.SetError(textBox, null);
             }
         }
+
+        private void btnAbbrechen_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

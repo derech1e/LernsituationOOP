@@ -118,7 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MsgBoxNoLogin" xml:space="preserve">
-    <value>Der Login ist nicht vorhanden oder die Angeben sind inkorrekt! \n\nBitte legen Sie einen neuen Mitarbeiter an!</value>
+    <value>Der Login ist nicht vorhanden oder die Angeben sind inkorrekt! 
+
+Bitte legen Sie einen neuen Mitarbeiter an!</value>
   </data>
   <data name="MsgBoxNoLoginTitle" xml:space="preserve">
     <value>Mitarbeiter nicht gefunden!</value>
