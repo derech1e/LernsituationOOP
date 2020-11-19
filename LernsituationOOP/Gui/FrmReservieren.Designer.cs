@@ -130,7 +130,6 @@
             this.btnAbbrechen.TabIndex = 10;
             this.btnAbbrechen.Text = "Abbrechen";
             this.btnAbbrechen.UseVisualStyleBackColor = true;
-            this.btnAbbrechen.Click += new System.EventHandler(this.btnAbbrechen_Click);
             // 
             // cbFuehrerschein
             // 
