@@ -5,6 +5,6 @@
     /// </summary>
     public enum FahrzeugModell
     {
-        KOMPAKTWAGEN, MOTORRAD
+        KLEINWAGEN, KOMAKTKLASSE, MITTELKLASSE, OBERKLASSE, SUV, SPORTWAGEN, WOHNMOBIL, MOTORRAD
     }
 }
