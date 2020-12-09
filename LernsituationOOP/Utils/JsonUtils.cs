@@ -8,13 +8,13 @@ namespace LernsituationOOP.Utils
 {
     public class JsonUtils
     {
-        /// <summary>Speichert das gegebene Objekt am gegebenem Dateipfad als JSON</summary>
+        /// <summary>Speichert das gegebene Objekt am gegebenem Dateipfad</summary>
         /// <param name="filePath">Dateipfad</param>
         /// <param name="textToSave">Text der zu speichern ist</param>
         private static void SaveJsonToFile(string filePath, object textToSave)
         {
-            string content = JsonConvert.SerializeObject(textToSave);
-            File.WriteAllText(filePath, content);
+            string contents = JsonConvert.SerializeObject(textToSave);
+            File.WriteAllText(filePath, contents);
         }
 
         /// <summary>Liest den Json aus der angegebenen Datei aus</summary>
@@ -26,7 +26,6 @@ namespace LernsituationOOP.Utils
         /// <returns>Gibt den Erfolg der Speicherung zurück</returns>
         public static bool SaveReservierungen()
         {
-            if(Utils.Reservierungen.Count > 0)
             JsonUtils.SaveJsonToFile(Utils.FILE_PATH_RESERVIERUNGEN, Utils.Reservierungen);
             return true;
         }
@@ -35,8 +34,7 @@ namespace LernsituationOOP.Utils
         /// <returns>Gibt den Erfolg der Speicherung zurück</returns>
         public static bool SaveMitarbeiter()
         {
-            if (Utils.Mitarbeiter.Count > 0)
-                JsonUtils.SaveJsonToFile(Utils.FILE_PATH_MITARBEITER, Utils.Mitarbeiter);
+            JsonUtils.SaveJsonToFile(Utils.FILE_PATH_MITARBEITER, Utils.Mitarbeiter);
             return true;
         }
 

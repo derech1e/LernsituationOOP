@@ -104,7 +104,7 @@ namespace LernsituationOOP.Gui.Prüfung
             if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNoNumber().ValidateAND()) //Überprüfung ob die Eingabe Validiert werden kann
             {
                 e.Cancel = true; //Wenn nein, das Event Canceln und UI Ausgabe mit Text
-                errorProvider.SetError(textBox, Resources.validateFirstName); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox, Resources.validateFirstName);
             }
             else
             {
@@ -124,7 +124,7 @@ namespace LernsituationOOP.Gui.Prüfung
             if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNoNumber().ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateLastName); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox, Resources.validateLastName);
             }
             else
             {
@@ -144,7 +144,7 @@ namespace LernsituationOOP.Gui.Prüfung
             if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNumber().ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateAdress); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox, Resources.validateAdress);
             }
             else
             {
@@ -164,7 +164,7 @@ namespace LernsituationOOP.Gui.Prüfung
             if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().IsEmail().ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateEmail); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox, Resources.validateEmail);
             }
             else
             {
@@ -184,7 +184,7 @@ namespace LernsituationOOP.Gui.Prüfung
             if (!new StringValidation(textBox.Text).IsLongerThan(8).ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validatePW); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox, Resources.validatePW);
             }
             else
             {
@@ -205,7 +205,7 @@ namespace LernsituationOOP.Gui.Prüfung
             if (!new DateValidation(dateTimePicker.Value).IsGreater18().ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(dateTimePicker, Resources.validateAge); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(dateTimePicker, Resources.validateAge);
             }
             else
             {

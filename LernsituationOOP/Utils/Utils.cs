@@ -15,12 +15,12 @@ namespace LernsituationOOP.Utils
         public static string FILE_PATH_MITARBEITER = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\mitarbeiter.json"; //Beinhaltet den Dateispeicherort für alle Mitarbeiter
 
         /// <summary>
-        /// Liste mit allen Reservierungen
+        /// Eine Liste mit allen Reservierungen
         /// </summary>
         public static List<Reservierung> Reservierungen { get; set; }
 
         /// <summary>
-        /// Liste mit allen Mitarbeitern
+        /// Eine Liste mit allen Mitarbeitern
         /// </summary>
         public static List<Mitarbeiter> Mitarbeiter { get; set; }
 
