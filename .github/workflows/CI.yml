@@ -34,7 +34,7 @@ jobs:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       
     - name: Restore NuGet Packages
-      run: nuget restore LernsituationOOP.sln -PackagesDirectory "LernsituationOOP/packages"
+      run: nuget restore LernsituationOOP.sln -PackagesDirectory "/packages"
       
     - name: Build 
       run: msbuild LernsituationOOP.sln /p:Configuration=Release /p:DeployOnBuild=true
