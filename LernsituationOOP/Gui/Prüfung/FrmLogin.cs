@@ -91,7 +91,7 @@ namespace LernsituationOOP.Gui.Prüfung
             if (!new StringValidation(textBox.Text).IsNullOrEmpty().IsEmail().ValidateOR())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateEmail);
+                errorProvider.SetError(textBox, Resources.validateEmail); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -111,7 +111,7 @@ namespace LernsituationOOP.Gui.Prüfung
             if (!new StringValidation(textBox.Text).IsNullOrEmpty().IsLongerThan(8).ValidateOR())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validatePW);
+                errorProvider.SetError(textBox, Resources.validatePW); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {

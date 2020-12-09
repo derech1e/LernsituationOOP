@@ -117,7 +117,7 @@ namespace LernsituationOOP.Gui
             if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNoNumber().ContainsLetter().ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateFirstName);
+                errorProvider.SetError(textBox, Resources.validateFirstName); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -137,7 +137,7 @@ namespace LernsituationOOP.Gui
             if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNoNumber().ContainsLetter().ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateLastName);
+                errorProvider.SetError(textBox, Resources.validateLastName); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -157,7 +157,7 @@ namespace LernsituationOOP.Gui
             if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNumber().ContainsLetter().ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateAdress);
+                errorProvider.SetError(textBox, Resources.validateAdress); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -177,7 +177,7 @@ namespace LernsituationOOP.Gui
             if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().IsEmail().ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateEmail);
+                errorProvider.SetError(textBox, Resources.validateEmail); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -197,7 +197,7 @@ namespace LernsituationOOP.Gui
             if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNumber().ContainsNoLetters().IsLongerThan(8).ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validatePhoneNumber);
+                errorProvider.SetError(textBox, Resources.validatePhoneNumber); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
