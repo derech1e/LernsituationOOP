@@ -4,9 +4,6 @@ using System;
 
 namespace LernsituationOOP.de.tnuerk.gui.prüfung.Tests
 {
-    /// <summary>
-    /// Dient zum Testen der AddMitarbeiter Klasse
-    /// </summary>
     [TestClass()]
     public class AddMitarbeiterTests
     {

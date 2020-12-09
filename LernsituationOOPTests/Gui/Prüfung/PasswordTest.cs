@@ -1,10 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using LernsituationOOP.de.tnuerk.utils;
 
 namespace LernsituationOOP.de.tnuerk.gui.Tests
-{    
-    /// <summary>
-     /// Dient zum Testen der Passowrtent -und verschlüsselung
-     /// </summary>
+{
     [TestClass()]
     public class PasswordTest
     {
