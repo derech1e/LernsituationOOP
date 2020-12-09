@@ -10,17 +10,17 @@ namespace LernsituationOOP.Utils
     public class Utils
     {
 
-        private static readonly Autovermieter autovermieter = new Autovermieter("Mustervermietung 24", "Dresden", 123456789); //Legt die Musterdaten für eine Reservierungsstelle fest
+        private static readonly Autovermieter autovermieter = new Autovermieter("SaxCleverRent", "Dresden", 123456789); //Legt die Musterdaten für eine Reservierungsstelle fest
         public static string FILE_PATH_RESERVIERUNGEN = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\reservierungen.json"; //Beinhaltet den Dateispeicherort für alle Reservierungen
         public static string FILE_PATH_MITARBEITER = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\mitarbeiter.json"; //Beinhaltet den Dateispeicherort für alle Mitarbeiter
 
         /// <summary>
-        /// Eine Liste mit allen Reservierungen
+        /// Liste mit allen Reservierungen
         /// </summary>
         public static List<Reservierung> Reservierungen { get; set; }
 
         /// <summary>
-        /// Eine Liste mit allen Mitarbeitern
+        /// Liste mit allen Mitarbeitern
         /// </summary>
         public static List<Mitarbeiter> Mitarbeiter { get; set; }
 
