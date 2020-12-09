@@ -41,8 +41,7 @@
             this.btnMieten.Name = "btnMieten";
             this.btnMieten.Size = new System.Drawing.Size(179, 132);
             this.btnMieten.TabIndex = 0;
-            this.btnMieten.Text = "Informieren & Reservieren";
-            this.btnMieten.UseMnemonic = false;
+            this.btnMieten.Text = "Auto Reservieren";
             this.btnMieten.UseVisualStyleBackColor = true;
             this.btnMieten.Click += new System.EventHandler(this.btnMieten_Click);
             // 

@@ -286,7 +286,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CancelButton = this.btnAbbrechen;
-            this.ClientSize = new System.Drawing.Size(465, 465);
+            this.ClientSize = new System.Drawing.Size(472, 465);
             this.Controls.Add(this.gBoxReservierung);
             this.Controls.Add(this.gBoxPersoenlich);
             this.Controls.Add(this.btnAbbrechen);
