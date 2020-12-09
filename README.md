@@ -4,6 +4,12 @@ Aufgabe ist es den Prototyp einer Autoreservierung-Software sinvoll umzusetzen.
 
 ### Klicke [hier](https://github.com/derech1e/LernsituationOOP/releases/tag/1.0.0) um dir die Release Executable herunterzuladen.
 
+## Json.NET (Newtonsoft.JSON)
+Link zur Webseite: https://www.newtonsoft.com/json
+
+Link zur Dokumentation: https://www.newtonsoft.com/json/help/html/Introduction.htm
+
+
 ## UML Diagramm
 
 ![umldiagramm](.screenshots/UML_Diagramm.png)
