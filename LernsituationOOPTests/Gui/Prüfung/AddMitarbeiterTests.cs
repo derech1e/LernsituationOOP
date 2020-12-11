@@ -15,10 +15,9 @@ namespace LernsituationOOP.de.tnuerk.gui.prüfung.Tests
         private const string Expected_Adresse = "Test123";
         private readonly DateTime Expected_geb = DateTime.Today;
         private const string Expected_email = "test@test.de";
-        private const int Expected_uuid = -1;
         private const string Expected_PW = "123";
 
-        private readonly Mitarbeiter mitarbeiter = new Mitarbeiter("TestVorname", "TestNachname", "Test123", DateTime.Today, "test@test.de", -1, "123");
+        private readonly Mitarbeiter mitarbeiter = new Mitarbeiter("TestVorname", "TestNachname", "Test123", DateTime.Today, "test@test.de", Utils.Utils.GenerateID(), "123");
 
         [TestMethod()]
         public void ValidateVorname()
@@ -53,7 +52,7 @@ namespace LernsituationOOP.de.tnuerk.gui.prüfung.Tests
         [TestMethod()]
         public void ValidateID()
         {
-            Assert.AreEqual(mitarbeiter.ID, Expected_uuid);
+            Assert.IsFalse(Utils.Utils.ExsistID(mitarbeiter.ID));
         }
 
         [TestMethod()]

@@ -75,7 +75,22 @@ namespace LernsituationOOP.Utils
         /// Generiert eine zufällige ID für Mitarbeiter
         /// </summary>
         /// <returns>Gibt eine zufällioge Zahl zwischen 100000 und 999999 zurück</returns>
-        public static int GenerateID() => new Random().Next(100000, 999999);
+        public static int GenerateID()
+        {
+            int id = new Random().Next(100000, 999999);
+            if(ExsistID(id))
+            {
+                id = new Random().Next(100000, 999999);
+            }
+            return id;
+        }
+
+        public static bool ExsistID(int id)
+        {
+            if(Mitarbeiter != null)
+                return Mitarbeiter.FindAll(mitarbeiter => mitarbeiter.ID == id).Count != 0;
+            return false;
+        }
 
         /// <summary>
         /// Einfach Passwort Ent- und Verschlüsselung
