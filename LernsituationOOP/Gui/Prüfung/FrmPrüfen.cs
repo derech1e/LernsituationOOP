@@ -33,7 +33,7 @@ namespace LernsituationOOP.Gui.Prüfung
             foreach (Reservierung reservierung in Utils.Utils.Reservierungen)
             {
                 if (reservierung.Prüfungsstatus == Prüfungsstatus.IN_BEARBEITUNG)
-                    listBoxEinträge.Items.Add(reservierung.Kunde.Nachname + " - " + reservierung.Kunde.KundenNummer);
+                    listBoxEinträge.Items.Add(reservierung.Kunde.KundenNummer);
             }
         }
 
@@ -70,7 +70,7 @@ namespace LernsituationOOP.Gui.Prüfung
         {
             if (listBoxEinträge.SelectedIndex < 0)
                 return;
-            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxEinträge.GetItemText(listBoxEinträge.SelectedItem).Split('-')[1].ToString()));
+            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxEinträge.GetItemText(listBoxEinträge.SelectedItem)));
             txtBoxResInfos.Clear();
             txtBoxResInfos.Text = Utils.Utils.GetReservierungsInfos(reservierung);
         }
@@ -86,7 +86,7 @@ namespace LernsituationOOP.Gui.Prüfung
             Utils.Utils.Reservierungen.Remove(reservierung);
             reservierung.Prüfungsstatus = angenommen ? Prüfungsstatus.ANGENOMMEN : Prüfungsstatus.ABGELEHNT;
             reservierung.Prüfungsdatum = DateTime.Today;
-            reservierung.Mitarbeiter = _Mitarbeiter;
+            reservierung.Mitarbeiter = new Mitarbeiter(_Mitarbeiter.Vorname, _Mitarbeiter.Nachname, _Mitarbeiter.ID);
             Utils.Utils.Reservierungen.Add(reservierung);
             MessageBox.Show(Resources.MsgBoxResPrüfen, Resources.MsgBoxTitle_ABGESCHLOSSEN, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             if(Utils.Utils.ReservierungMitStatusX(Prüfungsstatus.IN_BEARBEITUNG).Count == 0)

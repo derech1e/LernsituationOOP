@@ -44,6 +44,17 @@ namespace LernsituationOOP.Personen
             Telefonnummer = -1L;
         }
 
+        /// <summary>
+        /// Basis-Konstruktor für neue Kunden und Mitarbeiter die allen Daten behinhaltet, die für eine Person benötigt werden.
+        /// </summary>
+        /// <param name="vorname">Vorname der Person</param>
+        /// <param name="nachname">Nachname der Person</param>
+        public Person(string vorname, string nachname)
+        {
+            Vorname = vorname;
+            Nachname = nachname;
+        }
+
         public string Vorname { get; }
 
         public string Nachname { get; }

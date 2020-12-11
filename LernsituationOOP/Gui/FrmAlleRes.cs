@@ -31,9 +31,9 @@ namespace LernsituationOOP.Gui
             foreach (Reservierung reservierung in Utils.Utils.Reservierungen)
             {
                 if (reservierung.Prüfungsstatus == Prüfungsstatus.ANGENOMMEN)
-                    listBoxAngenommen.Items.Add(reservierung.Kunde.Nachname + " - " + reservierung.Kunde.KundenNummer);
+                    listBoxAngenommen.Items.Add(reservierung.Kunde.KundenNummer);
                 else if (reservierung.Prüfungsstatus == Prüfungsstatus.ABGELEHNT)
-                    listBoxAbgelehnt.Items.Add(reservierung.Kunde.Nachname + " - " + reservierung.Kunde.KundenNummer);
+                    listBoxAbgelehnt.Items.Add(reservierung.Kunde.KundenNummer);
             }
         }
 
@@ -46,7 +46,7 @@ namespace LernsituationOOP.Gui
         {
             if (listBoxAngenommen.SelectedIndex < 0)
                 return;
-            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxAngenommen.GetItemText(listBoxAngenommen.SelectedItem).Split('-')[1].ToString()));
+            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxAngenommen.GetItemText(listBoxAngenommen.SelectedItem)));
             txtBoxInfos.Clear();
             txtBoxInfos.Text = Utils.Utils.GetReservierungsInfos(reservierung);
             listBoxAbgelehnt.ClearSelected();
@@ -61,7 +61,7 @@ namespace LernsituationOOP.Gui
         {
             if (listBoxAbgelehnt.SelectedIndex < 0)
                 return;
-            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxAbgelehnt.GetItemText(listBoxAbgelehnt.SelectedItem).Split('-')[1].ToString()));
+            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxAbgelehnt.GetItemText(listBoxAbgelehnt.SelectedItem)));
             txtBoxInfos.Clear();
             txtBoxInfos.Text = Utils.Utils.GetReservierungsInfos(reservierung);
             listBoxAngenommen.ClearSelected();
