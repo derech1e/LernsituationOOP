@@ -52,7 +52,8 @@ namespace LernsituationOOP.Utils.Validation
         /// <returns>Gibt diese Klasse für weitere Validierungsmöglichkeiten zurück</returns>
         public StringValidation IsEmail()
         {
-            Statements.Add(Regex.IsMatch(Input, "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$"));
+            Statements.Add(Regex.IsMatch(Input,
+                "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$"));
             return this;
         }
 

@@ -26,7 +26,8 @@ namespace LernsituationOOP.Gui.Prüfung
             }
             else
             {
-                MessageBox.Show(Resources.MsgBoxNoLogin, Resources.MsgBoxNoLoginTitle, MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MessageBox.Show(Resources.MsgBoxNoLogin, Resources.MsgBoxNoLoginTitle, MessageBoxButtons.OK,
+                    MessageBoxIcon.Hand);
                 txtBoxPW.Clear();
             }
         }
@@ -52,9 +53,11 @@ namespace LernsituationOOP.Gui.Prüfung
             string str = Utils.Utils.EncryptDecryptPassword(password);
             foreach (Mitarbeiter mitarbeiter in Utils.Utils.Mitarbeiter)
             {
-                if (mitarbeiter.Email.Equals(email, StringComparison.OrdinalIgnoreCase) && mitarbeiter.Passwort.Equals(str))
+                if (mitarbeiter.Email.Equals(email, StringComparison.OrdinalIgnoreCase) &&
+                    mitarbeiter.Passwort.Equals(str))
                     return mitarbeiter;
             }
+
             return null;
         }
 
@@ -87,11 +90,12 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MaskedTextBox textBox = (MaskedTextBox)sender;
+            MaskedTextBox textBox = (MaskedTextBox) sender;
             if (!new StringValidation(textBox.Text).IsNullOrEmpty().IsEmail().ValidateOR())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateEmail); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox,
+                    Resources.validateEmail); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -107,18 +111,18 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxPW_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MaskedTextBox textBox = (MaskedTextBox)sender;
+            MaskedTextBox textBox = (MaskedTextBox) sender;
             if (!new StringValidation(textBox.Text).IsNullOrEmpty().IsLongerThan(8).ValidateOR())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validatePW); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox,
+                    Resources.validatePW); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
                 e.Cancel = false;
                 errorProvider.SetError(textBox, null);
             }
-
         }
     }
 }

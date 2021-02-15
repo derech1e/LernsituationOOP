@@ -20,10 +20,10 @@ namespace LernsituationOOP.Gui
         /// <param name="e">Gibt die Event Argumente an</param>
         private void FrmAlleRes_Load(object sender, EventArgs e)
         {
-            
             if (Utils.Utils.ReservierungMitStatusX(Prüfungsstatus.ABGELEHNT, Prüfungsstatus.ANGENOMMEN).Count == 0)
             {
-                MessageBox.Show(Resources.MsgBoxNoRes, Resources.MsgBoxTitle_ACHTUNG, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.MsgBoxNoRes, Resources.MsgBoxTitle_ACHTUNG, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 Dispose();
                 return;
             }
@@ -46,7 +46,8 @@ namespace LernsituationOOP.Gui
         {
             if (listBoxAngenommen.SelectedIndex < 0)
                 return;
-            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxAngenommen.GetItemText(listBoxAngenommen.SelectedItem)));
+            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item =>
+                item.Kunde.KundenNummer == int.Parse(listBoxAngenommen.GetItemText(listBoxAngenommen.SelectedItem)));
             txtBoxInfos.Clear();
             txtBoxInfos.Text = Utils.Utils.GetReservierungsInfos(reservierung);
             listBoxAbgelehnt.ClearSelected();
@@ -61,7 +62,8 @@ namespace LernsituationOOP.Gui
         {
             if (listBoxAbgelehnt.SelectedIndex < 0)
                 return;
-            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxAbgelehnt.GetItemText(listBoxAbgelehnt.SelectedItem)));
+            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item =>
+                item.Kunde.KundenNummer == int.Parse(listBoxAbgelehnt.GetItemText(listBoxAbgelehnt.SelectedItem)));
             txtBoxInfos.Clear();
             txtBoxInfos.Text = Utils.Utils.GetReservierungsInfos(reservierung);
             listBoxAngenommen.ClearSelected();

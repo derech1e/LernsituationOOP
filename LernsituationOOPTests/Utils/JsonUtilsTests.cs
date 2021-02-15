@@ -11,8 +11,8 @@ namespace LernsituationOOP.Utils
         [TestMethod()]
         public void ValidateSaveReservierungen()
         {
-            if(!JsonUtils.SaveReservierungen())
-            Assert.Fail();
+            if (!JsonUtils.SaveReservierungen())
+                Assert.Fail();
         }
 
         [TestMethod()]

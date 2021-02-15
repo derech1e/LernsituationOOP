@@ -5,6 +5,8 @@
     /// </summary>
     public enum Prüfungsstatus
     {
-        ANGENOMMEN, ABGELEHNT, IN_BEARBEITUNG
+        ANGENOMMEN,
+        ABGELEHNT,
+        IN_BEARBEITUNG
     }
 }

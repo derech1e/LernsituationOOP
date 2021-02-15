@@ -12,7 +12,8 @@ namespace LernsituationOOP.Gui
         {
             InitializeComponent();
             Autovermieter autovermieter = Utils.Utils.GetAutovermieter();
-            Text = autovermieter.Name + " in " + autovermieter.Standort + " | Tel.: " + autovermieter.Telefonnummer.ToString();
+            Text = autovermieter.Name + " in " + autovermieter.Standort + " | Tel.: " +
+                   autovermieter.Telefonnummer.ToString();
         }
 
         /// <summary>
@@ -22,7 +23,8 @@ namespace LernsituationOOP.Gui
         /// <param name="e">Gibt die Event Argumente an</param>
         private void FrmHaupt_Load(object sender, EventArgs e)
         {
-            if (!JsonUtils.LoadReservierungen()) Console.Error.WriteLine("Reservierungen konnten nicht geladen werden!");
+            if (!JsonUtils.LoadReservierungen())
+                Console.Error.WriteLine("Reservierungen konnten nicht geladen werden!");
             if (!JsonUtils.LoadMitarbeiter()) Console.Error.WriteLine("Mitarbeiter konnten nicht geladen werden!");
         }
 
@@ -33,7 +35,8 @@ namespace LernsituationOOP.Gui
         /// <param name="e">Gibt die Event Argumente an</param>
         private void FrmHaupt_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!JsonUtils.SaveReservierungen()) Console.Error.WriteLine("Reservierungen konnten nicht gespeichert werden!");
+            if (!JsonUtils.SaveReservierungen())
+                Console.Error.WriteLine("Reservierungen konnten nicht gespeichert werden!");
             if (!JsonUtils.SaveMitarbeiter()) Console.Error.WriteLine("Mitarbeiter konnten nicht gespeichert werden!");
         }
 

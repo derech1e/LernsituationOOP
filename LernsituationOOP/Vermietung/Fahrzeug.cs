@@ -18,6 +18,5 @@ namespace LernsituationOOP.Vermietung
         public FahrzeugModell Modell { get; set; }
 
         public FahrzeugStatus Zustand { get; set; }
-
     }
 }

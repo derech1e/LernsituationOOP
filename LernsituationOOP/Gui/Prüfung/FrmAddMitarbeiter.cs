@@ -21,9 +21,14 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Mitarbeiter mitarbeiter = new Mitarbeiter(txtBoxVorName.Text, txtBoxNachName.Text, txtBoxAdresse.Text, dTimeGeb.Value, txtBoxEmail.Text, Utils.Utils.GenerateID(), Utils.Utils.EncryptDecryptPassword(txtBoxPW.Text));
+            Mitarbeiter mitarbeiter = new Mitarbeiter(txtBoxVorName.Text, txtBoxNachName.Text, txtBoxAdresse.Text,
+                dTimeGeb.Value, txtBoxEmail.Text, Utils.Utils.GenerateID(),
+                Utils.Utils.EncryptDecryptPassword(txtBoxPW.Text));
             Utils.Utils.Mitarbeiter.Add(mitarbeiter);
-            MessageBox.Show("Neuer Mitarbeiter " + mitarbeiter.Vorname + " " + mitarbeiter.Nachname + " wurde erfolgreich hinzugefügt", "Erfolgreich hinzugefügt", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            MessageBox.Show(
+                "Neuer Mitarbeiter " + mitarbeiter.Vorname + " " + mitarbeiter.Nachname +
+                " wurde erfolgreich hinzugefügt", "Erfolgreich hinzugefügt", MessageBoxButtons.OK,
+                MessageBoxIcon.Asterisk);
             Close();
         }
 
@@ -36,12 +41,17 @@ namespace LernsituationOOP.Gui.Prüfung
         /// Dient zur vermeidung von fehlern durch fehlerhafte Eingaben.
         /// </summary>
         /// <returns>Gibt Zurück ob die Reservierierung abgeschlossen werden kann.</returns>
-        private bool KannHinzufügen() => new StringValidation(txtBoxVorName.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNoNumber().ValidateAND() &&
-                new StringValidation(txtBoxNachName.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNoNumber().ValidateAND() &&
-                new StringValidation(txtBoxAdresse.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNumber().ValidateAND() &&
-                new DateValidation(dTimeGeb.Value).IsGreater18().ValidateAND() &&
-                new StringValidation(txtBoxEmail.Text).IsNotNullOrEmpty().IsEmail().ValidateAND() &&
-                new StringValidation(txtBoxPW.Text).IsNotNullOrEmpty().IsLongerThan(8).ValidateAND();
+        private bool KannHinzufügen() => new StringValidation(txtBoxVorName.Text).IsNotNullOrEmpty().ContainsLetter()
+                                             .ContainsNoNumber().ValidateAND() &&
+                                         new StringValidation(txtBoxNachName.Text).IsNotNullOrEmpty().ContainsLetter()
+                                             .ContainsNoNumber().ValidateAND() &&
+                                         new StringValidation(txtBoxAdresse.Text).IsNotNullOrEmpty().ContainsLetter()
+                                             .ContainsNumber().ValidateAND() &&
+                                         new DateValidation(dTimeGeb.Value).IsGreater18().ValidateAND() &&
+                                         new StringValidation(txtBoxEmail.Text).IsNotNullOrEmpty().IsEmail()
+                                             .ValidateAND() &&
+                                         new StringValidation(txtBoxPW.Text).IsNotNullOrEmpty().IsLongerThan(8)
+                                             .ValidateAND();
 
 
         /// <summary>Passowrt verstecken</summary>
@@ -100,11 +110,13 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxVorName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TextBox textBox = (TextBox)sender; //Sender wird zur Textbox umgeformt
-            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNoNumber().ValidateAND()) //Überprüfung ob die Eingabe Validiert werden kann
+            TextBox textBox = (TextBox) sender; //Sender wird zur Textbox umgeformt
+            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNoNumber().ValidateAND()
+            ) //Überprüfung ob die Eingabe Validiert werden kann
             {
                 e.Cancel = true; //Wenn nein, das Event Canceln und UI Ausgabe mit Text
-                errorProvider.SetError(textBox, Resources.validateFirstName); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox,
+                    Resources.validateFirstName); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -120,11 +132,13 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxNachName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
-            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNoNumber().ValidateAND())
+            TextBox textBox = (TextBox) sender;
+            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNoNumber()
+                .ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateLastName); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox,
+                    Resources.validateLastName); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -140,11 +154,12 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxAdresse_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
+            TextBox textBox = (TextBox) sender;
             if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNumber().ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateAdress); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox,
+                    Resources.validateAdress); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -160,11 +175,12 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
+            TextBox textBox = (TextBox) sender;
             if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().IsEmail().ValidateAND())
             {
-                e.Cancel = true; 
-                errorProvider.SetError(textBox, Resources.validateEmail); //String wird aus der "Resources.resx" Datei ausgelesen
+                e.Cancel = true;
+                errorProvider.SetError(textBox,
+                    Resources.validateEmail); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -180,11 +196,12 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxPW_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MaskedTextBox textBox = (MaskedTextBox)sender;
+            MaskedTextBox textBox = (MaskedTextBox) sender;
             if (!new StringValidation(textBox.Text).IsLongerThan(8).ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validatePW); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox,
+                    Resources.validatePW); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -200,19 +217,19 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e">Gibt die Event Argumente an</param>
         private void dTimeGeb_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            DateTimePicker dateTimePicker = (DateTimePicker)sender;
+            DateTimePicker dateTimePicker = (DateTimePicker) sender;
 
             if (!new DateValidation(dateTimePicker.Value).IsGreater18().ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(dateTimePicker, Resources.validateAge); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(dateTimePicker,
+                    Resources.validateAge); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
                 e.Cancel = false;
                 errorProvider.SetError(dateTimePicker, null);
             }
-
         }
     }
 }

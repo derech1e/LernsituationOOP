@@ -9,10 +9,18 @@ namespace LernsituationOOP.Utils
 {
     public class Utils
     {
+        private static readonly Autovermieter
+            autovermieter =
+                new Autovermieter("SaxCleverRent", "Dresden",
+                    123456789); //Legt die Musterdaten für eine Reservierungsstelle fest
 
-        private static readonly Autovermieter autovermieter = new Autovermieter("SaxCleverRent", "Dresden", 123456789); //Legt die Musterdaten für eine Reservierungsstelle fest
-        public static string FILE_PATH_RESERVIERUNGEN = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\reservierungen.json"; //Beinhaltet den Dateispeicherort für alle Reservierungen
-        public static string FILE_PATH_MITARBEITER = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\mitarbeiter.json"; //Beinhaltet den Dateispeicherort für alle Mitarbeiter
+        public static string FILE_PATH_RESERVIERUNGEN =
+            Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
+            "\\reservierungen.json"; //Beinhaltet den Dateispeicherort für alle Reservierungen
+
+        public static string FILE_PATH_MITARBEITER =
+            Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
+            "\\mitarbeiter.json"; //Beinhaltet den Dateispeicherort für alle Mitarbeiter
 
         /// <summary>
         /// Liste mit allen Reservierungen
@@ -40,7 +48,8 @@ namespace LernsituationOOP.Utils
             builder.AppendLine("Telefonnummer: " + reservierung.Kunde.Telefonnummer);
             builder.AppendLine("Fahrzeug: " + reservierung.Fahrzeug.Modell);
             builder.AppendLine("Zustand des Fahzeugs: " + reservierung.Fahrzeug.Zustand);
-            builder.AppendLine("Reservierung: " + reservierung.Reservierung_Start.Date.ToString("dd. MMMM yyyy") + " bis " + reservierung.Reservierung_Ende.Date.ToString("dd. MMMM yyyy"));
+            builder.AppendLine("Reservierung: " + reservierung.Reservierung_Start.Date.ToString("dd. MMMM yyyy") +
+                               " bis " + reservierung.Reservierung_Ende.Date.ToString("dd. MMMM yyyy"));
             builder.AppendLine(string.Empty);
             builder.AppendLine("Prüfungsstatus: " + reservierung.Prüfungsstatus);
 
@@ -49,9 +58,11 @@ namespace LernsituationOOP.Utils
             else
             {
                 builder.AppendLine("Geprüft am: " + reservierung.Prüfungsdatum.Date.ToString("dd. MMMM yyyy"));
-                builder.AppendLine("Geprüft von Mitarbeiter: " + reservierung.Mitarbeiter.Vorname + " " + reservierung.Mitarbeiter.Nachname);
+                builder.AppendLine("Geprüft von Mitarbeiter: " + reservierung.Mitarbeiter.Vorname + " " +
+                                   reservierung.Mitarbeiter.Nachname);
                 builder.AppendLine("Mitarbeiter ID: " + reservierung.Mitarbeiter.ID);
             }
+
             return builder.ToString();
         }
 
@@ -78,16 +89,17 @@ namespace LernsituationOOP.Utils
         public static int GenerateID()
         {
             int id = new Random().Next(100000, 999999);
-            if(ExsistID(id))
+            if (ExsistID(id))
             {
                 id = new Random().Next(100000, 999999);
             }
+
             return id;
         }
 
         public static bool ExsistID(int id)
         {
-            if(Mitarbeiter != null)
+            if (Mitarbeiter != null)
                 return Mitarbeiter.FindAll(mitarbeiter => mitarbeiter.ID == id).Count != 0;
             return false;
         }
@@ -104,9 +116,10 @@ namespace LernsituationOOP.Utils
             StringBuilder stringBuilder2_Length = new StringBuilder(input.Length);
             for (int index = 0; index < input.Length; ++index)
             {
-                char ch = (char)(stringBuilder_String[index] ^ seed);
+                char ch = (char) (stringBuilder_String[index] ^ seed);
                 stringBuilder2_Length.Append(ch);
             }
+
             return stringBuilder2_Length.ToString();
         }
     }

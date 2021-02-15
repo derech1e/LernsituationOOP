@@ -10,6 +10,7 @@ namespace LernsituationOOP.Gui.Prüfung
     public partial class FrmPrüfen : Form
     {
         private Mitarbeiter _Mitarbeiter;
+
         public FrmPrüfen(Mitarbeiter mitarbeiter)
         {
             InitializeComponent();
@@ -23,9 +24,10 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e">Gibt die Event Argumente an</param>
         private void FrmPrüfen_Load(object sender, EventArgs e)
         {
-            if(Utils.Utils.Reservierungen.Count == 0)
+            if (Utils.Utils.Reservierungen.Count == 0)
             {
-                MessageBox.Show(Resources.MsgBoxNoRes, Resources.MsgBoxTitle_ACHTUNG, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.MsgBoxNoRes, Resources.MsgBoxTitle_ACHTUNG, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 Dispose();
                 return;
             }
@@ -44,7 +46,8 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e">Gibt die Event Argumente an</param>
         private void btnCheck_Click(object sender, EventArgs e)
         {
-            if (listBoxEinträge.SelectedIndex < 0 || !UpdateStatus(Utils.Utils.Reservierungen[listBoxEinträge.SelectedIndex], true))
+            if (listBoxEinträge.SelectedIndex < 0 ||
+                !UpdateStatus(Utils.Utils.Reservierungen[listBoxEinträge.SelectedIndex], true))
                 return;
             listBoxEinträge.Items.RemoveAt(listBoxEinträge.SelectedIndex);
         }
@@ -56,7 +59,8 @@ namespace LernsituationOOP.Gui.Prüfung
         /// <param name="e">Gibt die Event Argumente an</param>
         private void btnUnCheck_Click(object sender, EventArgs e)
         {
-            if (listBoxEinträge.SelectedIndex < 0 || !UpdateStatus(Utils.Utils.Reservierungen[listBoxEinträge.SelectedIndex], false))
+            if (listBoxEinträge.SelectedIndex < 0 ||
+                !UpdateStatus(Utils.Utils.Reservierungen[listBoxEinträge.SelectedIndex], false))
                 return;
             listBoxEinträge.Items.RemoveAt(listBoxEinträge.SelectedIndex);
         }
@@ -70,7 +74,8 @@ namespace LernsituationOOP.Gui.Prüfung
         {
             if (listBoxEinträge.SelectedIndex < 0)
                 return;
-            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item => item.Kunde.KundenNummer == int.Parse(listBoxEinträge.GetItemText(listBoxEinträge.SelectedItem)));
+            Reservierung reservierung = Utils.Utils.Reservierungen.Find(item =>
+                item.Kunde.KundenNummer == int.Parse(listBoxEinträge.GetItemText(listBoxEinträge.SelectedItem)));
             txtBoxResInfos.Clear();
             txtBoxResInfos.Text = Utils.Utils.GetReservierungsInfos(reservierung);
         }
@@ -88,12 +93,15 @@ namespace LernsituationOOP.Gui.Prüfung
             reservierung.Prüfungsdatum = DateTime.Today;
             reservierung.Mitarbeiter = new Mitarbeiter(_Mitarbeiter.Vorname, _Mitarbeiter.Nachname, _Mitarbeiter.ID);
             Utils.Utils.Reservierungen.Add(reservierung);
-            MessageBox.Show(Resources.MsgBoxResPrüfen, Resources.MsgBoxTitle_ABGESCHLOSSEN, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            if(Utils.Utils.ReservierungMitStatusX(Prüfungsstatus.IN_BEARBEITUNG).Count == 0)
+            MessageBox.Show(Resources.MsgBoxResPrüfen, Resources.MsgBoxTitle_ABGESCHLOSSEN, MessageBoxButtons.OK,
+                MessageBoxIcon.Asterisk);
+            if (Utils.Utils.ReservierungMitStatusX(Prüfungsstatus.IN_BEARBEITUNG).Count == 0)
             {
-                MessageBox.Show(Resources.MsgBoxNoRes, Resources.MsgBoxTitle_ACHTUNG, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.MsgBoxNoRes, Resources.MsgBoxTitle_ACHTUNG, MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 Dispose();
             }
+
             return true;
         }
     }

@@ -20,7 +20,8 @@ namespace LernsituationOOP.Utils
         /// <summary>Liest den Inhalt (Text) aus der angegebenen Datei aus</summary>
         /// <param name="filePath">Dateipfad</param>
         /// <returns>Gibt den Erfolg des Auslesen zurück</returns>
-        private static string ReadTextFromFile(string filePath) => !File.Exists(filePath) ? "" : File.ReadAllText(filePath);
+        private static string ReadTextFromFile(string filePath) =>
+            !File.Exists(filePath) ? "" : File.ReadAllText(filePath);
 
         /// <summary>Speichert alle Reservierungen</summary>
         /// <returns>Gibt den Erfolg des Speichern zurück</returns>
@@ -42,7 +43,8 @@ namespace LernsituationOOP.Utils
         /// <returns>Gibt den Erfolg des Auslesen zurück</returns>
         public static bool LoadReservierungen()
         {
-            List<Reservierung> reservierungen = JsonConvert.DeserializeObject<List<Reservierung>>(ReadTextFromFile(Utils.FILE_PATH_RESERVIERUNGEN));
+            List<Reservierung> reservierungen =
+                JsonConvert.DeserializeObject<List<Reservierung>>(ReadTextFromFile(Utils.FILE_PATH_RESERVIERUNGEN));
             Utils.Reservierungen = reservierungen ?? new List<Reservierung>();
             return true;
         }
@@ -51,7 +53,8 @@ namespace LernsituationOOP.Utils
         /// <returns>Gibt den Erfolg des Auslesen zurück</returns>
         public static bool LoadMitarbeiter()
         {
-            List<Mitarbeiter> mitarbeiter = JsonConvert.DeserializeObject<List<Mitarbeiter>>(ReadTextFromFile(Utils.FILE_PATH_MITARBEITER));
+            List<Mitarbeiter> mitarbeiter =
+                JsonConvert.DeserializeObject<List<Mitarbeiter>>(ReadTextFromFile(Utils.FILE_PATH_MITARBEITER));
             Utils.Mitarbeiter = mitarbeiter ?? new List<Mitarbeiter>();
             return true;
         }

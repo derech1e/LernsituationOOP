@@ -16,7 +16,8 @@ namespace LernsituationOOP.Personen
         /// <param name="id">ID des Mitarbeiters</param>
         /// <param name="passwort">Passwort des Mitarbeiters</param>
         [JsonConstructor]
-        public Mitarbeiter(string vorname, string nachname, string adresse, DateTime geburtsdatum, string email, int id, string passwort) : base(vorname, nachname, geburtsdatum, adresse, email)
+        public Mitarbeiter(string vorname, string nachname, string adresse, DateTime geburtsdatum, string email, int id,
+            string passwort) : base(vorname, nachname, geburtsdatum, adresse, email)
         {
             ID = id;
             Passwort = passwort;

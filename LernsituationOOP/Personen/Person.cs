@@ -16,7 +16,8 @@ namespace LernsituationOOP.Personen
         /// <param name="adresse">Adresse der Person</param>
         /// <param name="email">E-Mail der Person</param>
         /// <param name="telefonnummer">Telefonnummer der Person</param>
-        public Person(string vorname, string nachname, DateTime geburtsdatum, string adresse, string email, long telefonnummer)
+        public Person(string vorname, string nachname, DateTime geburtsdatum, string adresse, string email,
+            long telefonnummer)
         {
             Vorname = vorname;
             Nachname = nachname;
@@ -66,7 +67,10 @@ namespace LernsituationOOP.Personen
         public string Email
         {
             get => _Email;
-            set => _Email = new StringValidation(value).IsEmail().ValidateAND() ? value : throw new FormatException("Der String enthält kein gültiges E-Mail Format!"); //Überprüft ob eine gültige E-Mail vorliegt.
+            set => _Email = new StringValidation(value).IsEmail().ValidateAND()
+                ? value
+                : throw new FormatException(
+                    "Der String enthält kein gültiges E-Mail Format!"); //Überprüft ob eine gültige E-Mail vorliegt.
         }
 
         public long Telefonnummer { get; }

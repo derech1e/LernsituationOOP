@@ -36,11 +36,15 @@ namespace LernsituationOOP.Gui
                 return;
 
             Utils.Utils.Reservierungen.Add(new Reservierung(
-                new Fahrzeug((FahrzeugModell)Enum.Parse(typeof(FahrzeugModell), comboBoxFahrzeuge.SelectedItem.ToString()), FahrzeugStatus.IN_ORDNUNG),
-                new Kunde(txtBoxVorName.Text, txtBoxNachName.Text, dTimeGeburtstag.Value, txtBoxAdresse.Text, txtBoxEmail.Text, long.Parse(txtBoxTel.Text), new Random().Next(20000, 100000)),
+                new Fahrzeug(
+                    (FahrzeugModell) Enum.Parse(typeof(FahrzeugModell), comboBoxFahrzeuge.SelectedItem.ToString()),
+                    FahrzeugStatus.IN_ORDNUNG),
+                new Kunde(txtBoxVorName.Text, txtBoxNachName.Text, dTimeGeburtstag.Value, txtBoxAdresse.Text,
+                    txtBoxEmail.Text, long.Parse(txtBoxTel.Text), new Random().Next(20000, 100000)),
                 dTimeVon.Value, dTimeBis.Value, Prüfungsstatus.IN_BEARBEITUNG, new DateTime(), null));
 
-            MessageBox.Show(Resources.MsgBoxRes, Resources.MsgBoxTitle_ABGESCHLOSSEN, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            MessageBox.Show(Resources.MsgBoxRes, Resources.MsgBoxTitle_ABGESCHLOSSEN, MessageBoxButtons.OK,
+                MessageBoxIcon.Asterisk);
             Close();
         }
 
@@ -48,41 +52,48 @@ namespace LernsituationOOP.Gui
         /// Dient zur vermeidung von fehlern durch fehlerhafte Eingaben.
         /// </summary>
         /// <returns>Gibt Zurück ob die Reservierierung abgeschlossen werden kann.</returns>
-        private bool KannReservieren() => new StringValidation(txtBoxVorName.Text).IsNotNullOrEmpty().ContainsLetter().ValidateAND() &&
-                new StringValidation(txtBoxNachName.Text).IsNotNullOrEmpty().ContainsLetter().ValidateAND() &&
-                new StringValidation(txtBoxAdresse.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNumber().ValidateAND() &&
-                new DateValidation(dTimeGeburtstag.Value).IsGreater18().ValidateAND() &&
-                new StringValidation(txtBoxEmail.Text).IsNotNullOrEmpty().IsEmail().ValidateAND() &&
-                new StringValidation(txtBoxTel.Text).IsNotNullOrEmpty().ContainsNumber().ContainsNoLetters().ValidateAND() &&
-                cbFuehrerschein.Checked;
+        private bool KannReservieren() =>
+            new StringValidation(txtBoxVorName.Text).IsNotNullOrEmpty().ContainsLetter().ValidateAND() &&
+            new StringValidation(txtBoxNachName.Text).IsNotNullOrEmpty().ContainsLetter().ValidateAND() &&
+            new StringValidation(txtBoxAdresse.Text).IsNotNullOrEmpty().ContainsLetter().ContainsNumber()
+                .ValidateAND() &&
+            new DateValidation(dTimeGeburtstag.Value).IsGreater18().ValidateAND() &&
+            new StringValidation(txtBoxEmail.Text).IsNotNullOrEmpty().IsEmail().ValidateAND() &&
+            new StringValidation(txtBoxTel.Text).IsNotNullOrEmpty().ContainsNumber().ContainsNoLetters()
+                .ValidateAND() &&
+            cbFuehrerschein.Checked;
 
         /// <summary>
         /// Überprüfung, ob Reservierung hinzugefügt werden kann
         /// </summary>
         /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
         /// <param name="e">Gibt die Event Argumente an</param>
-        private void CbFuehrerschein_CheckedChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+        private void CbFuehrerschein_CheckedChanged(object sender, EventArgs e) =>
+            btnReservieren.Enabled = KannReservieren();
 
         /// <summary>
         /// Überprüfung, ob Reservierung hinzugefügt werden kann
         /// </summary>
         /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
         /// <param name="e">Gibt die Event Argumente an</param>
-        private void TxtBoxVorName_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+        private void TxtBoxVorName_TextChanged(object sender, EventArgs e) =>
+            btnReservieren.Enabled = KannReservieren();
 
         /// <summary>
         /// Überprüfung, ob Reservierung hinzugefügt werden kann
         /// </summary>
         /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
         /// <param name="e">Gibt die Event Argumente an</param>
-        private void TxtBoxNachName_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+        private void TxtBoxNachName_TextChanged(object sender, EventArgs e) =>
+            btnReservieren.Enabled = KannReservieren();
 
         /// <summary>
         /// Überprüfung, ob Reservierung hinzugefügt werden kann
         /// </summary>
         /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
         /// <param name="e">Gibt die Event Argumente an</param>
-        private void TxtBoxAdresse_TextChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+        private void TxtBoxAdresse_TextChanged(object sender, EventArgs e) =>
+            btnReservieren.Enabled = KannReservieren();
 
         /// <summary>
         /// Überprüfung, ob Reservierung hinzugefügt werden kann
@@ -103,7 +114,8 @@ namespace LernsituationOOP.Gui
         /// </summary>
         /// <param name="sender">Gibt das Objekt an, von dem das Event getriggert wird</param>
         /// <param name="e">Gibt die Event Argumente an</param>
-        private void DTimeGeburtstag_ValueChanged(object sender, EventArgs e) => btnReservieren.Enabled = KannReservieren();
+        private void DTimeGeburtstag_ValueChanged(object sender, EventArgs e) =>
+            btnReservieren.Enabled = KannReservieren();
 
         //UI Validierungen
         /// <summary>
@@ -113,11 +125,13 @@ namespace LernsituationOOP.Gui
         /// <param name="e">Gibt die Event Argumente an</param>
         private void TxtBoxVorName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
-            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNoNumber().ContainsLetter().ValidateAND())
+            TextBox textBox = (TextBox) sender;
+            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNoNumber().ContainsLetter()
+                .ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateFirstName); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox,
+                    Resources.validateFirstName); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -133,11 +147,13 @@ namespace LernsituationOOP.Gui
         /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxNachName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
-            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNoNumber().ContainsLetter().ValidateAND())
+            TextBox textBox = (TextBox) sender;
+            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNoNumber().ContainsLetter()
+                .ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateLastName); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox,
+                    Resources.validateLastName); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -153,11 +169,12 @@ namespace LernsituationOOP.Gui
         /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxAdresse_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
+            TextBox textBox = (TextBox) sender;
             if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNumber().ContainsLetter().ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateAdress); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox,
+                    Resources.validateAdress); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -173,11 +190,12 @@ namespace LernsituationOOP.Gui
         /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
+            TextBox textBox = (TextBox) sender;
             if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().IsEmail().ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validateEmail); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox,
+                    Resources.validateEmail); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {
@@ -193,11 +211,13 @@ namespace LernsituationOOP.Gui
         /// <param name="e">Gibt die Event Argumente an</param>
         private void txtBoxTel_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
-            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNumber().ContainsNoLetters().IsLongerThan(8).ValidateAND())
+            TextBox textBox = (TextBox) sender;
+            if (!new StringValidation(textBox.Text).IsNotNullOrEmpty().ContainsNumber().ContainsNoLetters()
+                .IsLongerThan(8).ValidateAND())
             {
                 e.Cancel = true;
-                errorProvider.SetError(textBox, Resources.validatePhoneNumber); //String wird aus der "Resources.resx" Datei ausgelesen
+                errorProvider.SetError(textBox,
+                    Resources.validatePhoneNumber); //String wird aus der "Resources.resx" Datei ausgelesen
             }
             else
             {

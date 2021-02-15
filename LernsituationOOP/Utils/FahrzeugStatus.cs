@@ -5,6 +5,7 @@
     /// </summary>
     public enum FahrzeugStatus
     {
-       IN_ORDNUNG, MUSS_GEREINIGT_WERDEN
+        IN_ORDNUNG,
+        MUSS_GEREINIGT_WERDEN
     }
 }

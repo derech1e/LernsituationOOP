@@ -17,7 +17,8 @@ namespace LernsituationOOP.de.tnuerk.gui.prüfung.Tests
         private const string Expected_email = "test@test.de";
         private const string Expected_PW = "123";
 
-        private readonly Mitarbeiter mitarbeiter = new Mitarbeiter("TestVorname", "TestNachname", "Test123", DateTime.Today, "test@test.de", Utils.Utils.GenerateID(), "123");
+        private readonly Mitarbeiter mitarbeiter = new Mitarbeiter("TestVorname", "TestNachname", "Test123",
+            DateTime.Today, "test@test.de", Utils.Utils.GenerateID(), "123");
 
         [TestMethod()]
         public void ValidateVorname()
